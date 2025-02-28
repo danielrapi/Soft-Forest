@@ -14,7 +14,7 @@ class SmoothStep(tf.keras.layers.Layer):
     3*x/(2*gamma) -2*x*x*x/(gamma**3) + 0.5       o.w.
     See https://arxiv.org/abs/2002.07772 for more details on this function.
     """
-
+    
     def __init__(self, gamma=1.0):
         """Initializes the layer.
         Args:
