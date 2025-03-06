@@ -18,15 +18,20 @@ class train_fastel_rf:
         #check if dataset is in pmlb
         #load files in pmlb_datasets
         files = os.listdir("pmlb_datasets")
-        print(files)
-        if dataset_name + '.csv' not in files:
-            raise ValueError(f"Dataset {dataset_name + '.csv'} not found in PMLB")
+        #print(files)
+        if dataset_name not in files:
+            raise ValueError(f"Dataset {dataset_name} not found in PMLB")
         #load dataset
 
-        dataset = pd.read_csv(f"pmlb_datasets/{dataset_name}.csv")
-        print(dataset.head())
-        return dataset
+        try:
+            dataset = pd.read_csv(f"pmlb_datasets/{dataset_name}")
+            #print(dataset.head())
+            return dataset
 
+        except:
+            print(f"Dataset {dataset_name} failed to read.")
+            return None
+       
     def get_hyperparameters(self):
         
         hyperparameters = {
@@ -39,7 +44,7 @@ class train_fastel_rf:
             "l2_regularization": np.logspace(-8, 2, 11)
         }
 
-        print(hyperparameters)
+        #print(hyperparameters)
 
         return hyperparameters
 
@@ -73,11 +78,15 @@ class train_fastel_rf:
         #use random search to find best hyperparameters
         for i in range(iterations):
             params = self.draw_hyperparameters()
-            print(params)
+            #print(params)
         #train model with best hyperparameters
         #return model
         pass    
 
 if __name__ == "__main__":
-    ecoli = train_fastel_rf(dataset_name = "ecoli")
-    ecoli.train_model()
+    
+    for filename in os.listdir("pmlb_datasets"):
+        if filename != ".DS_Store":
+            tmp = train_fastel_rf(dataset_name = filename)
+            print(tmp.dataset.head())
+            tmp.train_model()
