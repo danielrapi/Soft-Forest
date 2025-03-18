@@ -17,7 +17,7 @@ from sklearn.base import BaseEstimator
 import shap
 
 ## Function Import
-from load_data import load_data
+from Azfal.Data_Prep.load_data import load_data
 
 #support function to pretty print the dictionary
 def pretty(d, indent=0):
