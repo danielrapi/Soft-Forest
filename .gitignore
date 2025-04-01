@@ -1,0 +1,5 @@
+/venv/
+/datasets.h5
+/outputs
+/Azfal/Data_Prep/__pycache__/.
+Azfal/train/__pycache__/.
