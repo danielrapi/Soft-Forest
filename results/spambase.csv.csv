@@ -1,7 +1,0 @@
-best_params,best_auc,best_acc,Model,run
-{'max_depth': 6},0.9249236212374035,0.9177018633540373,Decision Tree,0
-"{'n_estimators': 402, 'max_depth': 17}",0.9841474142338702,0.9456521739130436,Random Forest,0
-{'C': 0.0001},0.9430331953464381,0.6677018633540373,Logistic Regression,0
-{'max_depth': 14},0.9126926302034712,0.919254658385093,Decision Tree,1
-"{'n_estimators': 46, 'max_depth': 12}",0.9808996062373205,0.9400621118012422,Random Forest,1
-{'C': 100},0.9694474421044237,0.9211180124223602,Logistic Regression,1
