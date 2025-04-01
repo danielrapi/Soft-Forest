@@ -24,7 +24,6 @@ class SoftTreeEnsemble(torch.nn.Module):
           # subset selection:
               This will be a boolean value that if true we perform the randomization of feature selection in a random forrest
 
-
         """
         super(SoftTreeEnsemble, self).__init__()
         self.num_trees = num_trees

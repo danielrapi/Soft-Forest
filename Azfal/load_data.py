@@ -76,3 +76,4 @@ def load_data(dataset_name, framework='sklearn', file_path='datasets.h5', batch_
 
   else:
       raise ValueError("Unsupported framework. Choose from 'sklearn', 'pytorch', 'xgboost', or 'tensorflow'.")
+  
