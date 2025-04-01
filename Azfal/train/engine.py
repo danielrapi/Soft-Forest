@@ -10,7 +10,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import logging
-
+import time
 ################################################################################
 # GOAL: Train the model
 ################################################################################
@@ -25,6 +25,15 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
             Need to implement GPU functionality for later.
     
     '''
+    # just extending to GPU capabilities
+    if device  == "cuda":
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+
+    # log this in the file 
+    logging.info(f"Running on a: {device}")
+    
+
+
     # Define the optimizer and loss function
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
     criterion = nn.CrossEntropyLoss()  
@@ -33,6 +42,8 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
     model.to(device)
 
     # Training loop
+    start_time = time.time()
+
     for epoch in range(epochs):
         model.train()  # Set model to training mode
         running_loss = 0.0
@@ -73,10 +84,17 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
 
         avg_loss = running_loss / len(train_loader)
         # accuracy = correct_preds / total_preds (if classification)
+        
+
 
         test_loss = evaluate(model, test_loader, criterion, device)
 
         logging.info(f"Epoch [{epoch+1}/{epochs}], Training Loss: {avg_loss:.4f} | Test Lost: {test_loss:.4f}")
+
+    end_time = time.time()
+    execution_time = (end_time - start_time) / 60
+
+    logging.info(f"Model Took {execution_time:.6f} mins.")
 
 
 
