@@ -18,6 +18,9 @@ from sklearn.preprocessing import StandardScaler
 
 import shap
 
+## Function Import
+from Azfal.Data_Prep.load_data import load_data
+
 #support function to pretty print the dictionary
 def pretty(d, indent=0):
    for key, value in d.items():
