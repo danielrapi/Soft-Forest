@@ -15,11 +15,20 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.base import BaseEstimator
 from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import cross_val_score
 
 import shap
 
+#hyperopt sklearn
+from hpsklearn import HyperoptEstimator
+from hyperopt import tpe, hp, fmin, Trials
+
+#set working directory to current directory 
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+#import xgboost as xgb
 ## Function Import
-from Azfal.Data_Prep.load_data import load_data
+#from Main_Implementation.load_data import load_data
 
 #support function to pretty print the dictionary
 def pretty(d, indent=0):
@@ -86,19 +95,13 @@ class BasePredictor(BaseEstimator):  # Inherit from BaseEstimator for sklearn co
         # Define scoring metrics based on problem type
         if is_multiclass:
             print(f"Using multi-class scoring configuration")
-            scoring = {
-                'AUC': 'roc_auc_ovr',  # Use one-vs-rest for multi-class ROC AUC
-                'Accuracy': 'accuracy'
-            }
+            scoring = 'roc_auc_ovr'
         else:
             print(f"Using binary classification scoring configuration")
-            scoring = {
-                'AUC': 'roc_auc',  # Default binary ROC AUC
-                'Accuracy': 'accuracy'
-            }
-        # print(f"[DEBUG] Scoring metrics: {scoring}")
-
-        # Prepare the RandomizedSearchCV
+            scoring = 'roc_auc'
+        
+        #randomized search
+        """
         random_search = RandomizedSearchCV(
             estimator=self.model,
             param_distributions=param_distributions,
@@ -108,61 +111,46 @@ class BasePredictor(BaseEstimator):  # Inherit from BaseEstimator for sklearn co
             refit='AUC',
             verbose=1
         )
+        """
+
+        def objective(params):
+            model = self.model.set_params(**params)
+            score = cross_val_score(model, 
+                                    X, y, 
+                                    scoring=scoring, 
+                                    cv=5).mean()
+
+            return -score
+
+        trials = Trials()
+        best = fmin(objective, 
+                    param_distributions, 
+                    algo=tpe.suggest, 
+                    max_evals=n_iter, 
+                    trials=trials,
+                    )
+        print(f"Best parameters: {best}")
+        # Get the loss (negative score) of the best trial
+        best_trial_idx = np.argmin([t['result']['loss'] for t in trials.trials])
+        best_trial_loss = trials.trials[best_trial_idx]['result']['loss']
+        best_score = -best_trial_loss  # Convert back to positive score
         
-        # Perform hyperparameter search
-        # print(f"[DEBUG] Starting RandomizedSearchCV.fit()")
-        random_search.fit(X, y)
-        print(f"RandomizedSearchCV completed")
-        
+        print(f"Best trial index: {best_trial_idx}")
+        print(f"Best trial loss: {best_trial_loss}")
+        print(f"Best score (AUC): {best_score:.4f}")
+ 
+        print(f"HyperoptSearch completed")
         # Store best estimator
-        # print(f"[DEBUG] Best estimator type: {type(random_search.best_estimator_)}")
-        if hasattr(random_search.best_estimator_, 'model'):
-            self.model = random_search.best_estimator_.model
-            # print(f"[DEBUG] Setting self.model to best_estimator_.model: {type(self.model)}")
-        else:
-            self.model = random_search.best_estimator_
-            # print(f"[DEBUG] Setting self.model to best_estimator_: {type(self.model)}")
-        
+        self.model = self.model.set_params(**best)
+       
         # Extract results
-        best_params = random_search.best_params_
-        best_index = random_search.best_index_
-        cv_results = random_search.cv_results_
+        best_params = best
+        cv_results = trials
         
-        # Get the correct result keys (include the 'mean_test_' prefix)
-        try:
-            best_auc = cv_results['mean_test_AUC'][best_index]
-            best_acc = cv_results['mean_test_Accuracy'][best_index]
-            # print(f"[DEBUG] Found scores with 'mean_test_' prefix")
-        except KeyError:
-            # print(f"[DEBUG] Keys not found with 'mean_test_' prefix, trying alternative keys")
-            try:
-                best_auc = cv_results['AUC'][best_index]
-                best_acc = cv_results['Accuracy'][best_index]
-                # print(f"[DEBUG] Found scores without prefix")
-            except KeyError:
-                print(f"[WARNING] Score keys not found. Available keys: {list(cv_results.keys())}")
-                # Try to find any key that might contain our metrics
-                auc_keys = [k for k in cv_results.keys() if 'AUC' in k or 'auc' in k]
-                acc_keys = [k for k in cv_results.keys() if 'Accuracy' in k or 'accuracy' in k or 'acc' in k]
-                print(f"Possible AUC keys: {auc_keys}")
-                print(f"Possible Accuracy keys: {acc_keys}")
-                if auc_keys:
-                    best_auc = cv_results[auc_keys[0]][best_index]
-                else:
-                    best_auc = 0.0
-                if acc_keys:
-                    best_acc = cv_results[acc_keys[0]][best_index]
-                else:
-                    best_acc = 0.0
-
-        print(f"Best parameters: {best_params}")
-        print(f"Best AUC: {best_auc:.4f}")
-        print(f"Best Accuracy: {best_acc:.4f}")
-
         return {
             'best_params': best_params,
-            'best_auc': best_auc,
-            'best_acc': best_acc
+            'best_auc': best_score,
+            'trials': trials
         }
 
 class DecisionTreeClassifierModel(BasePredictor):
@@ -208,34 +196,33 @@ def benchmark_pipelines(X_train, y_train, X_test, y_test, n_iter=5, n_splits=5):
     models = [
         DecisionTreeClassifierModel(),
         RandomForestClassifierModel(),
-        # XGBoostRegressorModel(),  # Comment out XGBoost temporarily
+        #XGBoostClassifierModel(),  # Comment out XGBoost temporarily
         LogisticRegressionModel(),
         ]
     model_names = [
         "Decision Tree",    
         "Random Forest",
-        # "XGBoost",  # Comment out XGBoost temporarily
+        #"XGBoost",  # Comment out XGBoost temporarily
         "Logistic Regression",
     ]
     
     param_distributions = {
         "Decision Tree": {
-            "max_depth": list(range(2, 21)),  # Discrete uniform over [2, 20]
+            "max_depth": hp.uniformint("max_depth", 2, 20),
         },
         "Random Forest": {
-            "n_estimators": list(range(1, 501)),  # Discrete uniform over [1, 500]
-            "max_depth": list(range(2, 21)),      # Discrete uniform over [2, 20]
+            "n_estimators": hp.uniformint("n_estimators", 1, 500),  # Integer uniform over [1, 500]
+            "max_depth": hp.uniformint("max_depth", 2, 20),      # Integer uniform over [2, 20]
         }, 
         "XGBoost": {
-            "n_estimators": list(range(1, 501)),  # Discrete uniform over [1, 500]
-            "max_depth": list(range(2, 21)),      # Discrete uniform over [2, 20]
-            "learning_rate": [10**-i for i in range(1, 6)],  # Uniform over {10^-1, 10^-2, ..., 10^-5}
-            ### To be checked what the mixture coeff is and if log uniform is correct ###
-            "reg_lambda": [0]*100 + [10**(np.random.uniform(-8, 2)) for _ in range(100)],  # Mixture model of 0 and log uniform over [10^-8, 10^2]
+            "n_estimators": hp.uniformint("n_estimators", 1, 500),  # Integer uniform over [1, 500]
+            "max_depth": hp.uniformint("max_depth", 2, 20),      # Integer uniform over [2, 20]
+            "learning_rate": hp.loguniform("learning_rate", np.log(10**-5), np.log(10**-1)),  # Log uniform over [10^-5, 10^-1]
+            "reg_lambda": hp.loguniform("reg_lambda", np.log(10**-8), np.log(10**2)),  # Log uniform over [10^-8, 10^2]
             "min_child_weight": [0],               # min child weight = 0
         }, 
         "Logistic Regression": {
-            "C": [10**i for i in range(-8, 5)],  # Log uniform over [10^-8, 10^4]
+            "C": hp.loguniform("C", np.log(10**-8), np.log(10**4)),  # Log uniform over [10^-8, 10^4]
         },
     }
     
@@ -254,11 +241,11 @@ def benchmark_pipelines(X_train, y_train, X_test, y_test, n_iter=5, n_splits=5):
         # Use scaled data for logistic regression, original data for others
         if name == "Logistic Regression":
             current_X_train = X_train_scaled_df
-            current_X_test = X_test_scaled_df
+            #current_X_test = X_test_scaled_df
             print(f"Using SCALED data for {name}")
         else:
             current_X_train = X_train
-            current_X_test = X_test
+            #current_X_test = X_test
             print(f"Using original data for {name}")
         
         # Hyperparameter tuning if applicable
@@ -275,12 +262,11 @@ def benchmark_pipelines(X_train, y_train, X_test, y_test, n_iter=5, n_splits=5):
                 print(f"ERROR during hyperparameter tuning for {name}: {e}")
                 import traceback
                 traceback.print_exc()
-                model_results = {"Model": name, "best_params": {}, "best_auc": 0, "best_acc": 0, "error": str(e)}
+                model_results = {"Model": name, "best_params": {}, "best_auc": 0, "trials": None, "error": str(e)}
                 results.append(model_results)
         else:
-            best_params = {}
             print(f'No hyperparameter tuning for {name}')
-            model_results = {"Model": name, "best_params": {}, "best_auc": 0, "best_acc": 0, "note": "No tuning performed"}
+            model_results = {"Model": name, "best_params": {}, "best_auc": 0, "trials": None, "note": "No tuning performed"}
             results.append(model_results)
         
         # Plot predictions
@@ -295,14 +281,14 @@ def benchmark_pipelines(X_train, y_train, X_test, y_test, n_iter=5, n_splits=5):
 def get_data(dataset_name):
     #check if dataset is in pmlb
     #load files in pmlb_datasets
-    files = os.listdir("Daniel/pmlb_datasets")
+    files = os.listdir("./pmlb_datasets")
     #print(files)
     if dataset_name not in files:
         raise ValueError(f"Dataset {dataset_name} not found in PMLB")
     #load dataset
 
     try:
-        dataset = pd.read_csv(f"Daniel/pmlb_datasets/{dataset_name}")
+        dataset = pd.read_csv(f"./pmlb_datasets/{dataset_name}")
         #print(dataset.head())
         return dataset
 
@@ -332,18 +318,18 @@ def preprocess_data(dataset):
 if __name__ == "__main__":
     all_datasets_results = []  # Rename to avoid confusion
 
-    for file_name in os.listdir("Daniel/pmlb_datasets"):
+    for file_name in os.listdir("./pmlb_datasets"):
         if file_name != ".DS_Store":
             print(f"Running {file_name}")
             dataset_results = []  # Store results for this dataset
             
-            for i in range(2):
+            for i in range(5):
                 dataset = get_data(file_name)
                 print(dataset.head())
                 X_train, X_test, y_train, y_test, dataset_info = preprocess_data(dataset)
                 
                 # Get model results
-                model_results = benchmark_pipelines(X_train, y_train, X_test, y_test, n_iter=2, n_splits=2)
+                model_results = benchmark_pipelines(X_train, y_train, X_test, y_test, n_iter=10, n_splits=5)
                 
                 # Add dataset info and run number to each model result
                 for result in model_results:
@@ -355,18 +341,26 @@ if __name__ == "__main__":
             # Create DataFrame for this dataset and save it
             print(f"Results for {file_name}:")
             results_df = pd.DataFrame(dataset_results)
+            print(results_df['trials'].iloc[0].trials)
             print(results_df)
             
             # Create results directory if it doesn't exist
-            os.makedirs("results", exist_ok=True)
-            results_df.to_csv(f"results/{file_name}", index=False)
+            os.makedirs("./results", exist_ok=True)
+            os.makedirs("./results/trials", exist_ok=True)
+
+            all_trials = results_df['trials'].map(lambda x: x.trials if x.trials is not None else None)
+            results_df.drop(columns=['trials'], inplace=True)
+            
+            all_trials.to_csv(f"./results/trials/trials_{file_name.replace('.csv', '')}", index=False)
+            results_df.to_csv(f"./results/result_{file_name.replace('.csv', '')}", index=False)
             
             # Add to all dataset results
             all_datasets_results.extend(dataset_results)
             
             # Remove this to process all datasets
-            # exit()  
-            
+
+    """
+    SAVE COMBINED RESULTS - TO BE FIXED
     # Save combined results from all datasets
     if all_datasets_results:
         combined_df = pd.DataFrame(all_datasets_results)
@@ -385,9 +379,9 @@ if __name__ == "__main__":
         ]
         
         # Save both detailed and summary results
-        combined_df.to_csv("results/all_datasets_results.csv", index=False)
-        stats_df.to_csv("results/all_datasets_summary.csv", index=False)
-    
+        combined_df.to_csv("results/all_datasets_results", index=False)
+        stats_df.to_csv("results/all_datasets_summary", index=False)
+    """        
     
 
 

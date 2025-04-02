@@ -1,0 +1,16 @@
+best_params,best_auc,Model,run
+{'max_depth': np.float64(6.0)},0.9771315730506192,Decision Tree,0
+"{'max_depth': np.float64(16.0), 'n_estimators': np.float64(158.0)}",0.998099067673613,Random Forest,0
+{'C': np.float64(7228.287295496982)},0.9505209537352372,Logistic Regression,0
+{'max_depth': np.float64(8.0)},0.9805814528115995,Decision Tree,1
+"{'max_depth': np.float64(11.0), 'n_estimators': np.float64(323.0)}",0.9980980438726558,Random Forest,1
+{'C': np.float64(27.62047009368078)},0.9505717140934591,Logistic Regression,1
+{'max_depth': np.float64(8.0)},0.9749192732783227,Decision Tree,2
+"{'max_depth': np.float64(13.0), 'n_estimators': np.float64(212.0)}",0.9982536817381211,Random Forest,2
+{'C': np.float64(82.34685522712836)},0.9506026613733793,Logistic Regression,2
+{'max_depth': np.float64(6.0)},0.9771315730506192,Decision Tree,3
+"{'max_depth': np.float64(18.0), 'n_estimators': np.float64(392.0)}",0.9981192129886736,Random Forest,3
+{'C': np.float64(1031.9258332832947)},0.9505501706428191,Logistic Regression,3
+{'max_depth': np.float64(7.0)},0.9801955101165312,Decision Tree,4
+"{'max_depth': np.float64(12.0), 'n_estimators': np.float64(194.0)}",0.9982749117387637,Random Forest,4
+{'C': np.float64(6867.3555145307155)},0.9505209537352372,Logistic Regression,4
