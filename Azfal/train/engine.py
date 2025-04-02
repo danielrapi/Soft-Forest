@@ -42,8 +42,6 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
     model.to(device)
 
     # Training loop
-    start_time = time.time()
-
     for epoch in range(epochs):
         model.train()  # Set model to training mode
         running_loss = 0.0
@@ -64,6 +62,8 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
             # Forward pass
             outputs = model(inputs)
             labels = labels.long()
+            print(outputs.shape)
+            print(labels.shape)
             # Calculate the loss
             loss = criterion(outputs, labels)
 
@@ -91,10 +91,6 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
 
         logging.info(f"Epoch [{epoch+1}/{epochs}], Training Loss: {avg_loss:.4f} | Test Lost: {test_loss:.4f}")
 
-    end_time = time.time()
-    execution_time = (end_time - start_time) / 60
-
-    logging.info(f"Model Took {execution_time:.6f} mins.")
 
 
 

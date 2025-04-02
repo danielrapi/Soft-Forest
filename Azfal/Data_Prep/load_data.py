@@ -14,7 +14,7 @@ import tensorflow as tf
 
 # Write a function to retrieve the data set
 
-def load_data(dataset_name, framework='sklearn', file_path='datasets.h5', batch_size=32):
+def load_data(dataset_name, framework='sklearn', file_path='datasets.h5', batch_size=32, bootstrap = False):
   '''
     Function Goal:
       Loads in data from the hdf5 file containing all datasets 
@@ -47,11 +47,21 @@ def load_data(dataset_name, framework='sklearn', file_path='datasets.h5', batch_
       return {'train_X':train_X, 'test_X':test_X, 'train_y':train_y, 'test_y':test_y}
 
   elif framework == 'torch':
+      train_X_tensor = torch.tensor(train_X, dtype=torch.float32)
+      train_y_tensor = torch.tensor(train_y, dtype=torch.float32)
+      test_X_tensor = torch.tensor(test_X, dtype=torch.float32)
+      test_y_tensor = torch.tensor(test_y, dtype=torch.float32)
+
+      # we will apply boostrapping if it is true
+      if bootstrap:
+          # Generate bootstrap indices with replacement
+          indices = torch.randint(0, train_X_tensor.shape[0], (train_X_tensor.shape[0],))
+          train_X_tensor = train_X_tensor[indices]
+          train_y_tensor = train_y_tensor[indices]
+
       # Convert to PyTorch tensors
-      train_dataset = TensorDataset(torch.tensor(train_X, dtype=torch.float32), 
-                                      torch.tensor(train_y, dtype=torch.float32))
-      test_dataset = TensorDataset(torch.tensor(test_X, dtype=torch.float32), 
-                                     torch.tensor(test_y, dtype=torch.float32))
+      train_dataset = TensorDataset(train_X_tensor, train_y_tensor)
+      test_dataset = TensorDataset(test_X_tensor, test_y_tensor)
         
         # Create DataLoaders for batching
       train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
