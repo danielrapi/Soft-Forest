@@ -26,8 +26,7 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
     
     '''
     # just extending to GPU capabilities
-    if device  == "cuda":
-        device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cuda" if torch.cuda.is_available() else "cpu"
 
     # log this in the file 
     logging.info(f"Running on a: {device}")
@@ -43,29 +42,43 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
 
     # Training loop
     for epoch in range(epochs):
+        if (epoch + 1) % 5 == 0:
+            print(f"Running EPOCH {epoch + 1}")
         model.train()  # Set model to training mode
         running_loss = 0.0
         correct_preds = 0
         total_preds = 0
+
 
         for inputs, labels in train_loader:
             # Move data to device (GPU or CPU)
             inputs, labels = inputs.to(device), labels.to(device)
 
                     # Ensure labels are of the correct shape (2D tensor)
-        if len(labels.shape) == 1:
-            labels = labels.unsqueeze(1)  # Change shape from [batch_size] to [batch_size, 1]
+            if len(labels.shape) == 1:
+                labels = labels.unsqueeze(1)  # Change shape from [batch_size] to [batch_size, 1]
 
             # Zero the gradients
             optimizer.zero_grad()
 
             # Forward pass
             outputs = model(inputs)
+            # trying to squeeze to make the compatible shape in pytorch
+            outputs = outputs.squeeze(-1)
+            # print("THE SHAPE OF THE OUTPUTS IS")
+            # print(outputs.shape)
+            # print(outputs)
             labels = labels.long()
-            print(outputs.shape)
-            print(labels.shape)
+            # we need to also fix the labels 
+            labels = labels.squeeze(-1)            
+            # print("THE SHAPE OF THE labels IS")
+            # print(labels.shape)
+            # print(labels)
             # Calculate the loss
             loss = criterion(outputs, labels)
+
+
+            # exit()
 
             # Backward pass
             loss.backward()
@@ -75,21 +88,24 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
 
             running_loss += loss.item()
 
+
+
             # Track accuracy or other metrics if needed
             # For classification, you can calculate accuracy
+
             predicted = outputs.argmax(dim=1)
             correct_preds += (predicted == labels.squeeze()).sum().item()
             total_preds += labels.size(0)
 
 
         avg_loss = running_loss / len(train_loader)
-        # accuracy = correct_preds / total_preds (if classification)
+        accuracy = correct_preds / total_preds
         
 
 
-        test_loss = evaluate(model, test_loader, criterion, device)
+        test_loss, test_accuracy = evaluate(model, test_loader, criterion, device)
 
-        logging.info(f"Epoch [{epoch+1}/{epochs}], Training Loss: {avg_loss:.4f} | Test Lost: {test_loss:.4f}")
+        logging.info(f"Epoch [{epoch+1}/{epochs}], Training Loss: {avg_loss:.4f} | Training Accuracy: {accuracy} | Test Lost: {test_loss:.4f} | Test Accuracy {test_accuracy:.4f}")
 
 
 
@@ -97,6 +113,8 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
 def evaluate(model, test_loader, criterion, device):
     model.eval()  # Set model to evaluation mode
     running_loss = 0.0
+    correct_preds = 0.0
+    total_preds = 0.0
 
     with torch.no_grad():  # Disable gradient computation for evaluation
         for inputs, labels in test_loader:
@@ -105,17 +123,31 @@ def evaluate(model, test_loader, criterion, device):
             if len(labels.shape) == 1:
                 labels = labels.unsqueeze(1) 
 
+            # print("THE SHAPES OF LABELS")
             labels = labels.long()
+            labels = labels.squeeze(-1)
+            # print(labels.shape)
 
             # Forward pass
-            outputs = model(inputs)
 
+            outputs = model(inputs)
+            outputs = outputs.squeeze(-1)
+            # print("THE SHAPES OF THE OUTPUTS")
+            # print(outputs.shape)
 
             # Calculate loss
             loss = criterion(outputs, labels)
             running_loss += loss.item()
 
-    return running_loss / len(test_loader)
+            # calculate the accuracy as well
+            predicted = outputs.argmax(dim=1)
+            correct_preds += (predicted == labels.squeeze()).sum().item()
+            total_preds += labels.size(0)
+
+
+
+    return (running_loss / len(test_loader)), (correct_preds / total_preds)
+
 
 
 

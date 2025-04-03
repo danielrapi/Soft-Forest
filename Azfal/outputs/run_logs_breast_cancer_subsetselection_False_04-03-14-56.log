@@ -1,0 +1,47 @@
+2025-04-03 14:56:42,294 - INFO -   train_X has : 9 features
+2025-04-03 14:56:42,295 - INFO -   The dataset is a : 2 classification problem
+2025-04-03 14:56:42,295 - INFO - Running just ONE TREE
+2025-04-03 14:56:42,295 - INFO - Running in torch mode with dataset: breast_cancer
+2025-04-03 14:56:42,295 - INFO - Batch size: 16
+2025-04-03 14:56:42,295 - INFO - Number of trees: 1, Max depth: 8
+2025-04-03 14:56:42,295 - INFO - Combine output: False, Subset selection: False
+2025-04-03 14:56:42,332 - INFO - Created Soft Tree Model
+2025-04-03 14:56:42,334 - INFO - Running on a: cpu
+2025-04-03 14:56:45,199 - INFO - Epoch [1/100], Training Loss: 0.6383 | Training Accuracy: 0.695 | Test Lost: 0.5656 | Test Accuracy 0.7093
+2025-04-03 14:56:47,346 - INFO - Epoch [2/100], Training Loss: 0.5738 | Training Accuracy: 0.695 | Test Lost: 0.5717 | Test Accuracy 0.7326
+2025-04-03 14:56:49,210 - INFO - Epoch [3/100], Training Loss: 0.5832 | Training Accuracy: 0.715 | Test Lost: 0.5429 | Test Accuracy 0.7326
+2025-04-03 14:56:51,004 - INFO - Epoch [4/100], Training Loss: 0.5605 | Training Accuracy: 0.68 | Test Lost: 0.5576 | Test Accuracy 0.7558
+2025-04-03 14:56:52,798 - INFO - Epoch [5/100], Training Loss: 0.5688 | Training Accuracy: 0.705 | Test Lost: 0.5457 | Test Accuracy 0.7791
+2025-04-03 14:56:54,648 - INFO - Epoch [6/100], Training Loss: 0.5528 | Training Accuracy: 0.695 | Test Lost: 0.5532 | Test Accuracy 0.7558
+2025-04-03 14:56:56,438 - INFO - Epoch [7/100], Training Loss: 0.5413 | Training Accuracy: 0.72 | Test Lost: 0.5484 | Test Accuracy 0.7442
+2025-04-03 14:56:58,396 - INFO - Epoch [8/100], Training Loss: 0.5334 | Training Accuracy: 0.7 | Test Lost: 0.5683 | Test Accuracy 0.7558
+2025-04-03 14:57:00,215 - INFO - Epoch [9/100], Training Loss: 0.5011 | Training Accuracy: 0.765 | Test Lost: 0.5495 | Test Accuracy 0.7326
+2025-04-03 14:57:02,108 - INFO - Epoch [10/100], Training Loss: 0.5459 | Training Accuracy: 0.675 | Test Lost: 0.5744 | Test Accuracy 0.7674
+2025-04-03 14:57:03,936 - INFO - Epoch [11/100], Training Loss: 0.5458 | Training Accuracy: 0.71 | Test Lost: 0.5803 | Test Accuracy 0.7093
+2025-04-03 14:57:05,798 - INFO - Epoch [12/100], Training Loss: 0.5241 | Training Accuracy: 0.715 | Test Lost: 0.5771 | Test Accuracy 0.7442
+2025-04-03 14:57:07,560 - INFO - Epoch [13/100], Training Loss: 0.5066 | Training Accuracy: 0.735 | Test Lost: 0.5803 | Test Accuracy 0.7674
+2025-04-03 14:57:09,418 - INFO - Epoch [14/100], Training Loss: 0.4998 | Training Accuracy: 0.725 | Test Lost: 0.5946 | Test Accuracy 0.7558
+2025-04-03 14:57:11,298 - INFO - Epoch [15/100], Training Loss: 0.4936 | Training Accuracy: 0.735 | Test Lost: 0.5686 | Test Accuracy 0.7907
+2025-04-03 14:57:13,157 - INFO - Epoch [16/100], Training Loss: 0.5138 | Training Accuracy: 0.73 | Test Lost: 0.5903 | Test Accuracy 0.7558
+2025-04-03 14:57:14,984 - INFO - Epoch [17/100], Training Loss: 0.4934 | Training Accuracy: 0.76 | Test Lost: 0.5652 | Test Accuracy 0.8023
+2025-04-03 14:57:16,778 - INFO - Epoch [18/100], Training Loss: 0.4872 | Training Accuracy: 0.765 | Test Lost: 0.5927 | Test Accuracy 0.7791
+2025-04-03 14:57:18,601 - INFO - Epoch [19/100], Training Loss: 0.4663 | Training Accuracy: 0.76 | Test Lost: 0.5908 | Test Accuracy 0.7558
+2025-04-03 14:57:20,672 - INFO - Epoch [20/100], Training Loss: 0.4464 | Training Accuracy: 0.77 | Test Lost: 0.6358 | Test Accuracy 0.7326
+2025-04-03 14:57:22,641 - INFO - Epoch [21/100], Training Loss: 0.4998 | Training Accuracy: 0.745 | Test Lost: 0.5919 | Test Accuracy 0.7907
+2025-04-03 14:57:24,494 - INFO - Epoch [22/100], Training Loss: 0.4537 | Training Accuracy: 0.775 | Test Lost: 0.5831 | Test Accuracy 0.7674
+2025-04-03 14:57:26,443 - INFO - Epoch [23/100], Training Loss: 0.4461 | Training Accuracy: 0.77 | Test Lost: 0.6069 | Test Accuracy 0.7093
+2025-04-03 14:57:28,720 - INFO - Epoch [24/100], Training Loss: 0.4792 | Training Accuracy: 0.79 | Test Lost: 0.5951 | Test Accuracy 0.7558
+2025-04-03 14:57:30,917 - INFO - Epoch [25/100], Training Loss: 0.4969 | Training Accuracy: 0.75 | Test Lost: 0.5718 | Test Accuracy 0.7907
+2025-04-03 14:57:33,043 - INFO - Epoch [26/100], Training Loss: 0.5015 | Training Accuracy: 0.725 | Test Lost: 0.6325 | Test Accuracy 0.7326
+2025-04-03 14:57:35,074 - INFO - Epoch [27/100], Training Loss: 0.4486 | Training Accuracy: 0.8 | Test Lost: 0.6023 | Test Accuracy 0.7442
+2025-04-03 14:57:37,171 - INFO - Epoch [28/100], Training Loss: 0.4271 | Training Accuracy: 0.78 | Test Lost: 0.6214 | Test Accuracy 0.7209
+2025-04-03 14:57:39,299 - INFO - Epoch [29/100], Training Loss: 0.4152 | Training Accuracy: 0.82 | Test Lost: 0.6297 | Test Accuracy 0.7442
+2025-04-03 14:57:41,201 - INFO - Epoch [30/100], Training Loss: 0.4050 | Training Accuracy: 0.8 | Test Lost: 0.6395 | Test Accuracy 0.7209
+2025-04-03 14:57:43,106 - INFO - Epoch [31/100], Training Loss: 0.4453 | Training Accuracy: 0.795 | Test Lost: 0.6391 | Test Accuracy 0.6977
+2025-04-03 14:57:45,060 - INFO - Epoch [32/100], Training Loss: 0.4157 | Training Accuracy: 0.77 | Test Lost: 0.6390 | Test Accuracy 0.7558
+2025-04-03 14:57:47,023 - INFO - Epoch [33/100], Training Loss: 0.4046 | Training Accuracy: 0.8 | Test Lost: 0.6519 | Test Accuracy 0.7326
+2025-04-03 14:57:48,932 - INFO - Epoch [34/100], Training Loss: 0.3948 | Training Accuracy: 0.835 | Test Lost: 0.6620 | Test Accuracy 0.7209
+2025-04-03 14:57:50,961 - INFO - Epoch [35/100], Training Loss: 0.3991 | Training Accuracy: 0.83 | Test Lost: 0.6632 | Test Accuracy 0.7326
+2025-04-03 14:57:53,053 - INFO - Epoch [36/100], Training Loss: 0.4138 | Training Accuracy: 0.79 | Test Lost: 0.6765 | Test Accuracy 0.7093
+2025-04-03 14:57:55,361 - INFO - Epoch [37/100], Training Loss: 0.4455 | Training Accuracy: 0.785 | Test Lost: 0.7382 | Test Accuracy 0.6628
+2025-04-03 14:57:57,505 - INFO - Epoch [38/100], Training Loss: 0.4325 | Training Accuracy: 0.8 | Test Lost: 0.6847 | Test Accuracy 0.7093
