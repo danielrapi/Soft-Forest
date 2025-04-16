@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import math
+import matplotlib.pyplot as plt
 
 class SoftTreeEnsemble(torch.nn.Module):
 
@@ -67,7 +68,7 @@ class SoftTreeEnsemble(torch.nn.Module):
 
             self.mask = nn.Parameter(temp, requires_grad=False)
 
-            # print(f"The mask looks like: {self.mask}")
+            print(f"The mask looks like: {self.mask}")
 
             # now we need to elemntwise multiply
 
@@ -128,3 +129,89 @@ class SoftTreeEnsemble(torch.nn.Module):
  
           # assert len(output.shape) == 3 
           return output
+    def plot_tree(self, ax=None, x=0, y=0, width=1.0, depth=0):
+        """
+        Plots the tree structure recursively.
+        
+        Parameters:
+        - ax: matplotlib axis to plot on
+        - x, y: coordinates of the current node
+        - width: width of the current subtree
+        - depth: current depth in the tree
+        """
+        if self.num_trees > 1:
+           raise ValueError("This function is only supported for single tree models")
+
+        # Create a new figure if not provided
+        if ax is None:
+            fig, ax = plt.subplots(figsize=(12, 8))
+            ax.set_title('Soft Decision Tree Structure')
+            ax.axis('off')
+            
+        # Draw the current node
+        node_radius = 0.03 * (self.max_depth - depth + 1)  # Larger nodes at top
+        node_color = 'skyblue' if not self.leaf else 'lightgreen'
+        circle = plt.Circle((x, self.max_depth - depth), node_radius, color=node_color, 
+                           ec='black', zorder=10, alpha=0.8)
+        ax.add_patch(circle)
+        
+        # Add node index
+        ax.text(x, self.max_depth - depth, f"{self.node_index}", 
+                ha='center', va='center', fontsize=9, fontweight='bold')
+        
+        # If not a leaf, recursively plot children
+        if not self.leaf:
+            # Calculate positions for children
+            left_x = x - width/2
+            right_x = x + width/2
+            child_y = y + 1
+            
+            # Draw edges to children
+            ax.plot([x, left_x], [self.max_depth - depth, self.max_depth - (depth+1)], 
+                   'k-', alpha=0.6, linewidth=1.5)
+            ax.plot([x, right_x], [self.max_depth - depth, self.max_depth - (depth+1)], 
+                   'k-', alpha=0.6, linewidth=1.5)
+            
+            # Add edge labels with background
+            midpoint_left = ((x + left_x)/2, self.max_depth - depth - 0.5)
+            midpoint_right = ((x + right_x)/2, self.max_depth - depth - 0.5)
+            
+            # Add small circles for the decision values
+            decision_radius = 0.02
+            left_circle = plt.Circle(midpoint_left, decision_radius, color='white', 
+                                    ec='blue', zorder=9, alpha=0.9)
+            right_circle = plt.Circle(midpoint_right, decision_radius, color='white', 
+                                     ec='red', zorder=9, alpha=0.9)
+            ax.add_patch(left_circle)
+            ax.add_patch(right_circle)
+            
+            ax.text(midpoint_left[0], midpoint_left[1], "1", color='blue', 
+                   ha='center', va='center', fontsize=8, fontweight='bold')
+            ax.text(midpoint_right[0], midpoint_right[1], "0", color='red', 
+                   ha='center', va='center', fontsize=8, fontweight='bold')
+            
+            # Add decision function info
+            if hasattr(self, 'fc'):
+                w = self.fc.weight.data.cpu().numpy().flatten()
+                b = self.fc.bias.data.cpu().numpy().item()
+                weight_str = ", ".join([f"{val:.2f}" for val in w])
+                decision_text = f"w=[{weight_str}], b={b:.2f}"
+                ax.text(x, self.max_depth - depth - 0.2, decision_text,
+                       ha='center', va='top', fontsize=7, 
+                       bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="gray", alpha=0.7))
+            
+            # Recursively plot children
+            self.right_child.plot_tree(ax, right_x, child_y, width/2, depth+1)
+            self.left_child.plot_tree(ax, left_x, child_y, width/2, depth+1)
+        else:
+            # For leaf nodes, display the leaf weights
+            weights = self.leaf_weights.detach().cpu().numpy().flatten()
+            weight_str = ", ".join([f"{w:.2f}" for w in weights])
+            ax.text(x, self.max_depth - depth - 0.15, f"w=[{weight_str}]", 
+                   ha='center', va='top', fontsize=7,
+                   bbox=dict(boxstyle="round,pad=0.3", fc="honeydew", ec="green", alpha=0.7))
+        
+        # Return the figure if this is the root call
+        if depth == 0:
+            plt.tight_layout()
+            return ax.figure

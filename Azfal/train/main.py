@@ -61,7 +61,7 @@ if __name__ == "__main__":
     torch_parser.add_argument("--leaf_dims", action="store_true", help="Number of classes if not included, otherwise extend to higher feature space")
     # torch_parser.add_argument("--input_dims", type=int, required=True, help="Number of features")
     torch_parser.add_argument("--max_depth", type=int, required=True, help="Max depth for the trees")
-    torch_parser.add_argument("--combine_output", action="store_true", help="Combine the output into leaf_dims")
+    torch_parser.add_argument("--combine_output", action="store_true", default=True, help="Combine the output into leaf_dims")
     torch_parser.add_argument("--subset_selection", action="store_true", help="Run soft trees with Hadamard product for random feature selection")
     torch_parser.add_argument("--epochs", type=int,required=True,help="EPOCHS")
     torch_parser.add_argument("--lr", type=float,required=True,help="learning_rate")
@@ -87,7 +87,6 @@ if __name__ == "__main__":
     # Parse the arguments
     args = parser.parse_args()
 
-
         # Check which mode is selected
     if args.mode == "torch":
         # create a logging file so that separate models save
@@ -109,20 +108,21 @@ if __name__ == "__main__":
         if args.num_trees == 1:
             # we first load the data 
             train_dataloader, test_dataloader = load_data(
-            dataset_name=args.dataset_name, 
-            framework=args.mode, 
-            file_path='Data_prep/datasets.h5', 
-            batch_size=args.batch_size)
+                dataset_name=args.dataset_name, 
+                framework=args.mode, 
+                file_path='Data_prep/datasets.h5', 
+                batch_size=args.batch_size
+            )
 
             # grab the dataset info
             input_dims, num_classes = grab_data_info('Data_prep/datasets.h5', args.dataset_name)
 
             logging.info(f"Running just ONE TREE")
             logging.info(f"Running in torch mode with dataset: {args.dataset_name}")
+            logging.info(f"Input dimensions: {input_dims}, Number of classes: {num_classes}")
             logging.info(f"Batch size: {args.batch_size}")
             logging.info(f"Number of trees: {args.num_trees}, Max depth: {args.max_depth}")
             logging.info(f"Combine output: {args.combine_output}, Subset selection: {args.subset_selection}")
-
 
             # create the model     
             model = SoftTreeEnsemble(
@@ -176,8 +176,6 @@ if __name__ == "__main__":
                     
                     input_dims, num_classes = grab_data_info('Data_prep/datasets.h5', args.dataset_name)
                     print(num_classes)
-
-
 
                     # create the model
                     model = SoftTreeEnsemble(
@@ -236,9 +234,6 @@ if __name__ == "__main__":
                 accuracy =  accuracy_score(true_labels, final_predictions)
                 logging.info(f"Final Ensemble Accuracy: {accuracy:.4f}")
                 
-
-
-
         
     # send_email("Finished Job", body, "expirement.notify@gmail.com")
         
