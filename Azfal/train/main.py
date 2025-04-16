@@ -225,6 +225,7 @@ if __name__ == "__main__":
                 # the actual ensemble
                 avg_probabilities = np.mean(all_preds, axis=0) 
                 
+                #FIX: NEED TO CHECK BUT AFAIK, THE TREES HAVE TO PREDICT INDIVIDUALLY. NOT SURE HOW MUCH OF A DIFFERENCE.
                 # Final predictions: Take the class with the highest probability
                 final_predictions = np.argmax(avg_probabilities, axis=1)
 

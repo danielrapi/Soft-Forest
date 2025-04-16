@@ -55,7 +55,7 @@ def create_results_dir(dataset_name, base_dir="hyperopt_multi_results"):
     return run_dir
 
 
-def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', results_dir=None):
+def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', results_dir=None, subset=False):
     """
     Train and evaluate multiple SoftTreeEnsemble models and combine with majority voting.
     Returns a loss value to be minimized by hyperopt.
@@ -110,7 +110,7 @@ def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', 
                 leaf_dims=num_classes,
                 input_dim=input_dims,
                 combine_output=True,
-                subset_selection=True  # Enable feature subset selection for random forest behavior
+                subset_selection=subset  # Enable feature subset selection for random forest behavior
             )
             
             # Apply L2 regularization through weight decay in optimizer
@@ -118,7 +118,7 @@ def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', 
             
             # Train model
             try:
-                test_loss, test_accuracy = train_model(
+                test_loss, test_accuracy, test_auc = train_model(
                     model=model,
                     train_loader=train_dataloader,
                     test_loader=test_dataloader,
@@ -128,7 +128,7 @@ def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', 
                     optimizer=optimizer
                 )
                 
-                logging.info(f"Tree {tree_idx+1} trained. Test accuracy: {test_accuracy:.4f}")
+                logging.info(f"Tree {tree_idx+1} trained. Test accuracy: {test_accuracy:.4f}, Test AUC: {test_auc:.4f}")
                 
                 # Save the tree visualization
                 if results_dir is not None:
@@ -255,7 +255,8 @@ def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', 
             'epochs': epochs,
             'l2_reg': l2_reg,
             'train_time': train_time,
-            'status': STATUS_OK
+            'status': STATUS_OK,
+            'test_auc': test_auc
         }
         
     except Exception as e:
@@ -265,11 +266,12 @@ def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', 
             'status': STATUS_OK, 
             'accuracy': 0, 
             'test_loss': 999.0,
-            'error': str(e)
+            'error': str(e),
+            'test_auc': 0
         }
 
 
-def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_dir="hyperopt_multi_results"):
+def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_dir="hyperopt_multi_results", subset=False):
     """
     Run hyperopt to find optimal hyperparameters for multi-tree SoftTreeEnsemble.
     
@@ -305,7 +307,7 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
         'num_trees': hp.quniform('num_trees', 5, 50, 5),  # Reduce range for faster evaluation
         
         # Learning rate: Uniform over {10^-1, 10^-2, 10^-3}
-        'learning_rate': hp.choice('learning_rate', [1e-1, 1e-2, 1e-3]),
+        'learning_rate': hp.uniform('learning_rate', 0.0001, 0.1),
         
         # Batch size: Uniform over {32, 64, 128, 256, 512}
         'batch_size': hp.choice('batch_size', [32, 64, 128, 256]),
@@ -314,7 +316,7 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
         'epochs': hp.quniform('epochs', 5, 30, 5),  # Reduce range for faster evaluation
         
         # Tree Depth: Discrete uniform over [2, 8]
-        'max_depth': hp.quniform('max_depth', 2, 6, 1),  # Reduce max depth for faster training
+        'max_depth': hp.quniform('max_depth', 3, 8, 1),  # Reduce max depth for faster training
         
         # L2 Regularization: Mixture model of 0 and log uniform over [10^-8, 10^2]
         'l2_reg': hp.choice('l2_reg_choice', [
@@ -330,7 +332,8 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
         input_dims=input_dims,
         num_classes=num_classes,
         device=device,
-        results_dir=results_dir
+        results_dir=results_dir,
+        subset=subset
     )
     
     # Set up trials object to store results
@@ -373,7 +376,8 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
         'accuracy': best_accuracy,
         'loss': best_loss,
         'all_trials': trials.trials,
-        'results_dir': results_dir
+        'results_dir': results_dir,
+        'test_auc': best_trial['result']['test_auc']
     }
 
     # Save results
@@ -550,7 +554,8 @@ if __name__ == "__main__":
     parser.add_argument("--max_evals", type=int, default=20, help="Maximum evaluations")
     parser.add_argument("--device", type=str, default="cpu", help="Device (cpu/cuda)")
     parser.add_argument("--output_dir", type=str, default="hyperopt_multi_results", help="Base output directory for results")
-    
+    parser.add_argument("--subset", type=int, default=False, help="Subset Selection")
+
     args = parser.parse_args()
     
     # Setup basic logging
@@ -566,7 +571,8 @@ if __name__ == "__main__":
         dataset_name=args.dataset,
         max_evals=args.max_evals,
         device=args.device,
-        base_results_dir=args.output_dir
+        base_results_dir=args.output_dir,
+        subset=args.subset
     )
     
     logging.info(f"Optimization complete. Results saved to {result['results_dir']}") 

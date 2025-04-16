@@ -68,7 +68,7 @@ class SoftTreeEnsemble(torch.nn.Module):
 
             self.mask = nn.Parameter(temp, requires_grad=False)
 
-            print(f"The mask looks like: {self.mask}")
+            #print(f"The mask looks like: {self.mask}")
 
             # now we need to elemntwise multiply
 

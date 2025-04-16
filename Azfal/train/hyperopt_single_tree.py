@@ -11,6 +11,8 @@ import time
 from functools import partial
 import matplotlib.pyplot as plt
 import json
+import traceback
+
 
 # Hyperopt imports
 from hyperopt import hp, fmin, tpe, Trials, STATUS_OK, space_eval
@@ -112,7 +114,7 @@ def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', 
     # Train model
     start_time = time.time()
     try:
-        test_loss, accuracy = train_model(
+        test_loss, accuracy, auc = train_model(
             model=model,
             train_loader=train_dataloader,
             test_loader=test_dataloader,
@@ -123,7 +125,9 @@ def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', 
         )
         train_time = time.time() - start_time
     except Exception as e:
-        logging.error(f"Error during training: {e}")
+        #traceback error 
+        logging.error(f"Error during training: {e} \n {traceback.format_exc()}")
+    
         return {
             'loss': 1.0, 
             'status': STATUS_OK, 
@@ -132,18 +136,38 @@ def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', 
             'error': str(e)
         }
     
+    
+    #baseline is majority class of train_dataloader in test_dataloader
+    # Calculate majority class accuracy
+    #train labels:
+    train_labels = []
+    for _, labels in train_dataloader:
+        train_labels.extend(labels.numpy())
+    #test labels:
+    test_labels = []
+    for _, labels in test_dataloader:
+        test_labels.extend(labels.numpy())
+    
+    baseline_accuracy = 0
+    if np.mean(train_labels) > 0.5:
+        baseline_accuracy = np.mean(test_labels)
+    else:
+        baseline_accuracy = 1 - np.mean(test_labels)
+
     # Return result (negative accuracy for minimization)
     return {
-        'loss': -accuracy,  # We want to maximize accuracy, so minimize negative accuracy
+        'loss': -auc,  # We want to maximize accuracy, so minimize negative accuracy
         'accuracy': accuracy,
         'test_loss': test_loss,
+        'test_auc': auc,
         'max_depth': max_depth,
         'learning_rate': learning_rate,
         'batch_size': batch_size,
         'epochs': epochs,
         'l2_reg': l2_reg,
         'train_time': train_time,
-        'status': STATUS_OK
+        'status': STATUS_OK,
+        'baseline_accuracy': baseline_accuracy
     }
 
 
@@ -179,22 +203,23 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
     
     # Define hyperparameter search space based on the paper specifications
     space = {
-        # Learning rate: Uniform over {10^-1, 10^-2, ..., 10^-5}
-        'learning_rate': hp.choice('learning_rate', [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]),
+        
+        # Learning rate: Uniform over {10^-1, 10^-2, 10^-3}
+        'learning_rate': hp.uniform('learning_rate', 0.0001, 0.1),
         
         # Batch size: Uniform over {32, 64, 128, 256, 512}
-        'batch_size': hp.choice('batch_size', [32, 64, 128, 256, 512]),
+        'batch_size': hp.choice('batch_size', [32, 64, 128, 256]),
         
         # Number of Epochs: Discrete uniform over [5, 100]
-        'epochs': hp.quniform('epochs', 5, 100, 1),
+        'epochs': hp.quniform('epochs', 5, 30, 5),  # Reduce range for faster evaluation
         
         # Tree Depth: Discrete uniform over [2, 8]
-        'max_depth': hp.quniform('max_depth', 2, 8, 1),
+        'max_depth': hp.quniform('max_depth', 3, 8, 1),  # Reduce max depth for faster training
         
         # L2 Regularization: Mixture model of 0 and log uniform over [10^-8, 10^2]
         'l2_reg': hp.choice('l2_reg_choice', [
             0.0,  # 50% chance of no regularization
-            hp.loguniform('l2_reg_value', np.log(1e-8), np.log(1e2))  # 50% chance of log uniform
+            hp.loguniform('l2_reg_value', np.log(1e-6), np.log(1e-2))  # 50% chance of log uniform
         ])
     }
     
@@ -231,6 +256,9 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
     best_trial = trials.trials[best_trial_idx]
     best_accuracy = best_trial['result']['accuracy']
     best_loss = best_trial['result']['test_loss']
+    best_auc = best_trial['result']['test_auc']
+    baseline_accuracy = best_trial['result']['baseline_accuracy']
+    
     
     # Log results
     logging.info("=" * 50)
@@ -238,6 +266,8 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
     logging.info(f"Best parameters: {best_params}")
     logging.info(f"Best validation accuracy: {best_accuracy:.4f}")
     logging.info(f"Best validation loss: {best_loss:.4f}")
+    logging.info(f"Best validation AUC: {best_auc:.4f}")
+    logging.info(f"Baseline Accuracy: {baseline_accuracy:.4f}")
     logging.info("=" * 50)
     
     # Convert all_trials to a simpler format for JSON serialization
@@ -246,7 +276,8 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
         'accuracy': best_accuracy,
         'loss': best_loss,
         'all_trials': trials.trials,
-        'results_dir': results_dir
+        'results_dir': results_dir,
+        'baseline_accuracy': str(baseline_accuracy)
     }
 
     # Save results
