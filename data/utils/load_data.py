@@ -20,35 +20,21 @@ def load_processed_classification_public_data(
     val_size=0.2,
     test_size=0.2,
     seed=8,
-    df = None
     ):
     
     #set path to parent directory of this file
     path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../'))
     path = os.path.join(path, "storage/")
-    if name in ["mice-protein", "isolet", "human-activity-recognition", "mnist", "fashion-mnist"]:
-        if df is None:
-            path = os.path.join(path, "singletask-datasets/fetch-openml-datasets/classification")
-            df_X = pd.read_csv(os.path.join(path, "{}/features.csv".format(name)))
-            df_y = pd.read_csv(os.path.join(path, "{}/target.csv".format(name)))
-            df_y = df_y['target']
-        else:
-            df_y = df['target']
-            df_X = df.drop(columns='target')
           
-    elif name in ['breast', 'breast-cancer-wisconsin', 'car-evaluation', 'churn', 'crx',
-                  'dermatology', 'diabetes', 'dna', 'ecoli', 'flare', 'heart-c', 'hypothyroid',
-                  'magic', 'nursery', 'optdigits', 'pima', 'poker', 'satimage', 'sleep', 'solar-flare-2', 'spambase',
-                  'texture', 'twonorm', 'vehicle', 'wine-recognition', 'yeast']:
-        if df is None: 
-            #path = os.path.join(path, "singletask-datasets/pmlb-datasets/classification")
-            
-            name_adj = name.replace("-", "_")
-            full_path = path+f"{name_adj}/{name_adj}.csv"
-            df = pd.read_csv(full_path)
+    if name in ['ann_thyroid', 'breast_cancer_wisconsin', 'car_evaluation', 'churn','dermatology','dna','ecoli','hypothyroid',
+                  'nursery','optdigits','sleep','vehicle']:
+
+        full_path = path+f"{name}/{name}.csv"
+        df = pd.read_csv(full_path)
+
         df_y = df['target']
         df_X = df.drop(columns='target')
-        if name in ['sleep', 'poker']:
+        if name in ['sleep']:
             _, p = df_X.shape
             features = np.arange(p)
             features_to_permute = np.random.choice(features, p,  replace=False)
@@ -65,11 +51,7 @@ def load_processed_classification_public_data(
                     df_X[new_f_name] = np.random.permutation(df_X.iloc[:, f].values)
     else:
         raise ValueError("Data: '{}' is not supported".format(name))
-    # classes = list(set(df_y.values))
-    # print("classes:", classes)
-    
-    # print("X.min:", df_X.min().sort_values(), "X.max:", df_X.max().sort_values())
-    # print("name:", name, "X.shape:", df_X.shape, "y.shape:", df_y.shape)
+
 
     np.random.seed(seed)
     x_train_valid, x_test, y_train_valid, y_test = train_test_split(df_X, df_y, test_size=test_size, stratify=df_y, random_state=seed)
@@ -88,40 +70,30 @@ def load_processed_classification_public_data(
     # print("Number of NaNs in tasks responses in validation set: ", y_valid.isna().values.sum(axis=0))
     # print("Number of NaNs in tasks responses in train+validation set: ", y_train_valid.isna().values.sum(axis=0))
     # print("Number of NaNs in tasks responses in train+validation set: ", y_test.isna().values.sum(axis=0))
-    
-    w_train = np.ones((y_train.shape[0],))
-    w_valid = np.ones((y_valid.shape[0],))
-    w_train_valid = np.ones((y_train_valid.shape[0],))
-    w_test = np.ones((y_test.shape[0],))
+    # 
+    # w_train = np.ones((y_train.shape[0],))
+    # w_valid = np.ones((y_valid.shape[0],))
+    # w_train_valid = np.ones((y_train_valid.shape[0],))
+    # w_test = np.ones((y_test.shape[0],))
     # print(x_train.shape, x_valid.shape, x_train_valid.shape, x_test.shape)
     # print(y_train.shape, y_valid.shape, y_train_valid.shape, y_test.shape)
     # print(w_train.shape, w_valid.shape, w_train_valid.shape, w_test.shape)
     
-    if name in ['mice-protein', 'isolet', 'human-activity-recognition', 'mnist', 'fashion-mnist']:
-        metadata = {
-            'continuous_features': df_X.columns,
-            'categorical_features': [],
-            'binary_features': [],
-            'ordinal_features': [],
-            'nominal_features': [],
-        }
-    elif name in ['breast', 'breast-cancer-wisconsin', 'car-evaluation', 'churn', 'crx',
-                  'dermatology', 'diabetes', 'dna', 'ecoli', 'flare', 'heart-c', 'hypothyroid',
-                  'magic', 'nursery', 'optdigits', 'pima', 'poker', 'satimage', 'sleep', 'solar-flare-2', 'spambase',
-                  'texture', 'twonorm', 'vehicle', 'wine-recognition', 'yeast']:
-        name_adj = name.replace("-", "_")
-        with open(os.path.join(path, f"{name_adj}/metadata.yaml"), "r") as stream:
+ 
+    if name in ['ann_thyroid', 'breast_cancer_wisconsin', 'car_evaluation', 'churn','dermatology','dna','ecoli','hypothyroid',
+                  'nursery','optdigits','sleep','vehicle']:
+        with open(os.path.join(path, f"{name}/metadata.yaml"), "r") as stream:
             try:
                 metadata = yaml.safe_load(stream)
             except yaml.YAMLError as exc:
                 print(exc)
         df_metadata = pd.DataFrame(metadata['features'])
-        if  name in ['poker', 'sleep']:  
+        if  name in ['sleep']:  
             for orig_f_name, new_f_name in zip(orig_f_names, new_f_names):
                 df_metadata_sub = df_metadata[df_metadata.name==orig_f_name]
                 df_metadata_sub['name'] = new_f_name
                 df_metadata = pd.concat([df_metadata, df_metadata_sub], axis=0)
-        from IPython.display import display
+        # from IPython.display import display
         # display(df_metadata)
         metadata = {
             'continuous_features': df_metadata[df_metadata['type']=='continuous'].name.astype(str).values,
@@ -139,11 +111,8 @@ def load_processed_classification_public_data(
     input_dims = len(metadata['continuous_features']) + len(metadata['categorical_features']) + len(metadata['binary_features']) + len(metadata['nominal_features']) + len(metadata['ordinal_features'])
     num_classes = len(set(df_y.values))
 
-    if name in ['mice-protein', 'isolet', 'human-activity-recognition',
-                'breast', 'breast-cancer-wisconsin', 'car-evaluation', 'churn', 'crx',
-                'dermatology', 'diabetes', 'dna', 'ecoli', 'flare', 'heart-c', 'hypothyroid',
-                'magic', 'nursery', 'optdigits', 'pima', 'poker', 'satimage', 'sleep', 'solar-flare-2', 'spambase',
-                'texture', 'twonorm', 'vehicle', 'wine-recognition', 'yeast']:
+    if name in ['ann_thyroid', 'breast_cancer_wisconsin', 'car_evaluation', 'churn','dermatology','dna','ecoli','hypothyroid',
+                  'nursery','optdigits','sleep','vehicle']:
         continuous_features = metadata['continuous_features']
         continuous_transformer = Pipeline(steps=[
             ('imputer', SimpleImputer(strategy='median')),
@@ -183,13 +152,8 @@ def load_processed_classification_public_data(
         x_valid_processed = x_preprocessor.transform(x_valid)
         x_train_valid_processed = x_preprocessor.transform(x_train_valid)    
         x_test_processed = x_preprocessor.transform(x_test)
-    elif name in ['mnist', 'fashion-mnist', 'coil-20']:
-        x_train_processed = x_train.values/255
-        x_valid_processed = x_valid.values/255
-        x_train_valid_processed = x_train_valid.values/255    
-        x_test_processed = x_test.values/255
-        
-
+    
+    
     y_preprocessor = LabelEncoder()
     y_train_processed = y_preprocessor.fit_transform(y_train)
     y_valid_processed = y_preprocessor.transform(y_valid)
@@ -200,7 +164,6 @@ def load_processed_classification_public_data(
     # print(y_train_processed.shape, y_valid_processed.shape, y_train_valid_processed.shape, y_test_processed.shape)
     data_coll = collections.namedtuple('data', ['x_train', 'x_valid', 'x_train_valid', 'x_test',
                                                 'y_train', 'y_valid', 'y_train_valid', 'y_test',
-                                                'w_train', 'w_valid', 'w_train_valid', 'w_test',
                                                 'x_train_processed', 'x_valid_processed',
                                                 'x_train_valid_processed', 'x_test_processed',
                                                 'y_train_processed', 'y_valid_processed',
@@ -208,7 +171,6 @@ def load_processed_classification_public_data(
                                                 'input_dims', 'num_classes'])
     data_processed = data_coll(x_train, x_valid, x_train_valid, x_test,
                                y_train, y_valid, y_train_valid, y_test,
-                               w_train, w_valid, w_train_valid, w_test,
                                x_train_processed, x_valid_processed,
                                x_train_valid_processed, x_test_processed,
                                y_train_processed, y_valid_processed, y_train_valid_processed, 

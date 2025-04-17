@@ -134,7 +134,7 @@ if __name__ == "__main__":
             print(f"Input dimensions: {input_dims}")
             num_classes = data.num_classes
         except Exception as e:
-            logging.error(f"Error loading data: {e}")
+            logging.error(f"{e}")
             exit()
         
         ############################################ SINGLE TREE ############################################################
