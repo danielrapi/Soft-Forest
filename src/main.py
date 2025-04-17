@@ -10,7 +10,7 @@ import time
 import argparse
 import logging
 from datetime import datetime
-import traceback
+
 # Third-party imports
 import numpy as np
 from scipy import stats
@@ -117,25 +117,34 @@ if __name__ == "__main__":
         try:    
             data = load_processed_classification_public_data(name = args.dataset_name)
             
-            train_X_tensor = torch.tensor(data.x_train_processed, dtype=torch.float32)
-            train_y_tensor = torch.tensor(data.y_train_processed, dtype=torch.float32)
-            test_X_tensor = torch.tensor(data.x_test_processed, dtype=torch.float32)
-            test_y_tensor = torch.tensor(data.y_test_processed, dtype=torch.float32)
+            # Convert sparse matrices to dense numpy arrays if needed
+            if hasattr(data.x_train_processed, "toarray"):  # Check if it's a sparse matrix
+                x_train_dense = data.x_train_processed.toarray()
+                x_test_dense = data.x_test_processed.toarray()
+            else:
+                x_train_dense = data.x_train_processed
+                x_test_dense = data.x_test_processed
+            
             # Convert to PyTorch tensors
+            train_X_tensor = torch.tensor(x_train_dense, dtype=torch.float32)
+            train_y_tensor = torch.tensor(data.y_train_processed, dtype=torch.float32)
+            test_X_tensor = torch.tensor(x_test_dense, dtype=torch.float32)
+            test_y_tensor = torch.tensor(data.y_test_processed, dtype=torch.float32)
             
             train_dataset = TensorDataset(train_X_tensor, train_y_tensor)
             test_dataset = TensorDataset(test_X_tensor, test_y_tensor)
+            
             # Create DataLoaders for batching
             train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
             test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
-            # grab the dataset info
-            #input_dims, num_classes = grab_data_info('Data_prep/datasets.h5', args.dataset_name)
-            input_dims = data.input_dims
-            print(f"Input dimensions: {input_dims}")
+            
+            # Get dimensions from the actual data
+            input_dims = train_X_tensor.shape[1]
+            #print(f"Input dimensions: {input_dims}")
             num_classes = data.num_classes
         except Exception as e:
-            logging.error(f"{e}")
-            #log traceback
+            logging.error(f"Error: {e}")
+            import traceback
             logging.error(traceback.format_exc())
             exit()
         
