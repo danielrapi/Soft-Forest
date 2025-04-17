@@ -1,0 +1,114 @@
+# Reviewed by [your name here]
+dataset: churn
+description: None yet. See our contributing guide to help us add one.
+source: None yet. See our contributing guide to help us add one.
+publication: None yet. See our contributing guide to help us add one.
+task: classification
+keywords:
+  -
+  -
+target:
+  type: categorical
+  description: None yet. See our contributing guide to help us add one.
+  code: None yet. See our contributing guide to help us add one.
+features:
+  - name: state
+    type: continuous
+    description: # optional but recommended, what the feature measures/indicates, unit
+    code: # optional, coding information, e.g., Control = 0, Case = 1
+    transform: # optional, any transformation performed on the feature, e.g., log scaled
+  - name: account length
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: area code
+    type: categorical
+    description:
+    code:
+    transform:
+  - name: phone number
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: international plan
+    type: binary
+    description:
+    code:
+    transform:
+  - name: voice mail plan
+    type: binary
+    description:
+    code:
+    transform:
+  - name: number vmail messages
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: total day minutes
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: total day calls
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: total day charge
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: total eve minutes
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: total eve calls
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: total eve charge
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: total night minutes
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: total night calls
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: total night charge
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: total intl minutes
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: total intl calls
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: total intl charge
+    type: continuous
+    description:
+    code:
+    transform:
+  - name: number customer service calls
+    type: categorical
+    description:
+    code:
+    transform:

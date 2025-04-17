@@ -1,0 +1,51 @@
+# Reviewed by Claude
+dataset: breast-cancer-wisconsin
+description: Features computed from a digitized image of a fine needle aspirate (FNA) of a breast mass, describing characteristics of the cell nuclei present in the image.
+source: UCI Machine Learning Repository
+publication: O. L. Mangasarian and W. H. Wolberg, "Cancer diagnosis via linear programming", SIAM News, Volume 23, Number 5, September 1990, pp 1 & 18.
+task: classification
+keywords:
+  - medical
+  - cancer
+  - diagnostic
+target:
+  type: binary
+  description: Indicates whether the cancer is benign (0) or malignant (1)
+  code: Benign = 0, Malignant = 1
+features:
+  - name: clump_thickness
+    type: ordinal
+    description: Thickness of clumps of cells, scale 1-10
+    code: 1-10 scale, higher values indicate more abnormal
+  - name: cell_size_uniformity
+    type: ordinal
+    description: Consistency in cell size, scale 1-10
+    code: 1-10 scale, higher values indicate more abnormal
+  - name: cell_shape_uniformity
+    type: ordinal
+    description: Consistency in cell shape, scale 1-10
+    code: 1-10 scale, higher values indicate more abnormal
+  - name: marginal_adhesion
+    type: ordinal
+    description: Tendency of cells to stick together, scale 1-10
+    code: 1-10 scale, higher values indicate more abnormal
+  - name: epithelial_cell_size
+    type: ordinal
+    description: Uniformity of epithelial cell size, scale 1-10
+    code: 1-10 scale, higher values indicate more abnormal
+  - name: bare_nuclei
+    type: ordinal
+    description: Presence of bare nuclei (nuclei not surrounded by cytoplasm), scale 1-10
+    code: 1-10 scale, higher values indicate more abnormal
+  - name: bland_chromatin
+    type: ordinal
+    description: Uniformity of chromatin texture, scale 1-10
+    code: 1-10 scale, higher values indicate more abnormal
+  - name: normal_nucleoli
+    type: ordinal
+    description: Size and number of nucleoli, scale 1-10
+    code: 1-10 scale, higher values indicate more abnormal
+  - name: mitoses
+    type: ordinal
+    description: Rate of cell division, scale 1-10
+    code: 1-10 scale, higher values indicate more abnormal

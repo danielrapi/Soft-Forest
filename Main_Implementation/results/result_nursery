@@ -1,7 +1,0 @@
-Model,best_params,best_auc,best_acc,error,run
-Decision Tree,{},0,0,'DecisionTreeClassifier' object is not callable,0
-Random Forest,{},0,0,'RandomForestClassifier' object is not callable,0
-Logistic Regression,{},0,0,'LogisticRegression' object is not callable,0
-Decision Tree,{},0,0,'DecisionTreeClassifier' object is not callable,1
-Random Forest,{},0,0,'RandomForestClassifier' object is not callable,1
-Logistic Regression,{},0,0,'LogisticRegression' object is not callable,1
