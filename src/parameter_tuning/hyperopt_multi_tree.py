@@ -7,6 +7,7 @@ import os
 import logging
 import numpy as np
 import torch
+from torch.utils.data import TensorDataset, DataLoader
 import time
 from functools import partial
 import matplotlib.pyplot as plt
@@ -20,11 +21,56 @@ from hyperopt import hp, fmin, tpe, Trials, STATUS_OK, space_eval
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from softensemble import SoftTreeEnsemble
 from engine import train_model
-from Data_Prep.load_data import load_data
-from Data_Prep.view_contents import grab_data_info
+
+# Instead of changing directory
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+# Then import
+from data import load_processed_classification_public_data
 
 
-def create_results_dir(dataset_name, base_dir="hyperopt_multi_results"):
+def get_data_loader(dataset_name, batch_size=32):
+    """
+    Get the data loader for the given dataset name.
+    """
+
+    #load dataset   
+    try:    
+        data = load_processed_classification_public_data(name = dataset_name)
+    except Exception as e:
+        logging.error(f"Error loading dataset: {e}")
+        import traceback
+        logging.error(traceback.format_exc())
+        exit()
+    
+    if hasattr(data.x_train_processed, "toarray"):  # Check if it's a sparse matrix
+        x_train_dense = data.x_train_processed.toarray()
+        x_test_dense = data.x_test_processed.toarray()
+    else:
+        x_train_dense = data.x_train_processed
+        x_test_dense = data.x_test_processed
+    
+    # Convert to PyTorch tensors
+    train_X_tensor = torch.tensor(x_train_dense, dtype=torch.float32)
+    train_y_tensor = torch.tensor(data.y_train_processed, dtype=torch.float32)
+    test_X_tensor = torch.tensor(x_test_dense, dtype=torch.float32)
+    test_y_tensor = torch.tensor(data.y_test_processed, dtype=torch.float32)
+    
+    train_dataset = TensorDataset(train_X_tensor, train_y_tensor)
+    test_dataset = TensorDataset(test_X_tensor, test_y_tensor)
+    
+    # Create DataLoaders for batching
+    train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+    
+    # Get dimensions from the actual data
+    input_dims = train_X_tensor.shape[1]
+    num_classes = data.num_classes
+
+    # Convert sparse matrices to dense numpy arrays if needed
+    return train_dataloader, test_dataloader, input_dims, num_classes
+
+def create_results_dir(dataset_name, base_dir="outputs/hyperopt_multi"):
     """
     Create a timestamped results directory for the current run.
     
@@ -34,8 +80,9 @@ def create_results_dir(dataset_name, base_dir="hyperopt_multi_results"):
     import datetime
     
     # Set working directory to current file
-    os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+    os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../..'))
 
+    
     # Create base directory if it doesn't exist
     os.makedirs(base_dir, exist_ok=True)
     
@@ -55,7 +102,7 @@ def create_results_dir(dataset_name, base_dir="hyperopt_multi_results"):
     return run_dir
 
 
-def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', results_dir=None, subset=False):
+def evaluate_model(params, dataset_name, device='cpu', results_dir=None, bootstrap=False, subset_selection=False):
     """
     Train and evaluate multiple SoftTreeEnsemble models and combine with majority voting.
     Returns a loss value to be minimized by hyperopt.
@@ -95,14 +142,11 @@ def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', 
             logging.info(f"Training tree {tree_idx+1}/{num_trees}")
             
             # Load data with bootstrap if specified
-            train_dataloader, test_dataloader = load_data(
+            train_dataloader, test_dataloader, input_dims, num_classes = get_data_loader(
                 dataset_name=dataset_name,
-                framework='torch',
-                file_path='Data_Prep/datasets.h5',
                 batch_size=batch_size,
-                bootstrap=True  # Use bootstrap sampling for each tree
             )
-            
+            print("SUBSET SELECTION: ", subset_selection)
             # Initialize model for this tree
             model = SoftTreeEnsemble(
                 num_trees=1,
@@ -110,7 +154,7 @@ def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', 
                 leaf_dims=num_classes,
                 input_dim=input_dims,
                 combine_output=True,
-                subset_selection=subset  # Enable feature subset selection for random forest behavior
+                subset_selection=subset_selection
             )
             
             # Apply L2 regularization through weight decay in optimizer
@@ -271,7 +315,7 @@ def evaluate_model(params, dataset_name, input_dims, num_classes, device='cpu', 
         }
 
 
-def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_dir="hyperopt_multi_results", subset=False):
+def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_dir="outputs/hyperopt_multi", bootstrap=False, subset_selection=False):
     """
     Run hyperopt to find optimal hyperparameters for multi-tree SoftTreeEnsemble.
     
@@ -295,29 +339,20 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
     # Add the file handler to the root logger
     logging.getLogger().addHandler(file_handler)
     
-    # Get dataset info
-    input_dims, num_classes = grab_data_info('Data_Prep/datasets.h5', dataset_name)
-    
-    logging.info(f"Dataset: {dataset_name}, Features: {input_dims}, Classes: {num_classes}")
     logging.info(f"Results will be saved to: {results_dir}")
     
     # Define hyperparameter search space based on the paper specifications
     space = {
         # Number of Trees: Discrete uniform over [1, 100]
         'num_trees': hp.quniform('num_trees', 5, 50, 5),  # Reduce range for faster evaluation
-        
         # Learning rate: Uniform over {10^-1, 10^-2, 10^-3}
         'learning_rate': hp.uniform('learning_rate', 0.0001, 0.1),
-        
         # Batch size: Uniform over {32, 64, 128, 256, 512}
         'batch_size': hp.choice('batch_size', [32, 64, 128, 256]),
-        
         # Number of Epochs: Discrete uniform over [5, 100]
         'epochs': hp.quniform('epochs', 5, 30, 5),  # Reduce range for faster evaluation
-        
         # Tree Depth: Discrete uniform over [2, 8]
         'max_depth': hp.quniform('max_depth', 3, 8, 1),  # Reduce max depth for faster training
-        
         # L2 Regularization: Mixture model of 0 and log uniform over [10^-8, 10^2]
         'l2_reg': hp.choice('l2_reg_choice', [
             0.0,  # 50% chance of no regularization
@@ -329,11 +364,10 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
     objective = partial(
         evaluate_model,
         dataset_name=dataset_name,
-        input_dims=input_dims,
-        num_classes=num_classes,
         device=device,
         results_dir=results_dir,
-        subset=subset
+        bootstrap=bootstrap,
+        subset_selection=subset_selection
     )
     
     # Set up trials object to store results
@@ -550,11 +584,12 @@ if __name__ == "__main__":
     import argparse
     
     parser = argparse.ArgumentParser(description="Hyperparameter optimization for multi-tree SoftTreeEnsemble")
-    parser.add_argument("--dataset", type=str, required=True, help="Dataset name")
+    parser.add_argument("--dataset_name", type=str, required=True, help="Dataset name")
+    parser.add_argument("--subset_selection", type=bool, help="Run soft trees with Hadamard product for random feature selection")
+    parser.add_argument("--bootstrap", type=bool,  help = "Whether to boostrap or not")
     parser.add_argument("--max_evals", type=int, default=20, help="Maximum evaluations")
     parser.add_argument("--device", type=str, default="cpu", help="Device (cpu/cuda)")
-    parser.add_argument("--output_dir", type=str, default="hyperopt_multi_results", help="Base output directory for results")
-    parser.add_argument("--subset", type=int, default=False, help="Subset Selection")
+    parser.add_argument("--output_dir", type=str, default="outputs/hyperopt_multi", help="Base output directory for results")
 
     args = parser.parse_args()
     
@@ -566,13 +601,14 @@ if __name__ == "__main__":
     )
     
     # Run optimization (results dir is created inside the function)
-    logging.info(f"Starting hyperparameter search for dataset: {args.dataset}")
+    logging.info(f"Starting hyperparameter search for dataset: {args.dataset_name}")
     result = optimize_hyperparams(
-        dataset_name=args.dataset,
+        dataset_name=args.dataset_name,
         max_evals=args.max_evals,
         device=args.device,
         base_results_dir=args.output_dir,
-        subset=args.subset
+        bootstrap=args.bootstrap,
+        subset_selection=args.subset_selection
     )
     
     logging.info(f"Optimization complete. Results saved to {result['results_dir']}") 
