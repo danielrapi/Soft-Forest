@@ -68,7 +68,7 @@ if __name__ == "__main__":
     # Subcommand for torch
     torch_parser = subparsers.add_parser("torch", help="Run with torch framework")
     torch_parser.add_argument("--dataset_name", type=str, required=True, help="Dataset name")
-    torch_parser.add_argument("--batch_size", type=int, help="Batch size for torch or tf loading data")
+    torch_parser.add_argument("--batch_size", type=int, default=32, help="Batch size for torch or tf loading data")
     torch_parser.add_argument("--num_trees", type=int, required=True, help="Number of trees for the model")
     torch_parser.add_argument("--leaf_dims", action="store_true", help="Number of classes if not included, otherwise extend to higher feature space")
     # torch_parser.add_argument("--input_dims", type=int, required=True, help="Number of features")
