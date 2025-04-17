@@ -4,11 +4,21 @@
 /outputs/hyperopt_single/*
 /outputs/hyperopt_multi/*
 /data/__pycache__
-/data/utils/__pycache__
-#exclude all pycache files
+/data/utils/__pycache__/*
+/data/__pycache__/*
+
+# Exclude all Python cache files
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 *.pyw
 *.pyz
+*.pyzw
+
+# Exclude .pytest_cache
+.pytest_cache/
+
+# Exclude Python coverage files
+.coverage
+htmlcov/
