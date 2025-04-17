@@ -56,21 +56,21 @@ def load_processed_classification_public_data(
     np.random.seed(seed)
     x_train_valid, x_test, y_train_valid, y_test = train_test_split(df_X, df_y, test_size=test_size, stratify=df_y, random_state=seed)
     x_train, x_valid, y_train, y_valid = train_test_split(x_train_valid, y_train_valid, test_size=val_size, stratify=y_train_valid, random_state=seed)
-    #print(x_train.nunique())
+    print(x_train.nunique())
         
-    # print("Number of samples in training set: ", x_train.shape[0], y_train.shape[0])
-    # print("Number of samples in validation set: ", x_valid.shape[0], y_valid.shape[0])
-    # print("Number of samples in train+validation set: ", x_train_valid.shape[0], y_train_valid.shape[0])
-    # print("Number of samples in testing set: ", x_test.shape[0], y_test.shape[0])
-    # print("Percentage of missing vals in training covariates: ", 100*np.count_nonzero(x_train.isna().values)/(x_train.values.size))
-    # print("Percentage of missing vals in validation covariates: ", 100*np.count_nonzero(x_valid.isna().values)/(x_valid.values.size))
-    # print("Percentage of missing vals in train+validation covariates: ", 100*np.count_nonzero(x_train_valid.isna().values)/(x_train_valid.values.size))
-    # print("Percentage of missing vals in testing covariates: ", 100*np.count_nonzero(x_test.isna().values)/(x_test.values.size))
-    # print("Number of NaNs in tasks responses in training set: ", y_train.isna().values.sum(axis=0))
-    # print("Number of NaNs in tasks responses in validation set: ", y_valid.isna().values.sum(axis=0))
-    # print("Number of NaNs in tasks responses in train+validation set: ", y_train_valid.isna().values.sum(axis=0))
-    # print("Number of NaNs in tasks responses in train+validation set: ", y_test.isna().values.sum(axis=0))
-    # 
+    print("Number of samples in training set: ", x_train.shape[0], y_train.shape[0])
+    print("Number of samples in validation set: ", x_valid.shape[0], y_valid.shape[0])
+    print("Number of samples in train+validation set: ", x_train_valid.shape[0], y_train_valid.shape[0])
+    print("Number of samples in testing set: ", x_test.shape[0], y_test.shape[0])
+    print("Percentage of missing vals in training covariates: ", 100*np.count_nonzero(x_train.isna().values)/(x_train.values.size))
+    print("Percentage of missing vals in validation covariates: ", 100*np.count_nonzero(x_valid.isna().values)/(x_valid.values.size))
+    print("Percentage of missing vals in train+validation covariates: ", 100*np.count_nonzero(x_train_valid.isna().values)/(x_train_valid.values.size))
+    print("Percentage of missing vals in testing covariates: ", 100*np.count_nonzero(x_test.isna().values)/(x_test.values.size))
+    print("Number of NaNs in tasks responses in training set: ", y_train.isna().values.sum(axis=0))
+    print("Number of NaNs in tasks responses in validation set: ", y_valid.isna().values.sum(axis=0))
+    print("Number of NaNs in tasks responses in train+validation set: ", y_train_valid.isna().values.sum(axis=0))
+    print("Number of NaNs in tasks responses in train+validation set: ", y_test.isna().values.sum(axis=0))
+    
     # w_train = np.ones((y_train.shape[0],))
     # w_valid = np.ones((y_valid.shape[0],))
     # w_train_valid = np.ones((y_train_valid.shape[0],))
@@ -102,14 +102,12 @@ def load_processed_classification_public_data(
             'nominal_features': df_metadata[df_metadata['type']=='nominal'].name.astype(str).values,
             'ordinal_features': df_metadata[df_metadata['type']=='ordinal'].name.astype(str).values,
         }
+    print(metadata)
 
     if metadata['ordinal_features'] is not None:
         df_X[metadata['ordinal_features']] = df_X[metadata['ordinal_features']].apply(pd.to_numeric)
     if metadata['continuous_features'] is not None:
         df_X[metadata['continuous_features']] = df_X[metadata['continuous_features']].apply(pd.to_numeric)
-    
-    input_dims = len(metadata['continuous_features']) + len(metadata['categorical_features']) + len(metadata['binary_features']) + len(metadata['nominal_features']) + len(metadata['ordinal_features'])
-    num_classes = len(set(df_y.values))
 
     if name in ['ann_thyroid', 'breast_cancer_wisconsin', 'car_evaluation', 'churn','dermatology','dna','ecoli','hypothyroid',
                   'nursery','optdigits','sleep','vehicle']:
@@ -160,6 +158,9 @@ def load_processed_classification_public_data(
     y_train_valid_processed = y_preprocessor.transform(y_train_valid)
     y_test_processed = y_preprocessor.transform(y_test)
     
+    input_dims = x_train_processed.shape[1]
+    num_classes = len(set(df_y.values))
+
     # print(x_train_processed.shape, x_valid_processed.shape, x_train_valid_processed.shape, x_test_processed.shape)
     # print(y_train_processed.shape, y_valid_processed.shape, y_train_valid_processed.shape, y_test_processed.shape)
     data_coll = collections.namedtuple('data', ['x_train', 'x_valid', 'x_train_valid', 'x_test',
