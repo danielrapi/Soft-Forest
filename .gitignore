@@ -3,3 +3,12 @@
 /outputs/single_run/*
 /outputs/hyperopt_single/*
 /outputs/hyperopt_multi/*
+/data/__pycache__
+/data/utils/__pycache__
+#exclude all pycache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
