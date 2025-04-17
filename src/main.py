@@ -131,6 +131,7 @@ if __name__ == "__main__":
             # grab the dataset info
             #input_dims, num_classes = grab_data_info('Data_prep/datasets.h5', args.dataset_name)
             input_dims = data.input_dims
+            print(f"Input dimensions: {input_dims}")
             num_classes = data.num_classes
         except Exception as e:
             logging.error(f"Error loading data: {e}")
