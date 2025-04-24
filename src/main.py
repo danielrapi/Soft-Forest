@@ -35,7 +35,7 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Then import
-from data import load_processed_classification_public_data
+from data_handling import load_processed_classification_public_data
 
 
 # Get the current date and time in the format month-day-hour-minute
@@ -120,14 +120,6 @@ if __name__ == "__main__":
         #load dataset   
         try:    
             data = load_processed_classification_public_data(name = args.dataset_name)
-            
-            # Convert sparse matrices to dense numpy arrays if needed
-            if hasattr(data.x_train_processed, "toarray"):  # Check if it's a sparse matrix
-                x_train_dense = data.x_train_processed.toarray()
-                x_test_dense = data.x_test_processed.toarray()
-            else:
-                x_train_dense = data.x_train_processed
-                x_test_dense = data.x_test_processed
 
             # ADDING SHUFFLING FEATURE
             # this is to test if we can see all the models perform poorly
@@ -159,17 +151,17 @@ if __name__ == "__main__":
                 train_y_noisy[indicies_to_shuffle] = labels_to_shuffle
 
                 # Convert to PyTorch tensors
-                train_X_tensor = torch.tensor(x_train_dense, dtype=torch.float32)
+                train_X_tensor = torch.tensor(data.x_train_processed, dtype=torch.float32)
                 train_y_tensor = torch.tensor(train_y_noisy, dtype=torch.float32)
-                test_X_tensor = torch.tensor(x_test_dense, dtype=torch.float32)
+                test_X_tensor = torch.tensor(data.x_test_processed, dtype=torch.float32)
                 test_y_tensor = torch.tensor(data.y_test_processed, dtype=torch.float32)
 
             else:
                 # proceeed normal run 
                 # Convert to PyTorch tensors
-                train_X_tensor = torch.tensor(x_train_dense, dtype=torch.float32)
+                train_X_tensor = torch.tensor(data.x_train_processed, dtype=torch.float32)
                 train_y_tensor = torch.tensor(data.y_train_processed, dtype=torch.float32)
-                test_X_tensor = torch.tensor(x_test_dense, dtype=torch.float32)
+                test_X_tensor = torch.tensor(data.x_test_processed, dtype=torch.float32)
                 test_y_tensor = torch.tensor(data.y_test_processed, dtype=torch.float32)
                 
             train_dataset = TensorDataset(train_X_tensor, train_y_tensor)
