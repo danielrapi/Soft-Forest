@@ -80,7 +80,7 @@ if __name__ == "__main__":
     torch_parser.add_argument("--device", type = str, help = "cuda or cpu")
     torch_parser.add_argument("--bootstrap", action="store_true", help = "Whether to boostrap or not")
     torch_parser.add_argument("--shuffle_labels", action="store_true", help="Shuffle a proportion of the indicies to see if we get worse performance")
-
+    #example run: python src/main.py torch --dataset_name ann_thyroid --num_trees 10 --max_depth 10 --combine_output --subset_selection --epochs 10 --lr 0.001 --device cuda --bootstrap --shuffle_labels   
     # replace the input dims and the leaf_dims 
 
     # Subcommand for hyperparameter tuning
@@ -133,12 +133,8 @@ if __name__ == "__main__":
             #############################################
             if args.shuffle_labels:
                 # we will try shuffling 15% of the labels
-                print("THE Y LABELS FOR ANN_THYROID_train", np.unique(data.y_train_processed))
-                print("The Y LABELS FOR ANN_THYROID_TEST", np.unique(data.y_test_processed))
-                print("LEAF DIMS", data.num_classes)
                 # we first grab all the unique values or the classes in the data
                 unique_labels = np.unique(np.concatenate((np.unique(data.y_train_processed), np.unique(data.y_test_processed))))
-                print("THE UNIQUE FROM TRAIN AND TEST ARE", unique_labels)
                 # check to see if there is not a match
                 assert unique_labels.size == data.num_classes, "THE UNIQUE VALUES DO NOT MATCH THE NUM CLASSES LOOK INTO IT"
 
@@ -161,9 +157,9 @@ if __name__ == "__main__":
                 # replace every indicy marked with the labels to shuffle
                 train_y_noisy[indicies_to_shuffle] = labels_to_shuffle
 
-                            # Convert to PyTorch tensors
+                # Convert to PyTorch tensors
                 train_X_tensor = torch.tensor(x_train_dense, dtype=torch.float32)
-                train_y_tensor = torch.tensor(data.y_train_processed, dtype=torch.float32)
+                train_y_tensor = torch.tensor(train_y_noisy, dtype=torch.float32)
                 test_X_tensor = torch.tensor(x_test_dense, dtype=torch.float32)
                 test_y_tensor = torch.tensor(data.y_test_processed, dtype=torch.float32)
 
