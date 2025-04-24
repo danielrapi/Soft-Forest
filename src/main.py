@@ -82,6 +82,8 @@ if __name__ == "__main__":
 
     # replace the input dims and the leaf_dims 
 
+    # Subcommand for hyperparameter tuning
+
     # FILL IN THE REST LATER 
     # Subcommand for sklearn
     sklearn_parser = subparsers.add_parser("sklearn", help="Run with sklearn framework")
