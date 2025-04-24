@@ -54,26 +54,26 @@ class SoftTreeEnsemble(torch.nn.Module):
           # trees 
 
           self.fc = nn.Linear(input_dim, num_trees)
-
           # we need to choose a feature of values
-          if self.subset_selection:
+          if self.subset_selection or self.subset_share is not None:
             # create a matrix of the same row as the rows in W
             # for now will not be part of the gradient computation
             # we will keep sqrt(p) for now 
-            print(f"The input dim is {input_dim}")
+            #print(f"The input dim is {input_dim}")
             if subset_share is None:
               num_features = math.floor(math.sqrt(input_dim))
-              print(f"The number of features is {num_features}")
+              #print(f"The number of features is {num_features}")
             else:
               num_features = math.ceil(subset_share * input_dim)
-              print(f"The subset share is {subset_share}")
-              print(f"The number of features is {num_features}")
+              #print(f"The subset share is {subset_share}")
+              #print(f"The number of features is {num_features}")
 
+            #print(f"Masking {input_dim - num_features} out of {input_dim} features")
             temp = torch.ones(input_dim, requires_grad=False)
 
             zero_indices = torch.randperm(temp.shape[0])[:(input_dim - num_features)]
             temp[zero_indices] = 0
-            print(f"The temp looks like: {temp}")
+            #print(f"The temp looks like: {temp}")
 
             self.mask = nn.Parameter(temp, requires_grad=False)
 
@@ -112,7 +112,7 @@ class SoftTreeEnsemble(torch.nn.Module):
         # we first check if it is a leaf or not
         if not self.leaf:
           # apply the hadamard
-          if self.subset_selection:
+          if self.subset_selection or self.subset_share is not None:
             masked_weights = self.fc.weight * self.mask
 
             # print(f"THE MASKED WEIGHTS ARE {masked_weights}")

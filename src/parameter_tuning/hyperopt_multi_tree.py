@@ -22,7 +22,7 @@ from runners.ensemble import run_ensemble_experiment
 
 # Add parent directory to path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from data import load_processed_classification_public_data
+from data_handling import load_processed_classification_public_data
 
 
 def create_results_dir(dataset_name, base_dir="outputs/hyperopt_multi"):
@@ -116,7 +116,13 @@ def evaluate_model(params, dataset_name, device='cpu', results_dir=None, bootstr
         }
 
 
-def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_dir="outputs/hyperopt_multi", bootstrap=False, subset_selection=False):
+def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_dir="outputs/hyperopt_multi", bootstrap=False, subset_selection=False,
+                         subset_share = None,
+                         learning_rate = None,
+                         epochs = None,
+                         batch_size = None,
+                         max_depth = None,
+                         num_trees = None):
     """Run hyperopt to find optimal hyperparameters for multi-tree SoftTreeEnsemble."""
     # Create results directory
     results_dir = create_results_dir(dataset_name, base_results_dir)
@@ -140,6 +146,19 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
     if subset_selection:
         space['subset_share'] = hp.uniform('subset_share', 0.1, 0.9)
     
+    if learning_rate is not None:
+        space['learning_rate'] = learning_rate
+    if epochs is not None:
+        space['epochs'] = epochs
+    if batch_size is not None:
+        space['batch_size'] = batch_size
+    if max_depth is not None:   
+        space['max_depth'] = max_depth
+    if num_trees is not None:
+        space['num_trees'] = num_trees
+    if subset_share is not None:
+        space['subset_share'] = subset_share
+
     # Create objective function
     objective = partial(
         evaluate_model,

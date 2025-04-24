@@ -70,6 +70,7 @@ def run_ensemble_experiment(train_dataset, test_dataset, input_dims, num_classes
     logging.info(f"Baseline Accuracy: {ensemble_results['baseline']:.4f}")
     
     return {
+        'loss': 1.0 - ensemble_results['accuracy'],
         'accuracy': ensemble_results['accuracy'],
         'auc': ensemble_results['auc'],
         'baseline': ensemble_results['baseline'],

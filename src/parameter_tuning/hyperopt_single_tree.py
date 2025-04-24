@@ -16,13 +16,10 @@ from datetime import datetime
 # Hyperopt imports
 from hyperopt import hp, fmin, tpe, Trials, STATUS_OK, space_eval
 
-# Import your model and training functions
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# Local imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from runners.single_tree import run_single_tree_experiment
-
-# Add parent directory to path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from data import load_processed_classification_public_data
+from data_handling import load_processed_classification_public_data
 
 
 def create_results_dir(dataset_name, base_dir="outputs/hyperopt_single"):
@@ -115,7 +112,16 @@ def evaluate_model(params, dataset_name, device='cpu', results_dir=None, subset_
         }
 
 
-def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_dir="outputs/hyperopt_single", subset_selection=False):
+def optimize_hyperparams(dataset_name, 
+                         max_evals=30, 
+                         device='cpu', 
+                         base_results_dir="outputs/hyperopt_single", 
+                         subset_selection=False, 
+                         learning_rate = None,
+                         epochs = None,
+                         batch_size = None,
+                         max_depth = None,
+                         ):
     """Run hyperopt to find optimal hyperparameters for SoftTreeEnsemble."""
     # Create results directory
     results_dir = create_results_dir(dataset_name, base_results_dir)
@@ -134,6 +140,15 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
         'max_depth': hp.quniform('max_depth', 3, 8, 1),
     }
     
+    if learning_rate is not None:
+        space['learning_rate'] = learning_rate
+    if epochs is not None:
+        space['epochs'] = epochs
+    if batch_size is not None:
+        space['batch_size'] = batch_size
+    if max_depth is not None:
+        space['max_depth'] = max_depth
+
     # Add subset_share if subset_selection is enabled
     if subset_selection:
         space['subset_share'] = hp.uniform('subset_share', 0.1, 0.9)
@@ -225,7 +240,9 @@ if __name__ == "__main__":
         max_evals=args.max_evals,
         device=args.device,
         base_results_dir=args.output_dir,
-        subset_selection=args.subset_selection
+        subset_selection=args.subset_selection,
+        learning_rate = 0.05,
+        epochs = 10
     )
     
     logging.info(f"Optimization complete. Results saved to {result['results_dir']}")
