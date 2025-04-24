@@ -6,7 +6,7 @@ from softensemble import SoftTreeEnsemble
 from engine import train_model
 from torch.utils.data import DataLoader
 
-def run_single_tree_experiment(train_dataloader, test_dataloader, input_dims, num_classes, args):
+def run_single_tree_experiment(train_dataset, test_dataset, input_dims, num_classes, args):
     """Run experiment with a single tree."""
     logging.info(f"Running single tree experiment")
     logging.info(f"Dataset: {args.dataset_name}")
@@ -14,6 +14,10 @@ def run_single_tree_experiment(train_dataloader, test_dataloader, input_dims, nu
     logging.info(f"Batch size: {args.batch_size}, Max depth: {args.max_depth}")
     logging.info(f"Subset selection: {args.subset_selection}, Subset share: {args.subset_share}")
     
+    # Create DataLoaders for batching
+    train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
+    test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
+
     # Create model
     model = SoftTreeEnsemble(
         num_trees=1,
