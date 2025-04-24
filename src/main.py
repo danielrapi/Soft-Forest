@@ -75,6 +75,7 @@ if __name__ == "__main__":
     torch_parser.add_argument("--max_depth", type=int, required=True, help="Max depth for the trees")
     torch_parser.add_argument("--combine_output", action="store_true", default=True, help="Combine the output into leaf_dims")
     torch_parser.add_argument("--subset_selection", action="store_true", help="Run soft trees with Hadamard product for random feature selection")
+    torch_parser.add_argument("--subset_share", type=float, help="Share of features to use for subset selection")
     torch_parser.add_argument("--epochs", type=int,required=True,help="EPOCHS")
     torch_parser.add_argument("--lr", type=float,required=True,help="learning_rate")
     torch_parser.add_argument("--device", type = str, help = "cuda or cpu")
@@ -141,7 +142,7 @@ if __name__ == "__main__":
                 # now we have the unique labels
                 # grab the bumber of labels we want to shuffle 
                 num_samples = len(data.y_train_processed)
-                num_to_shuffle = int(0.15 * num_samples)
+                num_to_shuffle = int(0.0 * num_samples)
                 # take in 0,1,2,3...,num_samples --> indicies
                 # and randomly select num_to shuffle of these
                 # these are the indicies whose labels we will shuffle
@@ -204,7 +205,7 @@ if __name__ == "__main__":
             model = SoftTreeEnsemble(
                 num_trees=1,max_depth=args.max_depth, 
                 leaf_dims=num_classes, input_dim=input_dims, 
-                combine_output=args.combine_output, subset_selection=args.subset_selection
+                combine_output=args.combine_output, subset_selection=args.subset_selection, subset_share=args.subset_share
                 )
             
             logging.info(f"Created Soft Tree Model")
@@ -253,7 +254,7 @@ if __name__ == "__main__":
                     model = SoftTreeEnsemble(
                         num_trees=1,max_depth=args.max_depth, 
                         leaf_dims=num_classes, input_dim=input_dims, 
-                        combine_output=args.combine_output, subset_selection=args.subset_selection
+                        combine_output=args.combine_output, subset_selection=args.subset_selection, subset_share=args.subset_share
                     )
 
                     # then we train the model 

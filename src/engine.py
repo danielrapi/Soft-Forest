@@ -72,7 +72,6 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
             running_loss += loss.item()
             
             # For classification, you can calculate accuracy
-
             predicted = outputs.argmax(dim=1)
             
             correct_preds += (predicted == labels).sum().item()
