@@ -23,7 +23,7 @@ from sklearn.metrics import accuracy_score
 from engine import train_model
 from softensemble import *
 from config import get_args, setup_logging
-
+from runners.single_tree import run_single_tree_experiment
 # Set the working directory to the parent directory 
 # os.chdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -36,7 +36,7 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Then import
-from data_handling import load_processed_classification_public_data, shuffle_labels
+from data_handling import load_processed_classification_public_data
 
 
 # Get the current date and time in the format month-day-hour-minute
@@ -64,14 +64,8 @@ if __name__ == "__main__":
 
     #load dataset   
     try:    
-        data = load_processed_classification_public_data(name = args.dataset_name)
+        data = load_processed_classification_public_data(name = args.dataset_name, noise_level=0)
 
-        # ADDING SHUFFLING FEATURE
-        # this is to test if we can see all the models perform poorly
-        #############################################
-        if args.shuffle_labels:
-            y_train_processed = shuffle_labels(data.y_train_processed, noise_level=0, num_classes=data.num_classes)
-        
         train_X_tensor = torch.tensor(data.x_train_processed, dtype=torch.float32)
         train_y_tensor = torch.tensor(data.y_train_processed, dtype=torch.float32)
         test_X_tensor = torch.tensor(data.x_test_processed, dtype=torch.float32)
@@ -99,34 +93,7 @@ if __name__ == "__main__":
     #####################################################################################################################
     if args.num_trees == 1:
         
-        logging.info(f"Running just ONE TREE")
-        logging.info(f"Running in torch mode with dataset: {args.dataset_name}")
-        logging.info(f"Input dimensions: {input_dims}, Number of classes: {num_classes}")
-        logging.info(f"Batch size: {args.batch_size}")
-        logging.info(f"Number of trees: {args.num_trees}, Max depth: {args.max_depth}")
-        logging.info(f"Combine output: {args.combine_output}, Subset selection: {args.subset_selection}")
-
-        # create the model     
-        model = SoftTreeEnsemble(
-            num_trees=1,max_depth=args.max_depth, 
-            leaf_dims=num_classes, input_dim=input_dims, 
-            combine_output=args.combine_output, subset_selection=args.subset_selection, subset_share=args.subset_share
-            )
-        
-        logging.info(f"Created Soft Tree Model")
-
-        # actual training
-        start_time = time.time()
-        train_model(model=model, train_loader=train_dataloader, 
-                    test_loader=test_dataloader, 
-                    epochs=args.epochs, 
-                    learning_rate=args.lr, device=args.device)
-        end_time = time.time()
-
-        execution_time = (end_time - start_time) / 60
-
-        logging.info(f"The single tree took {execution_time} to run.")
-
+        res= run_single_tree_experiment(train_dataloader, test_dataloader, input_dims, num_classes, args)
         # send email to the user when the expirement is actually done
         body = f"Finished Job: File saved at \n run_logs_{args.dataset_name}_subsetselection_{args.subset_selection}.log"
 

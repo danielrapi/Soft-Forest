@@ -29,8 +29,6 @@ def get_args():
     torch_parser.add_argument("--lr", type=float, required=True, help="Learning rate")
     torch_parser.add_argument("--device", type=str, default="cpu", help="cuda or cpu")
     torch_parser.add_argument("--bootstrap", action="store_true", help="Whether to bootstrap")
-    torch_parser.add_argument("--shuffle_labels", action="store_true", 
-                             help="Shuffle labels to test robustness")
     torch_parser.add_argument("--noise_level", type=float, default=0.15,
                              help="Proportion of labels to shuffle (0-1)")
     

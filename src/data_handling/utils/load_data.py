@@ -20,6 +20,7 @@ def load_processed_classification_public_data(
     val_size=0.2,
     test_size=0.2,
     seed=8,
+    noise_level=0.0
     ):
     
     #set path to parent directory of this file
@@ -151,14 +152,15 @@ def load_processed_classification_public_data(
         x_test_processed = process_sparse_matrices(x_preprocessor.transform(x_test))
     
     
+    input_dims = x_train_processed.shape[1]
+    num_classes = len(set(df_y.values))
+
     y_preprocessor = LabelEncoder()
-    y_train_processed = y_preprocessor.fit_transform(y_train)
+    y_train_processed = shuffle_labels(y_preprocessor.fit_transform(y_train), noise_level=noise_level, num_classes=num_classes)
     y_valid_processed = y_preprocessor.transform(y_valid)
     y_train_valid_processed = y_preprocessor.transform(y_train_valid)
     y_test_processed = y_preprocessor.transform(y_test)
     
-    input_dims = x_train_processed.shape[1]
-    num_classes = len(set(df_y.values))
 
     # print(x_train_processed.shape, x_valid_processed.shape, x_train_valid_processed.shape, x_test_processed.shape)
     # print(y_train_processed.shape, y_valid_processed.shape, y_train_valid_processed.shape, y_test_processed.shape)
