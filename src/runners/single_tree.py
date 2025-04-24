@@ -52,5 +52,6 @@ def run_single_tree_experiment(train_dataset, test_dataset, input_dims, num_clas
         'test_loss': test_loss,
         'test_accuracy': test_accuracy,
         'test_auc': test_auc,
-        'execution_time': execution_time
+        'execution_time': execution_time,
+        'loss': 1.0 - test_accuracy  # For hyperopt (minimize 1-accuracy)
     }

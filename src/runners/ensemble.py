@@ -144,6 +144,7 @@ def evaluate_ensemble(all_preds, test_dataloader, num_classes):
     return {
         'accuracy': accuracy,
         'auc': auc,
-        'baseline': baseline
+        'baseline': baseline,
+        'loss': 1.0 - accuracy  # For hyperopt (minimize 1-accuracy)
     }
 
