@@ -1,0 +1,7 @@
+2025-04-18 03:43:30,818 - INFO - Running just ONE TREE
+2025-04-18 03:43:30,819 - INFO - Running in torch mode with dataset: nursery
+2025-04-18 03:43:30,819 - INFO - Input dimensions: 27, Number of classes: 4
+2025-04-18 03:43:30,819 - INFO - Batch size: 32
+2025-04-18 03:43:30,819 - INFO - Number of trees: 1, Max depth: 3
+2025-04-18 03:43:30,820 - INFO - Combine output: True, Subset selection: True
+2025-04-18 03:43:30,820 - INFO - Number of masked features: 20

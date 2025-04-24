@@ -1,0 +1,30 @@
+2025-04-18 03:33:45,279 - INFO - Running just ONE TREE
+2025-04-18 03:33:45,279 - INFO - Running in torch mode with dataset: nursery
+2025-04-18 03:33:45,279 - INFO - Input dimensions: 27, Number of classes: 4
+2025-04-18 03:33:45,280 - INFO - Batch size: 32
+2025-04-18 03:33:45,280 - INFO - Number of trees: 1, Max depth: 3
+2025-04-18 03:33:45,280 - INFO - Combine output: True, Subset selection: True
+2025-04-18 03:33:45,280 - INFO - Number of masked features: 25
+2025-04-18 03:33:45,308 - INFO - Created Soft Tree Model
+2025-04-18 03:33:45,308 - INFO - Running on a: cpu
+2025-04-18 03:33:50,838 - INFO - Epoch [1/20], Training Loss: 0.3688, Accuracy: 0.8605 | Test Loss: 0.1627, Test Accuracy: 0.9302, Test AUC: 0.9933
+2025-04-18 03:33:52,135 - INFO - Epoch [2/20], Training Loss: 0.1372, Accuracy: 0.9432 | Test Loss: 0.1190, Test Accuracy: 0.9541, Test AUC: 0.9955
+2025-04-18 03:33:53,471 - INFO - Epoch [3/20], Training Loss: 0.1191, Accuracy: 0.9489 | Test Loss: 0.1006, Test Accuracy: 0.9626, Test AUC: 0.9967
+2025-04-18 03:33:54,843 - INFO - Epoch [4/20], Training Loss: 0.1061, Accuracy: 0.9566 | Test Loss: 0.0935, Test Accuracy: 0.9684, Test AUC: 0.9970
+2025-04-18 03:33:56,171 - INFO - Epoch [5/20], Training Loss: 0.0939, Accuracy: 0.9638 | Test Loss: 0.0845, Test Accuracy: 0.9711, Test AUC: 0.9978
+2025-04-18 03:33:57,527 - INFO - Epoch [6/20], Training Loss: 0.0922, Accuracy: 0.9616 | Test Loss: 0.0936, Test Accuracy: 0.9668, Test AUC: 0.9973
+2025-04-18 03:33:58,876 - INFO - Epoch [7/20], Training Loss: 0.0817, Accuracy: 0.9672 | Test Loss: 0.1105, Test Accuracy: 0.9618, Test AUC: 0.9963
+2025-04-18 03:34:00,235 - INFO - Epoch [8/20], Training Loss: 0.0786, Accuracy: 0.9699 | Test Loss: 0.0733, Test Accuracy: 0.9753, Test AUC: 0.9982
+2025-04-18 03:34:01,551 - INFO - Epoch [9/20], Training Loss: 0.0720, Accuracy: 0.9702 | Test Loss: 0.0753, Test Accuracy: 0.9761, Test AUC: 0.9983
+2025-04-18 03:34:02,915 - INFO - Epoch [10/20], Training Loss: 0.0719, Accuracy: 0.9714 | Test Loss: 0.0714, Test Accuracy: 0.9788, Test AUC: 0.9985
+2025-04-18 03:34:04,243 - INFO - Epoch [11/20], Training Loss: 0.0721, Accuracy: 0.9717 | Test Loss: 0.0865, Test Accuracy: 0.9645, Test AUC: 0.9979
+2025-04-18 03:34:05,615 - INFO - Epoch [12/20], Training Loss: 0.0710, Accuracy: 0.9708 | Test Loss: 0.0683, Test Accuracy: 0.9776, Test AUC: 0.9987
+2025-04-18 03:34:06,938 - INFO - Epoch [13/20], Training Loss: 0.0612, Accuracy: 0.9765 | Test Loss: 0.0674, Test Accuracy: 0.9769, Test AUC: 0.9987
+2025-04-18 03:34:08,283 - INFO - Epoch [14/20], Training Loss: 0.0643, Accuracy: 0.9761 | Test Loss: 0.0561, Test Accuracy: 0.9807, Test AUC: 0.9991
+2025-04-18 03:34:09,584 - INFO - Epoch [15/20], Training Loss: 0.0640, Accuracy: 0.9762 | Test Loss: 0.0581, Test Accuracy: 0.9784, Test AUC: 0.9989
+2025-04-18 03:34:10,925 - INFO - Epoch [16/20], Training Loss: 0.0643, Accuracy: 0.9743 | Test Loss: 0.0642, Test Accuracy: 0.9765, Test AUC: 0.9986
+2025-04-18 03:34:12,259 - INFO - Epoch [17/20], Training Loss: 0.0630, Accuracy: 0.9746 | Test Loss: 0.0771, Test Accuracy: 0.9688, Test AUC: 0.9983
+2025-04-18 03:34:13,563 - INFO - Epoch [18/20], Training Loss: 0.0584, Accuracy: 0.9787 | Test Loss: 0.0580, Test Accuracy: 0.9780, Test AUC: 0.9990
+2025-04-18 03:34:14,923 - INFO - Epoch [19/20], Training Loss: 0.0546, Accuracy: 0.9789 | Test Loss: 0.0558, Test Accuracy: 0.9830, Test AUC: 0.9991
+2025-04-18 03:34:16,287 - INFO - Epoch [20/20], Training Loss: 0.0648, Accuracy: 0.9754 | Test Loss: 0.0546, Test Accuracy: 0.9811, Test AUC: 0.9991
+2025-04-18 03:34:16,288 - INFO - The single tree took 0.5163306951522827 to run.

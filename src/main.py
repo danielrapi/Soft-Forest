@@ -79,6 +79,7 @@ if __name__ == "__main__":
     torch_parser.add_argument("--lr", type=float,required=True,help="learning_rate")
     torch_parser.add_argument("--device", type = str, help = "cuda or cpu")
     torch_parser.add_argument("--bootstrap", action="store_true", help = "Whether to boostrap or not")
+    torch_parser.add_argument("--shuffle_labels", action="store_true", help="Shuffle a proportion of the indicies to see if we get worse performance")
 
     # replace the input dims and the leaf_dims 
 
@@ -126,20 +127,61 @@ if __name__ == "__main__":
             else:
                 x_train_dense = data.x_train_processed
                 x_test_dense = data.x_test_processed
-            
-            # Convert to PyTorch tensors
-            train_X_tensor = torch.tensor(x_train_dense, dtype=torch.float32)
-            train_y_tensor = torch.tensor(data.y_train_processed, dtype=torch.float32)
-            test_X_tensor = torch.tensor(x_test_dense, dtype=torch.float32)
-            test_y_tensor = torch.tensor(data.y_test_processed, dtype=torch.float32)
-            
+
+            # ADDING SHUFFLING FEATURE
+            # this is to test if we can see all the models perform poorly
+            #############################################
+            if args.shuffle_labels:
+                # we will try shuffling 15% of the labels
+                print("THE Y LABELS FOR ANN_THYROID_train", np.unique(data.y_train_processed))
+                print("The Y LABELS FOR ANN_THYROID_TEST", np.unique(data.y_test_processed))
+                print("LEAF DIMS", data.num_classes)
+                # we first grab all the unique values or the classes in the data
+                unique_labels = np.unique(np.concatenate((np.unique(data.y_train_processed), np.unique(data.y_test_processed))))
+                print("THE UNIQUE FROM TRAIN AND TEST ARE", unique_labels)
+                # check to see if there is not a match
+                assert unique_labels.size == data.num_classes, "THE UNIQUE VALUES DO NOT MATCH THE NUM CLASSES LOOK INTO IT"
+
+                # now we have the unique labels
+                # grab the bumber of labels we want to shuffle 
+                num_samples = len(data.y_train_processed)
+                num_to_shuffle = int(0.15 * num_samples)
+                # take in 0,1,2,3...,num_samples --> indicies
+                # and randomly select num_to shuffle of these
+                # these are the indicies whose labels we will shuffle
+                indicies_to_shuffle = np.random.choice(num_samples, size=num_to_shuffle, replace=False)
+                # 3. Copy the labels from those indices and shuffle them
+                labels_to_shuffle = data.y_train_processed[indicies_to_shuffle].copy()
+
+                # then we randomly shuffle these labels 
+                np.random.shuffle(labels_to_shuffle)
+
+                # 4. Replace the original labels at those indices with the shuffled ones
+                train_y_noisy = data.y_train_processed.copy()
+                # replace every indicy marked with the labels to shuffle
+                train_y_noisy[indicies_to_shuffle] = labels_to_shuffle
+
+                            # Convert to PyTorch tensors
+                train_X_tensor = torch.tensor(x_train_dense, dtype=torch.float32)
+                train_y_tensor = torch.tensor(data.y_train_processed, dtype=torch.float32)
+                test_X_tensor = torch.tensor(x_test_dense, dtype=torch.float32)
+                test_y_tensor = torch.tensor(data.y_test_processed, dtype=torch.float32)
+
+            else:
+                # proceeed normal run 
+                # Convert to PyTorch tensors
+                train_X_tensor = torch.tensor(x_train_dense, dtype=torch.float32)
+                train_y_tensor = torch.tensor(data.y_train_processed, dtype=torch.float32)
+                test_X_tensor = torch.tensor(x_test_dense, dtype=torch.float32)
+                test_y_tensor = torch.tensor(data.y_test_processed, dtype=torch.float32)
+                
             train_dataset = TensorDataset(train_X_tensor, train_y_tensor)
             test_dataset = TensorDataset(test_X_tensor, test_y_tensor)
-            
+                
             # Create DataLoaders for batching
             train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
             test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
-            
+                
             # Get dimensions from the actual data
             input_dims = train_X_tensor.shape[1]
             #print(f"Input dimensions: {input_dims}")
