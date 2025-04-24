@@ -13,7 +13,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder
 from sklearn.preprocessing import MinMaxScaler
 import yaml
-
+import logging
 
 def load_processed_classification_public_data(
     name="human-activity-recognition",
@@ -182,3 +182,24 @@ def process_sparse_matrices(dataset):
     if hasattr(dataset, "toarray"):
         dataset = dataset.toarray()
     return dataset
+
+def shuffle_labels(labels, noise_level=0.15, num_classes=None):
+    """Shuffle a proportion of labels to test model robustness."""
+    # Validate unique labels match num_classes
+    unique_labels = np.unique(labels)
+    if num_classes and len(unique_labels) != num_classes:
+        logging.warning(f"Unique labels ({len(unique_labels)}) doesn't match num_classes ({num_classes})")
+    
+    # Shuffle labels
+    num_samples = len(labels)
+    num_to_shuffle = int(noise_level * num_samples)
+    indices_to_shuffle = np.random.choice(num_samples, size=num_to_shuffle, replace=False)
+    
+    labels_to_shuffle = labels[indices_to_shuffle].copy()
+    np.random.shuffle(labels_to_shuffle)
+    
+    noisy_labels = labels.copy()
+    noisy_labels[indices_to_shuffle] = labels_to_shuffle
+    
+    logging.info(f"Shuffled {num_to_shuffle}/{num_samples} labels ({noise_level*100:.1f}%)")
+    return noisy_labels
