@@ -29,10 +29,22 @@ class NumpyEncoder(json.JSONEncoder):
             return int(obj)
         return super(NumpyEncoder, self).default(obj)
 
-def create_results_dir(base_dir="outputs/pipeline"):
+def create_results_dir(base_dir="outputs/pipeline", dataset_name=None, bagging=False, subset_selection=False):
     """Create a timestamped results directory for the current run."""
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    run_dir = os.path.join(base_dir, f"run_{timestamp}")
+    
+    # Create configuration string
+    config = []
+    if bagging:
+        config.append("bagging")
+    if subset_selection:
+        config.append("subset")
+    if not config:
+        config.append("base")
+    config_str = "_".join(config)
+    
+    # Create directory structure: outputs/pipeline/dataset_name/config/run_timestamp
+    run_dir = os.path.join(base_dir, dataset_name, config_str, f"run_{timestamp}")
     os.makedirs(run_dir, exist_ok=True)
     return run_dir
 
@@ -43,10 +55,11 @@ def save_predictions(predictions, labels, dataset_name, model_type, results_dir)
         f.create_dataset('predictions', data=predictions)
         f.create_dataset('labels', data=labels)
 
-def run_dataset_pipeline(dataset_name, noise_level=0.15, device='cpu', results_dir=None):
-    """Run the complete pipeline for a single dataset."""
+def run_dataset_pipeline(dataset_name, noise_level=0.15, device='cpu', results_dir=None, bagging=False, subset_selection=False):
+    """Run the complete pipeline for a single dataset with specified configuration."""
     logging.info(f"\n{'='*50}")
     logging.info(f"Starting pipeline for dataset: {dataset_name}")
+    logging.info(f"Configuration: bagging={bagging}, subset_selection={subset_selection}")
     logging.info(f"{'='*50}\n")
     
     # Step 1: Hyperopt single tree with train/validation
@@ -77,6 +90,8 @@ def run_dataset_pipeline(dataset_name, noise_level=0.15, device='cpu', results_d
         batch_size=best_single_params['batch_size'],
         max_depth=best_single_params['max_depth'],
         # Only optimize num_trees and subset_share
+        subset_selection=subset_selection,
+        bootstrap=bagging,
         num_trees=None,
         subset_share=None
     )
@@ -111,9 +126,9 @@ def run_dataset_pipeline(dataset_name, noise_level=0.15, device='cpu', results_d
             self.epochs = int(best_multi_params['epochs'])
             self.device = device
             self.combine_output = True
-            self.subset_selection = True
+            self.subset_selection = subset_selection
             self.subset_share = best_multi_params.get('subset_share', 0.5)
-            self.bootstrap = False
+            self.bootstrap = bagging
             self.dataset_name = dataset_name
     
     args = Args()
@@ -137,6 +152,8 @@ def run_dataset_pipeline(dataset_name, noise_level=0.15, device='cpu', results_d
     results = {
         'dataset': dataset_name,
         'noise_level': noise_level,
+        'bagging': bagging,
+        'subset_selection': subset_selection,
         'single_tree_params': best_single_params,
         'multi_tree_params': best_multi_params,
         'final_results': {
@@ -183,32 +200,53 @@ def run_dataset_pipeline(dataset_name, noise_level=0.15, device='cpu', results_d
     return results
 
 def main():
-    # Create results directory
-    results_dir = create_results_dir()
-    
-    # Setup logging
-    log_file = os.path.join(results_dir, "pipeline.log")
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler()
-        ]
-    )
-    
     # Get list of datasets
     datasets_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
                               'data_handling', 'storage')
     datasets = [d for d in os.listdir(datasets_dir) if os.path.isdir(os.path.join(datasets_dir, d))]
     datasets = ['breast_cancer_wisconsin']
-    # Run pipeline for each dataset
+    # Define configurations
+    configurations = [
+        (False, False),  # Base
+        (True, False),   # Bagging only
+        (False, True),   # Subset selection only
+        (True, True)     # Both
+    ]
+    
+    # Run pipeline for each dataset and configuration
     for dataset in tqdm(datasets, desc="Processing datasets"):
-        try:
-            run_dataset_pipeline(dataset, noise_level=0.3, device='cpu', results_dir=results_dir)
-        except Exception as e:
-            logging.error(f"Error processing dataset {dataset}: {str(e)}")
-            continue
+        for bagging, subset_selection in configurations:
+            try:
+                # Create results directory for this configuration
+                results_dir = create_results_dir(
+                    dataset_name=dataset,
+                    bagging=bagging,
+                    subset_selection=subset_selection
+                )
+                
+                # Setup logging for this configuration
+                log_file = os.path.join(results_dir, "pipeline.log")
+                logging.basicConfig(
+                    level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s',
+                    handlers=[
+                        logging.FileHandler(log_file),
+                        logging.StreamHandler()
+                    ]
+                )
+                
+                # Run pipeline with current configuration
+                run_dataset_pipeline(
+                    dataset,
+                    noise_level=0.0,
+                    device='cpu',
+                    results_dir=results_dir,
+                    bagging=bagging,
+                    subset_selection=subset_selection
+                )
+            except Exception as e:
+                logging.error(f"Error processing dataset {dataset} with bagging={bagging}, subset_selection={subset_selection}: {str(e)}")
+                continue
 
 if __name__ == "__main__":
     main() 

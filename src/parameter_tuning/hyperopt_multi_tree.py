@@ -116,7 +116,9 @@ def evaluate_model(params, dataset_name, device='cpu', results_dir=None, bootstr
         }
 
 
-def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_dir="outputs/hyperopt_multi", bootstrap=False, subset_selection=False,
+def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_dir="outputs/hyperopt_multi", 
+                         bootstrap=False, 
+                         subset_selection=False,
                          subset_share = None,
                          learning_rate = None,
                          epochs = None,
