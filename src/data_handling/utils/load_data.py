@@ -156,6 +156,7 @@ def load_processed_classification_public_data(
     num_classes = len(set(df_y.values))
 
     y_preprocessor = LabelEncoder()
+    print(f"Shuffling {noise_level*100}% of labels")
     y_train_processed = shuffle_labels(y_preprocessor.fit_transform(y_train), noise_level=noise_level, num_classes=num_classes)
     y_valid_processed = y_preprocessor.transform(y_valid)
     y_train_valid_processed = y_preprocessor.transform(y_train_valid)
@@ -185,23 +186,54 @@ def process_sparse_matrices(dataset):
         dataset = dataset.toarray()
     return dataset
 
-def shuffle_labels(labels, noise_level=0.15, num_classes=None):
-    """Shuffle a proportion of labels to test model robustness."""
-    # Validate unique labels match num_classes
-    unique_labels = np.unique(labels)
-    if num_classes and len(unique_labels) != num_classes:
-        logging.warning(f"Unique labels ({len(unique_labels)}) doesn't match num_classes ({num_classes})")
-    
-    # Shuffle labels
-    num_samples = len(labels)
-    num_to_shuffle = int(noise_level * num_samples)
-    indices_to_shuffle = np.random.choice(num_samples, size=num_to_shuffle, replace=False)
-    
-    labels_to_shuffle = labels[indices_to_shuffle].copy()
-    np.random.shuffle(labels_to_shuffle)
-    
-    noisy_labels = labels.copy()
-    noisy_labels[indices_to_shuffle] = labels_to_shuffle
-    
-    logging.info(f"Shuffled {num_to_shuffle}/{num_samples} labels ({noise_level*100:.1f}%)")
-    return noisy_labels
+def shuffle_labels(labels, noise_level=0.15, num_classes=None, *, rng=None):
+    """
+    Corrupt `noise_level` proportion of `labels` by replacing each
+    chosen label with a random class in 0 … num_classes-1
+    (always different from the original).
+
+    Parameters
+    ----------
+    labels : np.ndarray
+        1-D array of integer-encoded class labels.
+    noise_level : float, default 0.15
+        Fraction of samples to corrupt (0 → none, 1 → all).
+    num_classes : int or None
+        Total number of classes; if None it’s inferred from `labels`.
+    rng : np.random.Generator or None
+        Optional NumPy random generator for reproducibility.
+
+    Returns
+    -------
+    noisy_labels : np.ndarray
+        Copy of `labels` with the requested fraction corrupted.
+    """
+    if rng is None:
+        rng = np.random.default_rng()
+
+    if num_classes is None:
+        num_classes = int(labels.max() + 1)
+
+    labels = labels.copy()
+    n = len(labels)
+    n_corrupt = int(noise_level * n)
+
+    # Pick indices to corrupt
+    corrupt_idx = rng.choice(n, size=n_corrupt, replace=False)
+
+    # Draw random replacement labels
+    random_labels = rng.integers(low=0, high=num_classes, size=n_corrupt)
+
+    # Make sure each replacement differs from the original
+    same_mask = random_labels == labels[corrupt_idx]
+    while same_mask.any():
+        random_labels[same_mask] = rng.integers(
+            low=0, high=num_classes, size=same_mask.sum()
+        )
+        same_mask = random_labels == labels[corrupt_idx]
+
+    # Apply corruption
+    labels[corrupt_idx] = random_labels
+    logging.info(f"Corrupted {n_corrupt}/{n} labels ({noise_level*100:.1f}%)")
+    print(f"Shuffled {n_corrupt}/{n} labels ({noise_level*100:.1f}%)")
+    return labels

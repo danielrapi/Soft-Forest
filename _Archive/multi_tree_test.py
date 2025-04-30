@@ -239,7 +239,11 @@ if __name__ == "__main__":
                 try:
                     # For binary classification
                     if num_classes == 2:
-                        AUC = roc_auc_score(true_labels, final_predictions)
+                        # For binary classification, we need probabilities for the positive class
+                        # Average probabilities across trees and take the probability of class 1
+                        avg_probs = np.mean(all_preds, axis=0)
+                        pos_class_probs = avg_probs[:, 1]  # Probability of positive class
+                        AUC = roc_auc_score(true_labels, pos_class_probs)
                     # For multi-class classification
                     else:
                         # Get the one-hot encoded predictions for multi-class AUC

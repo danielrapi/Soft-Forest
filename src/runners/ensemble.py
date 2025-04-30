@@ -74,7 +74,11 @@ def run_ensemble_experiment(train_dataset, test_dataset, input_dims, num_classes
         'accuracy': ensemble_results['accuracy'],
         'auc': ensemble_results['auc'],
         'baseline': ensemble_results['baseline'],
-        'execution_time': execution_time
+        'execution_time': execution_time,
+        'ensemble_predictions': ensemble_results['ensemble_predictions'],
+        'ensemble_probabilities': ensemble_results['ensemble_probabilities'],
+        'tree_predictions': ensemble_results['tree_predictions'],
+        'tree_probabilities': ensemble_results['tree_probabilities']
     }
 
 def get_dataloaders(train_dataset, test_dataset, batch_size, bootstrap=False):
@@ -146,6 +150,10 @@ def evaluate_ensemble(all_preds, test_dataloader, num_classes):
         'accuracy': accuracy,
         'auc': auc,
         'baseline': baseline,
-        'loss': 1.0 - accuracy  # For hyperopt (minimize 1-accuracy)
+        'loss': 1.0 - accuracy,  # For hyperopt (minimize 1-accuracy)
+        'ensemble_predictions': final_predictions,
+        'ensemble_probabilities': avg_probs,
+        'tree_predictions': argmax_preds,
+        'tree_probabilities': all_preds
     }
 

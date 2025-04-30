@@ -41,7 +41,7 @@ def create_results_dir(dataset_name, base_dir="outputs/hyperopt_multi"):
     return run_dir
 
 
-def evaluate_model(params, dataset_name, device='cpu', results_dir=None, bootstrap=False, subset_selection=False):
+def evaluate_model(params, dataset_name, device='cpu', results_dir=None, bootstrap=False, subset_selection=False, noise_level=0.0):
     """Train and evaluate multiple SoftTreeEnsemble models and combine with majority voting."""
     # Extract hyperparameters from params
     max_depth = int(params['max_depth'])
@@ -57,7 +57,7 @@ def evaluate_model(params, dataset_name, device='cpu', results_dir=None, bootstr
     
     try:
         # Load data
-        data = load_processed_classification_public_data(name=dataset_name)
+        data = load_processed_classification_public_data(name=dataset_name, noise_level=noise_level)
         
         # Convert to PyTorch tensors
         train_X_tensor = torch.tensor(data.x_train_processed, dtype=torch.float32)
@@ -122,7 +122,8 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
                          epochs = None,
                          batch_size = None,
                          max_depth = None,
-                         num_trees = None):
+                         num_trees = None,
+                         noise_level = 0.0):
     """Run hyperopt to find optimal hyperparameters for multi-tree SoftTreeEnsemble."""
     # Create results directory
     results_dir = create_results_dir(dataset_name, base_results_dir)
@@ -166,7 +167,8 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
         device=device,
         results_dir=results_dir,
         bootstrap=bootstrap,
-        subset_selection=subset_selection
+        subset_selection=subset_selection,
+        noise_level=noise_level
     )
     
     # Set up trials object
@@ -209,7 +211,8 @@ def optimize_hyperparams(dataset_name, max_evals=30, device='cpu', base_results_
         'accuracy': best_accuracy,
         'auc': best_auc,
         'baseline': baseline,
-        'results_dir': results_dir
+        'results_dir': results_dir,
+        'noise_level': noise_level
     }
     
     result_file = os.path.join(results_dir, "results.json")
@@ -231,6 +234,7 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", type=str, default="outputs/hyperopt_multi", help="Base output directory")
     parser.add_argument("--bootstrap", action="store_true", help="Enable bootstrap sampling")
     parser.add_argument("--subset_selection", action="store_true", help="Enable subset selection")
+    parser.add_argument("--noise_level", type=float, default=0.0, help="Proportion of labels to shuffle (0-1)")
     
     args = parser.parse_args()
     
@@ -249,7 +253,8 @@ if __name__ == "__main__":
         device=args.device,
         base_results_dir=args.output_dir,
         bootstrap=args.bootstrap,
-        subset_selection=args.subset_selection
+        subset_selection=args.subset_selection,
+        noise_level=args.noise_level
     )
     
     logging.info(f"Optimization complete. Results saved to {result['results_dir']}") 

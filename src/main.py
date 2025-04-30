@@ -52,7 +52,7 @@ def main():
 
     #load dataset   
     try:    
-        data = load_processed_classification_public_data(name = args.dataset_name, noise_level=0.3)
+        data = load_processed_classification_public_data(name = args.dataset_name, noise_level=args.noise_level)
 
         train_X_tensor = torch.tensor(data.x_train_processed, dtype=torch.float32)
         train_y_tensor = torch.tensor(data.y_train_processed, dtype=torch.float32)
@@ -74,12 +74,12 @@ def main():
     
     try:
         if args.num_trees == 1:
-            results = run_single_tree_experiment(train_dataset, test_dataset, input_dims, num_classes, args)
+            results = run_single_tree_experiment(train_dataset=train_dataset, test_dataset=test_dataset, input_dims=input_dims, num_classes=num_classes, args=args)
             logging.info(f"Single tree experiment completed")
             logging.info(f"Test accuracy: {results['test_accuracy']:.4f}")
             logging.info(f"Test AUC: {results['test_auc']:.4f}")
         else:
-            results = run_ensemble_experiment(train_dataset, test_dataset, input_dims, num_classes, args)
+            results = run_ensemble_experiment(train_dataset=train_dataset, test_dataset=test_dataset, input_dims=input_dims, num_classes=num_classes, args=args)
             logging.info(f"Ensemble experiment completed")
         
         logging.info(f"Results saved to {log_file}")

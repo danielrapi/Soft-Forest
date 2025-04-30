@@ -15,8 +15,8 @@ def run_single_tree_experiment(train_dataset, test_dataset, input_dims, num_clas
     logging.info(f"Subset selection: {args.subset_selection}, Subset share: {args.subset_share}")
     
     # Create DataLoaders for batching
-    train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
-    test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
+    train_dataloader = DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=True)
+    test_dataloader = DataLoader(dataset=test_dataset, batch_size=args.batch_size, shuffle=False)
 
     # Create model
     model = SoftTreeEnsemble(
