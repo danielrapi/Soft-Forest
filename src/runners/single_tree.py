@@ -33,7 +33,7 @@ def run_single_tree_experiment(train_dataset, test_dataset, input_dims, num_clas
     
     # Train model
     start_time = time.time()
-    test_loss, test_accuracy, test_auc = train_model(
+    return_obj = train_model(
         model=model,
         train_loader=train_dataloader,
         test_loader=test_dataloader,
@@ -45,13 +45,14 @@ def run_single_tree_experiment(train_dataset, test_dataset, input_dims, num_clas
     
     execution_time = (end_time - start_time) / 60
     logging.info(f"Training completed in {execution_time:.2f} minutes")
-    
+
     # Return results
     return {
         'model': model,
-        'test_loss': test_loss,
-        'test_accuracy': test_accuracy,
-        'test_auc': test_auc,
+        'acc_results': return_obj['acc_results'],
+        'test_loss': return_obj['test_loss'],
+        'test_accuracy': return_obj['test_accuracy'],
+        'test_auc': return_obj['test_auc'],
         'execution_time': execution_time,
-        'loss': 1.0 - test_accuracy  # For hyperopt (minimize 1-accuracy)
+        'loss': 1.0 - return_obj['test_accuracy']  # For hyperopt (minimize 1-accuracy)
     }

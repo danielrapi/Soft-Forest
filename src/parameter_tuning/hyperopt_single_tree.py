@@ -186,9 +186,9 @@ def optimize_hyperparams(dataset_name,
     
     # Define hyperparameter search space
     space = {
-        'learning_rate': hp.loguniform('learning_rate', np.log(0.0001), np.log(0.1)),
+        'learning_rate': hp.loguniform('learning_rate', np.log(0.001), np.log(0.1)),
         'batch_size': hp.choice('batch_size', [32, 64, 128, 256]),
-        'epochs': hp.quniform('epochs', 5, 30, 5),
+        'epochs': hp.quniform('epochs', 5, 20, 5),
         'max_depth': hp.quniform('max_depth', 3, 8, 1),
     }
     

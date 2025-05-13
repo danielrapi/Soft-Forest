@@ -54,6 +54,7 @@ def main():
     try:    
         data = load_processed_classification_public_data(name = args.dataset_name, noise_level=args.noise_level)
 
+
         train_X_tensor = torch.tensor(data.x_train_processed, dtype=torch.float32)
         train_y_tensor = torch.tensor(data.y_train_processed, dtype=torch.float32)
         test_X_tensor = torch.tensor(data.x_test_processed, dtype=torch.float32)

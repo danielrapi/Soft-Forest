@@ -36,7 +36,8 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
     
     # Move model to device (GPU or CPU)
     model.to(device)
-    
+    acc_results = {}
+
     #Training loop
     for epoch in range(epochs):
         model.train()  # Set model to training mode
@@ -81,7 +82,7 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
         # Evaluate on test set
         model.eval()  # Ensure model is in eval mode
         test_loss, test_accuracy, test_auc = evaluate(model, test_loader, criterion, device)
-        
+        acc_results[epoch] = (accuracy, test_accuracy)
         # Log metrics
         logging.info(f"Epoch [{epoch+1}/{epochs}], Training Loss: {avg_loss:.4f}, Accuracy: {accuracy:.4f} | Test Loss: {test_loss:.4f}, Test Accuracy: {test_accuracy:.4f}, Test AUC: {test_auc:.4f}")
         
@@ -89,7 +90,14 @@ def train_model(model, train_loader, test_loader, epochs=10, learning_rate=0.001
         if test_accuracy > 0.9 and accuracy < 0.5:
             logging.warning(f"High test accuracy ({test_accuracy:.4f}) with low training accuracy ({accuracy:.4f}) - potential data leakage or model issue")
     
-    return test_loss, test_accuracy, test_auc
+    return_obj = {
+        "acc_results": acc_results,
+        "test_loss": test_loss,
+        "test_accuracy": test_accuracy,
+        "test_auc": test_auc
+    }
+
+    return return_obj
 
 
 def evaluate(model, test_loader, criterion, device):
@@ -123,6 +131,8 @@ def evaluate(model, test_loader, criterion, device):
             outputs = model(inputs)
             
             # Calculate loss
+            temp_preds = torch.argmax(outputs, dim=1)
+            
             loss = criterion(outputs, labels)
             running_loss += loss.item()
             

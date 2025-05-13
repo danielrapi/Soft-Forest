@@ -31,3 +31,5 @@ src/data/utils/__pycache__/*
 src/engine/__pycache__/*
 src/softensemble/__pycache__/*
 src/utils/__pycache__/*
+
+_OG_FASTEL/

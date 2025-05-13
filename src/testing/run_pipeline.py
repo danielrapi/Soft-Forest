@@ -66,7 +66,7 @@ def run_dataset_pipeline(dataset_name, noise_level=0.15, device='cpu', results_d
     logging.info("Step 1: Running single tree hyperparameter optimization...")
     single_tree_results = optimize_single_tree(
         dataset_name=dataset_name,
-        max_evals=1,
+        max_evals=30,
         device=device,
         noise_level=noise_level,
         base_results_dir=os.path.join(results_dir, "single_tree")
@@ -80,7 +80,7 @@ def run_dataset_pipeline(dataset_name, noise_level=0.15, device='cpu', results_d
     logging.info("\nStep 2: Running multi-tree hyperparameter optimization...")
     multi_tree_results = optimize_multi_tree(
         dataset_name=dataset_name,
-        max_evals=1,
+        max_evals=10,
         device=device,
         noise_level=noise_level,
         base_results_dir=os.path.join(results_dir, "multi_tree"),
@@ -204,7 +204,8 @@ def main():
     datasets_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
                               'data_handling', 'storage')
     datasets = [d for d in os.listdir(datasets_dir) if os.path.isdir(os.path.join(datasets_dir, d))]
-    datasets = ['breast_cancer_wisconsin']
+    #remove vehicle and sleep
+    datasets = [d for d in datasets if d not in ['vehicle', 'sleep']]
     # Define configurations
     configurations = [
         (False, False),  # Base
@@ -238,7 +239,7 @@ def main():
                 # Run pipeline with current configuration
                 run_dataset_pipeline(
                     dataset,
-                    noise_level=0.0,
+                    noise_level=0.3,
                     device='cpu',
                     results_dir=results_dir,
                     bagging=bagging,

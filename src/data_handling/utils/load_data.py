@@ -235,5 +235,5 @@ def shuffle_labels(labels, noise_level=0.15, num_classes=None, *, rng=None):
     # Apply corruption
     labels[corrupt_idx] = random_labels
     logging.info(f"Corrupted {n_corrupt}/{n} labels ({noise_level*100:.1f}%)")
-    print(f"Shuffled {n_corrupt}/{n} labels ({noise_level*100:.1f}%)")
+    #print(f"Shuffled {n_corrupt}/{n} labels ({noise_level*100:.1f}%)")
     return labels

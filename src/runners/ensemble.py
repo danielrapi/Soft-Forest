@@ -142,8 +142,6 @@ def evaluate_ensemble(all_preds, test_dataloader, num_classes):
         auc = roc_auc_score(true_labels, avg_probs[:, 1])
     
     # Calculate baseline (majority class)
-    print(true_labels)
-    print(stats.mode(true_labels, axis = 0))
     baseline = accuracy_score(true_labels, np.full(true_labels.shape, stats.mode(true_labels, axis = 0)[0]))
     
     return {
