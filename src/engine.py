@@ -5,7 +5,7 @@ This is the engine for the soft_trees. This will be for the PyTorch Implementati
 '''
 
 #################################################################################
-
+from sklearn.preprocessing import label_binarize
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -164,7 +164,9 @@ def evaluate(model, test_loader, criterion, device):
     # Handle multi-class AUC calculation
     if all_probs.shape[1] > 2:
         # Use macro averaging for multi-class
-        auc = roc_auc_score(all_labels, all_probs, multi_class='ovr', average='macro')
+        classes = np.arange(all_probs.shape[1])
+        all_labels_bin = label_binarize(all_labels, classes=classes)
+        auc = roc_auc_score(all_labels_bin, all_probs, multi_class='ovr', average='macro')
     else:
         # For binary classification, use the probability of class 1
         auc = roc_auc_score(all_labels, all_probs[:, 1])
