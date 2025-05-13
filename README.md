@@ -4,7 +4,7 @@ This repository contains the implementation of Soft Forests, a novel approach th
 
 ## Overview
 
-Soft Forests explores the impact of incorporating classic random forest techniques—namely subset feature selection, bagging, and bootstrapping—into soft ensembles. The goal is to understand whether these ideas, originally designed for hard decision trees, can enhance the performance, robustness, or diversity of soft ensemble methods.
+Soft Forests explores the impact of incorporating classic random forest techniques, namely subset feature selection, bagging, and bootstrapping into soft ensembles. The goal is to understand whether these ideas, originally designed for hard decision trees, can enhance the performance, robustness, or diversity of soft ensemble methods.
 
 Key features:
 - Implementation of soft decision trees with differentiable sigmoid-based splits in pytorch
