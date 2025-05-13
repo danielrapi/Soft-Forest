@@ -1,0 +1,13 @@
+{
+  "params": {
+    "batch_size": 64,
+    "epochs": 15.0,
+    "learning_rate": 0.014187239054126678,
+    "max_depth": 7.0
+  },
+  "accuracy": 0.7352941176470589,
+  "loss": 0.7831694682439169,
+  "auc": 0.9104387236027861,
+  "results_dir": "outputs/pipeline/sleep/base/run_20250501_004311/single_tree/sleep_20250501_004311",
+  "noise_level": 0.3
+}

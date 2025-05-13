@@ -1,8 +1,5 @@
 /venv/
 /datasets.h5
-/outputs/single_run/*
-/outputs/hyperopt_single/*
-/outputs/hyperopt_multi/*
 /data/__pycache__
 /data/utils/__pycache__/*
 /data/__pycache__/*
@@ -23,7 +20,11 @@ __pycache__/
 .coverage
 htmlcov/
 
-outputs/*
+/outputs/hyperopt_multi
+/outputs/hyperopt_single
+/outputs/single_tree
+/outputs/single_run
+/outputs/tables
 
 src/__pycache__/*
 src/data/__pycache__/*
@@ -41,3 +42,4 @@ _OG_FASTEL/
 _Archive/
 _OG_FASTEL/*
 _Archive/*
+

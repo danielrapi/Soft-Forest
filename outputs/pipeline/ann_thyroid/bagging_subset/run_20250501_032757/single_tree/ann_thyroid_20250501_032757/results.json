@@ -1,0 +1,13 @@
+{
+  "params": {
+    "batch_size": 128,
+    "epochs": 5.0,
+    "learning_rate": 0.08497777919301919,
+    "max_depth": 3.0
+  },
+  "accuracy": 0.9714285714285714,
+  "loss": 0.3479530066251755,
+  "auc": 0.982336956521739,
+  "results_dir": "outputs/pipeline/ann_thyroid/bagging_subset/run_20250501_032757/single_tree/ann_thyroid_20250501_032757",
+  "noise_level": 0.3
+}

@@ -1,0 +1,14 @@
+{
+  "params": {
+    "batch_size": 256,
+    "epochs": 10.0,
+    "learning_rate": 0.032266678519392356,
+    "max_depth": 7.0,
+    "num_trees": 10.0
+  },
+  "accuracy": 0.859,
+  "auc": 0.7958288955490055,
+  "baseline": 0.859,
+  "results_dir": "outputs/pipeline/churn/base/run_20250501_110403/multi_tree/churn_20250501_110426",
+  "noise_level": 0.3
+}

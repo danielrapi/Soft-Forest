@@ -1,0 +1,26 @@
+{
+    "dataset": "churn",
+    "noise_level": 0.3,
+    "bagging": false,
+    "subset_selection": false,
+    "single_tree_params": {
+        "batch_size": 256,
+        "epochs": 10.0,
+        "learning_rate": 0.032266678519392356,
+        "max_depth": 7.0
+    },
+    "multi_tree_params": {
+        "batch_size": 256,
+        "epochs": 10.0,
+        "learning_rate": 0.032266678519392356,
+        "max_depth": 7.0,
+        "num_trees": 10.0
+    },
+    "final_results": {
+        "loss": 0.14100000000000001,
+        "accuracy": 0.859,
+        "auc": 0.8159041933965769,
+        "baseline": 0.859,
+        "execution_time": 0.453357986609141
+    }
+}

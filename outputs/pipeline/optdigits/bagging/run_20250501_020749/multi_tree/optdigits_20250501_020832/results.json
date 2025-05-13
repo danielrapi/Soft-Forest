@@ -1,0 +1,14 @@
+{
+  "params": {
+    "batch_size": 32,
+    "epochs": 15.0,
+    "learning_rate": 0.007298980742643463,
+    "max_depth": 3.0,
+    "num_trees": 20.0
+  },
+  "accuracy": 0.9590747330960854,
+  "auc": 0.9975040450923445,
+  "baseline": 0.10142348754448399,
+  "results_dir": "outputs/pipeline/optdigits/bagging/run_20250501_020749/multi_tree/optdigits_20250501_020832",
+  "noise_level": 0.3
+}

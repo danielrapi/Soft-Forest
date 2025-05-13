@@ -1,0 +1,15 @@
+{
+  "params": {
+    "batch_size": 128,
+    "epochs": 10.0,
+    "learning_rate": 0.07714855819215487,
+    "max_depth": 5.0,
+    "num_trees": 10.0,
+    "subset_share": 0.7139925670263929
+  },
+  "accuracy": 0.9571428571428572,
+  "auc": 0.9678442028985507,
+  "baseline": 0.6571428571428571,
+  "results_dir": "outputs/pipeline/breast_cancer_wisconsin/subset/run_20250501_005504/multi_tree/breast_cancer_wisconsin_20250501_005526",
+  "noise_level": 0.3
+}

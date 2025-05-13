@@ -1,0 +1,13 @@
+{
+  "params": {
+    "batch_size": 256,
+    "epochs": 5.0,
+    "learning_rate": 0.07685085434346595,
+    "max_depth": 7.0
+  },
+  "accuracy": 0.9642857142857143,
+  "loss": 0.34625425934791565,
+  "auc": 0.9739583333333331,
+  "results_dir": "outputs/pipeline/dermatology/base/run_20250501_105916/single_tree/dermatology_20250501_105916",
+  "noise_level": 0.3
+}

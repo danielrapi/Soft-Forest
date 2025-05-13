@@ -1,0 +1,40 @@
+2025-05-01 00:43:56,786 [INFO] Starting hyperparameter optimization with 10 trials
+2025-05-01 00:43:56,787 [INFO] build_posterior_wrapper took 0.000262 seconds
+2025-05-01 00:43:56,787 [INFO] TPE using 0 trials
+2025-05-01 00:43:56,788 [INFO] Trial params: num_trees=20, max_depth=7, lr=0.014187, batch_size=64, epochs=15, bootstrap=False, subset_selection=False
+2025-05-01 00:43:58,272 [INFO] Corrupted 20334/67780 labels (30.0%)
+2025-05-01 00:43:58,288 [INFO] Running ensemble experiment with 20 trees
+2025-05-01 00:43:58,289 [INFO] Dataset: sleep
+2025-05-01 00:43:58,289 [INFO] Input dimensions: 231, Number of classes: 5
+2025-05-01 00:43:58,289 [INFO] Batch size: 64, Max depth: 7
+2025-05-01 00:43:58,289 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:58,289 [INFO] Training tree 1/20
+2025-05-01 00:43:58,299 [INFO] Running on a: cpu
+2025-05-01 00:44:19,210 [INFO] Epoch [1/15], Training Loss: 1.3274, Accuracy: 0.5079 | Test Loss: 0.9666, Test Accuracy: 0.7105, Test AUC: 0.8678
+2025-05-01 00:44:40,189 [INFO] Epoch [2/15], Training Loss: 1.3011, Accuracy: 0.5238 | Test Loss: 0.9609, Test Accuracy: 0.7063, Test AUC: 0.8713
+2025-05-01 00:45:00,684 [INFO] Epoch [3/15], Training Loss: 1.2915, Accuracy: 0.5297 | Test Loss: 0.9418, Test Accuracy: 0.7079, Test AUC: 0.8690
+2025-05-01 00:45:21,743 [INFO] Epoch [4/15], Training Loss: 1.2853, Accuracy: 0.5338 | Test Loss: 0.9470, Test Accuracy: 0.7079, Test AUC: 0.8632
+2025-05-01 00:45:41,766 [INFO] Epoch [5/15], Training Loss: 1.2783, Accuracy: 0.5372 | Test Loss: 0.9555, Test Accuracy: 0.7014, Test AUC: 0.8638
+2025-05-01 00:46:01,057 [INFO] Epoch [6/15], Training Loss: 1.2728, Accuracy: 0.5420 | Test Loss: 0.9595, Test Accuracy: 0.6967, Test AUC: 0.8586
+2025-05-01 00:46:20,691 [INFO] Epoch [7/15], Training Loss: 1.2617, Accuracy: 0.5456 | Test Loss: 0.9639, Test Accuracy: 0.6982, Test AUC: 0.8550
+2025-05-01 00:46:41,036 [INFO] Epoch [8/15], Training Loss: 1.2552, Accuracy: 0.5494 | Test Loss: 0.9689, Test Accuracy: 0.6939, Test AUC: 0.8565
+2025-05-01 00:47:00,461 [INFO] Epoch [9/15], Training Loss: 1.2482, Accuracy: 0.5538 | Test Loss: 0.9669, Test Accuracy: 0.6932, Test AUC: 0.8541
+2025-05-01 00:47:20,582 [INFO] Epoch [10/15], Training Loss: 1.2439, Accuracy: 0.5566 | Test Loss: 0.9782, Test Accuracy: 0.6885, Test AUC: 0.8492
+2025-05-01 00:47:41,211 [INFO] Epoch [11/15], Training Loss: 1.2378, Accuracy: 0.5594 | Test Loss: 0.9799, Test Accuracy: 0.6886, Test AUC: 0.8444
+2025-05-01 00:48:00,655 [INFO] Epoch [12/15], Training Loss: 1.2317, Accuracy: 0.5612 | Test Loss: 1.0048, Test Accuracy: 0.6862, Test AUC: 0.8391
+2025-05-01 00:48:20,522 [INFO] Epoch [13/15], Training Loss: 1.2272, Accuracy: 0.5646 | Test Loss: 0.9961, Test Accuracy: 0.6804, Test AUC: 0.8379
+2025-05-01 00:48:40,383 [INFO] Epoch [14/15], Training Loss: 1.2230, Accuracy: 0.5653 | Test Loss: 1.0050, Test Accuracy: 0.6833, Test AUC: 0.8350
+2025-05-01 00:49:00,031 [INFO] Epoch [15/15], Training Loss: 1.2175, Accuracy: 0.5693 | Test Loss: 0.9981, Test Accuracy: 0.6797, Test AUC: 0.8344
+2025-05-01 00:49:01,275 [INFO] Training tree 2/20
+2025-05-01 00:49:01,284 [INFO] Running on a: cpu
+2025-05-01 00:49:21,618 [INFO] Epoch [1/15], Training Loss: 1.3330, Accuracy: 0.5047 | Test Loss: 0.9674, Test Accuracy: 0.7069, Test AUC: 0.8639
+2025-05-01 00:49:41,495 [INFO] Epoch [2/15], Training Loss: 1.3028, Accuracy: 0.5245 | Test Loss: 0.9662, Test Accuracy: 0.7112, Test AUC: 0.8611
+2025-05-01 00:50:01,047 [INFO] Epoch [3/15], Training Loss: 1.2928, Accuracy: 0.5285 | Test Loss: 0.9599, Test Accuracy: 0.7023, Test AUC: 0.8628
+2025-05-01 00:50:20,061 [INFO] Epoch [4/15], Training Loss: 1.2849, Accuracy: 0.5330 | Test Loss: 0.9621, Test Accuracy: 0.7014, Test AUC: 0.8588
+2025-05-01 00:50:39,149 [INFO] Epoch [5/15], Training Loss: 1.2768, Accuracy: 0.5358 | Test Loss: 0.9682, Test Accuracy: 0.7005, Test AUC: 0.8542
+2025-05-01 00:50:58,479 [INFO] Epoch [6/15], Training Loss: 1.2693, Accuracy: 0.5388 | Test Loss: 0.9667, Test Accuracy: 0.6916, Test AUC: 0.8547
+2025-05-01 00:51:18,206 [INFO] Epoch [7/15], Training Loss: 1.2605, Accuracy: 0.5451 | Test Loss: 0.9720, Test Accuracy: 0.6833, Test AUC: 0.8473
+2025-05-01 00:51:37,330 [INFO] Epoch [8/15], Training Loss: 1.2544, Accuracy: 0.5486 | Test Loss: 0.9879, Test Accuracy: 0.6868, Test AUC: 0.8445
+2025-05-01 00:51:56,713 [INFO] Epoch [9/15], Training Loss: 1.2471, Accuracy: 0.5509 | Test Loss: 0.9861, Test Accuracy: 0.6821, Test AUC: 0.8408
+2025-05-01 00:52:15,793 [INFO] Epoch [10/15], Training Loss: 1.2405, Accuracy: 0.5537 | Test Loss: 0.9851, Test Accuracy: 0.6838, Test AUC: 0.8370
+2025-05-01 00:52:35,298 [INFO] Epoch [11/15], Training Loss: 1.2332, Accuracy: 0.5579 | Test Loss: 0.9918, Test Accuracy: 0.6813, Test AUC: 0.8355

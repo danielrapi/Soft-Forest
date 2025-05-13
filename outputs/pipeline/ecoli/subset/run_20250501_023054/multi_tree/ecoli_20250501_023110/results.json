@@ -1,0 +1,15 @@
+{
+  "params": {
+    "batch_size": 64,
+    "epochs": 15.0,
+    "learning_rate": 0.021937319475844916,
+    "max_depth": 5.0,
+    "num_trees": 20.0,
+    "subset_share": 0.48349745378735065
+  },
+  "accuracy": 0.8484848484848485,
+  "auc": 0.9807368109240764,
+  "baseline": 0.4393939393939394,
+  "results_dir": "outputs/pipeline/ecoli/subset/run_20250501_023054/multi_tree/ecoli_20250501_023110",
+  "noise_level": 0.3
+}

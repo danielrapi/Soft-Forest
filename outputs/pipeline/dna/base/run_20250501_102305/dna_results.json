@@ -1,0 +1,26 @@
+{
+    "dataset": "dna",
+    "noise_level": 0.3,
+    "bagging": false,
+    "subset_selection": false,
+    "single_tree_params": {
+        "batch_size": 32,
+        "epochs": 15.0,
+        "learning_rate": 0.015395611608504842,
+        "max_depth": 5.0
+    },
+    "multi_tree_params": {
+        "batch_size": 32,
+        "epochs": 15.0,
+        "learning_rate": 0.015395611608504842,
+        "max_depth": 5.0,
+        "num_trees": 50.0
+    },
+    "final_results": {
+        "loss": 0.11128526645768022,
+        "accuracy": 0.8887147335423198,
+        "auc": 0.9714222506522815,
+        "baseline": 0.5188087774294671,
+        "execution_time": 4.121415921052297
+    }
+}

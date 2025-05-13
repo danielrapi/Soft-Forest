@@ -1,0 +1,14 @@
+{
+  "params": {
+    "batch_size": 256,
+    "epochs": 20.0,
+    "learning_rate": 0.048316589263969846,
+    "max_depth": 4.0,
+    "num_trees": 25.0
+  },
+  "accuracy": 0.9594594594594594,
+  "auc": 0.9985831093189964,
+  "baseline": 0.3108108108108108,
+  "results_dir": "outputs/pipeline/dermatology/bagging/run_20250501_110014/multi_tree/dermatology_20250501_110036",
+  "noise_level": 0.3
+}

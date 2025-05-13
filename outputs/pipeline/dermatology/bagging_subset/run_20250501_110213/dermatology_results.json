@@ -1,0 +1,27 @@
+{
+    "dataset": "dermatology",
+    "noise_level": 0.3,
+    "bagging": true,
+    "subset_selection": true,
+    "single_tree_params": {
+        "batch_size": 64,
+        "epochs": 10.0,
+        "learning_rate": 0.04530800854604705,
+        "max_depth": 5.0
+    },
+    "multi_tree_params": {
+        "batch_size": 64,
+        "epochs": 10.0,
+        "learning_rate": 0.04530800854604705,
+        "max_depth": 5.0,
+        "num_trees": 20.0,
+        "subset_share": 0.8360372971167813
+    },
+    "final_results": {
+        "loss": 0.04054054054054057,
+        "accuracy": 0.9594594594594594,
+        "auc": 0.9946656586021505,
+        "baseline": 0.3108108108108108,
+        "execution_time": 0.08087999820709228
+    }
+}

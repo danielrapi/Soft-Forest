@@ -1,0 +1,27 @@
+{
+    "dataset": "nursery",
+    "noise_level": 0.3,
+    "bagging": true,
+    "subset_selection": true,
+    "single_tree_params": {
+        "batch_size": 64,
+        "epochs": 5.0,
+        "learning_rate": 0.024043537535294247,
+        "max_depth": 7.0
+    },
+    "multi_tree_params": {
+        "batch_size": 64,
+        "epochs": 5.0,
+        "learning_rate": 0.024043537535294247,
+        "max_depth": 7.0,
+        "num_trees": 20.0,
+        "subset_share": 0.7937704965455517
+    },
+    "final_results": {
+        "loss": 0.023919753086419804,
+        "accuracy": 0.9760802469135802,
+        "auc": 0.9986502805646118,
+        "baseline": 0.3333333333333333,
+        "execution_time": 4.592586115996043
+    }
+}

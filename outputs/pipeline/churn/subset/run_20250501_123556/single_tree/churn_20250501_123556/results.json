@@ -1,0 +1,13 @@
+{
+  "params": {
+    "batch_size": 32,
+    "epochs": 5.0,
+    "learning_rate": 0.06851876146813245,
+    "max_depth": 4.0
+  },
+  "accuracy": 0.9714285714285714,
+  "loss": 0.359653502702713,
+  "auc": 0.9479166666666667,
+  "results_dir": "outputs/pipeline/churn/subset/run_20250501_123556/single_tree/churn_20250501_123556",
+  "noise_level": 0.3
+}

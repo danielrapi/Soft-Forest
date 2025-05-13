@@ -1,0 +1,13 @@
+{
+  "params": {
+    "batch_size": 128,
+    "epochs": 10.0,
+    "learning_rate": 0.021124564628442498,
+    "max_depth": 3.0
+  },
+  "accuracy": 0.9642857142857143,
+  "loss": 0.32934707403182983,
+  "auc": 0.9945652173913043,
+  "results_dir": "outputs/pipeline/hypothyroid/base/run_20250501_010418/single_tree/hypothyroid_20250501_010418",
+  "noise_level": 0.3
+}

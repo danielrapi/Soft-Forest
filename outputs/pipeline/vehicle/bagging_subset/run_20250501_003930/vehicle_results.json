@@ -1,0 +1,27 @@
+{
+    "dataset": "vehicle",
+    "noise_level": 0.3,
+    "bagging": true,
+    "subset_selection": true,
+    "single_tree_params": {
+        "batch_size": 64,
+        "epochs": 15.0,
+        "learning_rate": 0.02188882641493783,
+        "max_depth": 5.0
+    },
+    "multi_tree_params": {
+        "batch_size": 64,
+        "epochs": 15.0,
+        "learning_rate": 0.02188882641493783,
+        "max_depth": 5.0,
+        "num_trees": 20.0,
+        "subset_share": 0.8329328751779808
+    },
+    "final_results": {
+        "loss": 0.30000000000000004,
+        "accuracy": 0.7,
+        "auc": 0.9010548045704295,
+        "baseline": 0.25882352941176473,
+        "execution_time": 0.23656110366185507
+    }
+}

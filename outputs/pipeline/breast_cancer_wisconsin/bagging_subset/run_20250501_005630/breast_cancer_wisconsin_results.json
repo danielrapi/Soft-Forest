@@ -1,0 +1,27 @@
+{
+    "dataset": "breast_cancer_wisconsin",
+    "noise_level": 0.3,
+    "bagging": true,
+    "subset_selection": true,
+    "single_tree_params": {
+        "batch_size": 32,
+        "epochs": 5.0,
+        "learning_rate": 0.04563971852111635,
+        "max_depth": 7.0
+    },
+    "multi_tree_params": {
+        "batch_size": 32,
+        "epochs": 5.0,
+        "learning_rate": 0.04563971852111635,
+        "max_depth": 7.0,
+        "num_trees": 45.0,
+        "subset_share": 0.1405378961124958
+    },
+    "final_results": {
+        "loss": 0.050000000000000044,
+        "accuracy": 0.95,
+        "auc": 0.9841485507246377,
+        "baseline": 0.6571428571428571,
+        "execution_time": 0.9755173961321513
+    }
+}

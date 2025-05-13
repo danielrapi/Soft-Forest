@@ -1,0 +1,13 @@
+{
+  "params": {
+    "batch_size": 64,
+    "epochs": 20.0,
+    "learning_rate": 0.01686033813545456,
+    "max_depth": 5.0
+  },
+  "accuracy": 0.7588235294117647,
+  "loss": 0.7404860059420267,
+  "auc": 0.9147406239593739,
+  "results_dir": "outputs/pipeline/vehicle/base/run_20250501_000220/single_tree/vehicle_20250501_000220",
+  "noise_level": 0.3
+}

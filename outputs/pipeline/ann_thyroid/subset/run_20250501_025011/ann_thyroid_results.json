@@ -1,0 +1,27 @@
+{
+    "dataset": "ann_thyroid",
+    "noise_level": 0.3,
+    "bagging": false,
+    "subset_selection": true,
+    "single_tree_params": {
+        "batch_size": 32,
+        "epochs": 5.0,
+        "learning_rate": 0.06862388860085235,
+        "max_depth": 6.0
+    },
+    "multi_tree_params": {
+        "batch_size": 32,
+        "epochs": 5.0,
+        "learning_rate": 0.06862388860085235,
+        "max_depth": 6.0,
+        "num_trees": 45.0,
+        "subset_share": 0.19783884475815006
+    },
+    "final_results": {
+        "loss": 0.018750000000000044,
+        "accuracy": 0.98125,
+        "auc": 0.9966659073428076,
+        "baseline": 0.9256944444444445,
+        "execution_time": 4.733720366160075
+    }
+}

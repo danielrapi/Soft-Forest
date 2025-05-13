@@ -1,0 +1,783 @@
+2025-05-01 00:43:11,114 [INFO] Starting hyperparameter optimization with 30 trials
+2025-05-01 00:43:11,116 [INFO] build_posterior_wrapper took 0.000538 seconds
+2025-05-01 00:43:11,116 [INFO] TPE using 0 trials
+2025-05-01 00:43:11,116 [INFO] Trial parameters: depth=6, lr=0.00457421929206882, batch=32, epochs=5
+2025-05-01 00:43:11,116 [INFO] Running single tree experiment
+2025-05-01 00:43:11,116 [INFO] Dataset: sleep
+2025-05-01 00:43:11,116 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:11,117 [INFO] Batch size: 32, Max depth: 6
+2025-05-01 00:43:11,117 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:11,121 [INFO] Created Soft Tree Model
+2025-05-01 00:43:11,121 [INFO] Running on a: cpu
+2025-05-01 00:43:11,266 [INFO] Epoch [1/5], Training Loss: 1.3825, Accuracy: 0.3037 | Test Loss: 1.3697, Test Accuracy: 0.3882, Test AUC: 0.7089
+2025-05-01 00:43:11,408 [INFO] Epoch [2/5], Training Loss: 1.3684, Accuracy: 0.3852 | Test Loss: 1.3466, Test Accuracy: 0.4412, Test AUC: 0.6939
+2025-05-01 00:43:11,552 [INFO] Epoch [3/5], Training Loss: 1.3523, Accuracy: 0.4074 | Test Loss: 1.3241, Test Accuracy: 0.4882, Test AUC: 0.7034
+2025-05-01 00:43:11,694 [INFO] Epoch [4/5], Training Loss: 1.3379, Accuracy: 0.4278 | Test Loss: 1.3012, Test Accuracy: 0.5059, Test AUC: 0.7259
+2025-05-01 00:43:11,836 [INFO] Epoch [5/5], Training Loss: 1.3227, Accuracy: 0.4333 | Test Loss: 1.2770, Test Accuracy: 0.5353, Test AUC: 0.7516
+2025-05-01 00:43:11,836 [INFO] Training completed in 0.01 minutes
+2025-05-01 00:43:11,837 [INFO] build_posterior_wrapper took 0.000535 seconds
+2025-05-01 00:43:11,838 [INFO] TPE using 1/1 trials with best loss -0.535294
+2025-05-01 00:43:11,838 [INFO] Trial parameters: depth=8, lr=0.0018411778737797233, batch=128, epochs=20
+2025-05-01 00:43:11,838 [INFO] Running single tree experiment
+2025-05-01 00:43:11,838 [INFO] Dataset: sleep
+2025-05-01 00:43:11,838 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:11,838 [INFO] Batch size: 128, Max depth: 8
+2025-05-01 00:43:11,839 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:11,855 [INFO] Created Soft Tree Model
+2025-05-01 00:43:11,855 [INFO] Running on a: cpu
+2025-05-01 00:43:12,036 [INFO] Epoch [1/20], Training Loss: 1.3844, Accuracy: 0.3241 | Test Loss: 1.3817, Test Accuracy: 0.3941, Test AUC: 0.6986
+2025-05-01 00:43:12,214 [INFO] Epoch [2/20], Training Loss: 1.3821, Accuracy: 0.3722 | Test Loss: 1.3785, Test Accuracy: 0.4000, Test AUC: 0.7011
+2025-05-01 00:43:12,402 [INFO] Epoch [3/20], Training Loss: 1.3802, Accuracy: 0.3907 | Test Loss: 1.3750, Test Accuracy: 0.4176, Test AUC: 0.7043
+2025-05-01 00:43:12,593 [INFO] Epoch [4/20], Training Loss: 1.3784, Accuracy: 0.3926 | Test Loss: 1.3714, Test Accuracy: 0.4529, Test AUC: 0.7074
+2025-05-01 00:43:12,767 [INFO] Epoch [5/20], Training Loss: 1.3752, Accuracy: 0.3963 | Test Loss: 1.3676, Test Accuracy: 0.4471, Test AUC: 0.7085
+2025-05-01 00:43:12,942 [INFO] Epoch [6/20], Training Loss: 1.3724, Accuracy: 0.3981 | Test Loss: 1.3636, Test Accuracy: 0.4706, Test AUC: 0.7102
+2025-05-01 00:43:13,118 [INFO] Epoch [7/20], Training Loss: 1.3715, Accuracy: 0.4037 | Test Loss: 1.3592, Test Accuracy: 0.4824, Test AUC: 0.7117
+2025-05-01 00:43:13,294 [INFO] Epoch [8/20], Training Loss: 1.3673, Accuracy: 0.4019 | Test Loss: 1.3546, Test Accuracy: 0.4706, Test AUC: 0.7140
+2025-05-01 00:43:13,474 [INFO] Epoch [9/20], Training Loss: 1.3643, Accuracy: 0.4093 | Test Loss: 1.3498, Test Accuracy: 0.4706, Test AUC: 0.7157
+2025-05-01 00:43:13,651 [INFO] Epoch [10/20], Training Loss: 1.3602, Accuracy: 0.4111 | Test Loss: 1.3447, Test Accuracy: 0.4647, Test AUC: 0.7202
+2025-05-01 00:43:13,829 [INFO] Epoch [11/20], Training Loss: 1.3559, Accuracy: 0.4204 | Test Loss: 1.3393, Test Accuracy: 0.4706, Test AUC: 0.7243
+2025-05-01 00:43:14,070 [INFO] Epoch [12/20], Training Loss: 1.3537, Accuracy: 0.4093 | Test Loss: 1.3336, Test Accuracy: 0.4647, Test AUC: 0.7270
+2025-05-01 00:43:14,245 [INFO] Epoch [13/20], Training Loss: 1.3557, Accuracy: 0.4130 | Test Loss: 1.3279, Test Accuracy: 0.4588, Test AUC: 0.7303
+2025-05-01 00:43:14,422 [INFO] Epoch [14/20], Training Loss: 1.3523, Accuracy: 0.4167 | Test Loss: 1.3223, Test Accuracy: 0.4647, Test AUC: 0.7332
+2025-05-01 00:43:14,597 [INFO] Epoch [15/20], Training Loss: 1.3474, Accuracy: 0.4130 | Test Loss: 1.3167, Test Accuracy: 0.4588, Test AUC: 0.7369
+2025-05-01 00:43:14,777 [INFO] Epoch [16/20], Training Loss: 1.3383, Accuracy: 0.4111 | Test Loss: 1.3112, Test Accuracy: 0.4706, Test AUC: 0.7419
+2025-05-01 00:43:14,954 [INFO] Epoch [17/20], Training Loss: 1.3385, Accuracy: 0.4167 | Test Loss: 1.3055, Test Accuracy: 0.4706, Test AUC: 0.7454
+2025-05-01 00:43:15,130 [INFO] Epoch [18/20], Training Loss: 1.3384, Accuracy: 0.4222 | Test Loss: 1.2997, Test Accuracy: 0.4941, Test AUC: 0.7478
+2025-05-01 00:43:15,308 [INFO] Epoch [19/20], Training Loss: 1.3281, Accuracy: 0.4278 | Test Loss: 1.2940, Test Accuracy: 0.5000, Test AUC: 0.7510
+2025-05-01 00:43:15,488 [INFO] Epoch [20/20], Training Loss: 1.3245, Accuracy: 0.4352 | Test Loss: 1.2880, Test Accuracy: 0.5118, Test AUC: 0.7545
+2025-05-01 00:43:15,490 [INFO] Training completed in 0.06 minutes
+2025-05-01 00:43:15,492 [INFO] build_posterior_wrapper took 0.000542 seconds
+2025-05-01 00:43:15,493 [INFO] TPE using 2/2 trials with best loss -0.535294
+2025-05-01 00:43:15,493 [INFO] Trial parameters: depth=5, lr=0.08761529896659835, batch=128, epochs=15
+2025-05-01 00:43:15,493 [INFO] Running single tree experiment
+2025-05-01 00:43:15,493 [INFO] Dataset: sleep
+2025-05-01 00:43:15,493 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:15,493 [INFO] Batch size: 128, Max depth: 5
+2025-05-01 00:43:15,494 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:15,496 [INFO] Created Soft Tree Model
+2025-05-01 00:43:15,496 [INFO] Running on a: cpu
+2025-05-01 00:43:15,522 [INFO] Epoch [1/15], Training Loss: 1.3636, Accuracy: 0.3000 | Test Loss: 1.2494, Test Accuracy: 0.4294, Test AUC: 0.7207
+2025-05-01 00:43:15,547 [INFO] Epoch [2/15], Training Loss: 1.2934, Accuracy: 0.3704 | Test Loss: 1.1384, Test Accuracy: 0.5294, Test AUC: 0.8135
+2025-05-01 00:43:15,571 [INFO] Epoch [3/15], Training Loss: 1.2203, Accuracy: 0.4870 | Test Loss: 0.9994, Test Accuracy: 0.5941, Test AUC: 0.8610
+2025-05-01 00:43:15,596 [INFO] Epoch [4/15], Training Loss: 1.1725, Accuracy: 0.4944 | Test Loss: 0.8851, Test Accuracy: 0.6235, Test AUC: 0.8838
+2025-05-01 00:43:15,622 [INFO] Epoch [5/15], Training Loss: 1.1494, Accuracy: 0.5278 | Test Loss: 0.8376, Test Accuracy: 0.6824, Test AUC: 0.8953
+2025-05-01 00:43:15,647 [INFO] Epoch [6/15], Training Loss: 1.0813, Accuracy: 0.5407 | Test Loss: 0.7887, Test Accuracy: 0.6941, Test AUC: 0.8959
+2025-05-01 00:43:15,673 [INFO] Epoch [7/15], Training Loss: 1.0722, Accuracy: 0.5463 | Test Loss: 0.7523, Test Accuracy: 0.7059, Test AUC: 0.9098
+2025-05-01 00:43:15,698 [INFO] Epoch [8/15], Training Loss: 1.0485, Accuracy: 0.5685 | Test Loss: 0.7476, Test Accuracy: 0.7118, Test AUC: 0.9091
+2025-05-01 00:43:15,723 [INFO] Epoch [9/15], Training Loss: 0.9888, Accuracy: 0.5833 | Test Loss: 0.7016, Test Accuracy: 0.6941, Test AUC: 0.9073
+2025-05-01 00:43:15,748 [INFO] Epoch [10/15], Training Loss: 0.9900, Accuracy: 0.5907 | Test Loss: 0.7237, Test Accuracy: 0.7176, Test AUC: 0.9042
+2025-05-01 00:43:15,773 [INFO] Epoch [11/15], Training Loss: 0.9984, Accuracy: 0.6148 | Test Loss: 0.7307, Test Accuracy: 0.7235, Test AUC: 0.8979
+2025-05-01 00:43:15,797 [INFO] Epoch [12/15], Training Loss: 0.9466, Accuracy: 0.6074 | Test Loss: 0.6865, Test Accuracy: 0.7294, Test AUC: 0.9041
+2025-05-01 00:43:15,823 [INFO] Epoch [13/15], Training Loss: 0.9956, Accuracy: 0.6111 | Test Loss: 0.6854, Test Accuracy: 0.7235, Test AUC: 0.9020
+2025-05-01 00:43:15,847 [INFO] Epoch [14/15], Training Loss: 0.8878, Accuracy: 0.6167 | Test Loss: 0.6976, Test Accuracy: 0.7059, Test AUC: 0.8927
+2025-05-01 00:43:15,872 [INFO] Epoch [15/15], Training Loss: 0.9005, Accuracy: 0.6296 | Test Loss: 0.6928, Test Accuracy: 0.6882, Test AUC: 0.8904
+2025-05-01 00:43:15,873 [INFO] Training completed in 0.01 minutes
+2025-05-01 00:43:15,874 [INFO] build_posterior_wrapper took 0.000545 seconds
+2025-05-01 00:43:15,874 [INFO] TPE using 3/3 trials with best loss -0.688235
+2025-05-01 00:43:15,874 [INFO] Trial parameters: depth=6, lr=0.08589066129589543, batch=32, epochs=15
+2025-05-01 00:43:15,874 [INFO] Running single tree experiment
+2025-05-01 00:43:15,874 [INFO] Dataset: sleep
+2025-05-01 00:43:15,874 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:15,875 [INFO] Batch size: 32, Max depth: 6
+2025-05-01 00:43:15,875 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:15,879 [INFO] Created Soft Tree Model
+2025-05-01 00:43:15,879 [INFO] Running on a: cpu
+2025-05-01 00:43:16,024 [INFO] Epoch [1/15], Training Loss: 1.3209, Accuracy: 0.3574 | Test Loss: 1.0416, Test Accuracy: 0.6353, Test AUC: 0.8720
+2025-05-01 00:43:16,169 [INFO] Epoch [2/15], Training Loss: 1.1670, Accuracy: 0.5111 | Test Loss: 0.8556, Test Accuracy: 0.6294, Test AUC: 0.8819
+2025-05-01 00:43:16,312 [INFO] Epoch [3/15], Training Loss: 1.1127, Accuracy: 0.5259 | Test Loss: 0.8049, Test Accuracy: 0.6706, Test AUC: 0.8937
+2025-05-01 00:43:16,456 [INFO] Epoch [4/15], Training Loss: 1.0596, Accuracy: 0.5685 | Test Loss: 0.7664, Test Accuracy: 0.7059, Test AUC: 0.8985
+2025-05-01 00:43:16,601 [INFO] Epoch [5/15], Training Loss: 1.0280, Accuracy: 0.5796 | Test Loss: 0.7753, Test Accuracy: 0.7000, Test AUC: 0.8999
+2025-05-01 00:43:16,743 [INFO] Epoch [6/15], Training Loss: 0.9988, Accuracy: 0.5778 | Test Loss: 0.7598, Test Accuracy: 0.7235, Test AUC: 0.8981
+2025-05-01 00:43:16,886 [INFO] Epoch [7/15], Training Loss: 0.9627, Accuracy: 0.6148 | Test Loss: 0.8670, Test Accuracy: 0.6294, Test AUC: 0.8606
+2025-05-01 00:43:17,031 [INFO] Epoch [8/15], Training Loss: 0.9532, Accuracy: 0.6037 | Test Loss: 0.7677, Test Accuracy: 0.6824, Test AUC: 0.9017
+2025-05-01 00:43:17,178 [INFO] Epoch [9/15], Training Loss: 0.9153, Accuracy: 0.6278 | Test Loss: 0.8081, Test Accuracy: 0.7235, Test AUC: 0.8829
+2025-05-01 00:43:17,321 [INFO] Epoch [10/15], Training Loss: 0.8809, Accuracy: 0.6315 | Test Loss: 0.7989, Test Accuracy: 0.7118, Test AUC: 0.8784
+2025-05-01 00:43:17,464 [INFO] Epoch [11/15], Training Loss: 0.8782, Accuracy: 0.6537 | Test Loss: 0.9410, Test Accuracy: 0.6235, Test AUC: 0.8314
+2025-05-01 00:43:17,606 [INFO] Epoch [12/15], Training Loss: 0.9127, Accuracy: 0.6333 | Test Loss: 0.8335, Test Accuracy: 0.6941, Test AUC: 0.8788
+2025-05-01 00:43:17,749 [INFO] Epoch [13/15], Training Loss: 0.8833, Accuracy: 0.6444 | Test Loss: 0.8383, Test Accuracy: 0.6882, Test AUC: 0.8740
+2025-05-01 00:43:17,892 [INFO] Epoch [14/15], Training Loss: 0.8354, Accuracy: 0.6741 | Test Loss: 0.8756, Test Accuracy: 0.6706, Test AUC: 0.8596
+2025-05-01 00:43:18,035 [INFO] Epoch [15/15], Training Loss: 0.8144, Accuracy: 0.6963 | Test Loss: 0.8761, Test Accuracy: 0.6706, Test AUC: 0.8661
+2025-05-01 00:43:18,035 [INFO] Training completed in 0.04 minutes
+2025-05-01 00:43:18,036 [INFO] build_posterior_wrapper took 0.000540 seconds
+2025-05-01 00:43:18,036 [INFO] TPE using 4/4 trials with best loss -0.688235
+2025-05-01 00:43:18,037 [INFO] Trial parameters: depth=6, lr=0.01829543773970055, batch=64, epochs=15
+2025-05-01 00:43:18,037 [INFO] Running single tree experiment
+2025-05-01 00:43:18,037 [INFO] Dataset: sleep
+2025-05-01 00:43:18,037 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:18,037 [INFO] Batch size: 64, Max depth: 6
+2025-05-01 00:43:18,037 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:18,041 [INFO] Created Soft Tree Model
+2025-05-01 00:43:18,041 [INFO] Running on a: cpu
+2025-05-01 00:43:18,121 [INFO] Epoch [1/15], Training Loss: 1.3791, Accuracy: 0.2722 | Test Loss: 1.3432, Test Accuracy: 0.4765, Test AUC: 0.7027
+2025-05-01 00:43:18,201 [INFO] Epoch [2/15], Training Loss: 1.3468, Accuracy: 0.4074 | Test Loss: 1.2875, Test Accuracy: 0.4765, Test AUC: 0.7419
+2025-05-01 00:43:18,290 [INFO] Epoch [3/15], Training Loss: 1.3067, Accuracy: 0.4407 | Test Loss: 1.2293, Test Accuracy: 0.5059, Test AUC: 0.7940
+2025-05-01 00:43:18,370 [INFO] Epoch [4/15], Training Loss: 1.2697, Accuracy: 0.4611 | Test Loss: 1.1499, Test Accuracy: 0.5471, Test AUC: 0.8405
+2025-05-01 00:43:18,448 [INFO] Epoch [5/15], Training Loss: 1.2218, Accuracy: 0.5259 | Test Loss: 1.0626, Test Accuracy: 0.6353, Test AUC: 0.8846
+2025-05-01 00:43:18,526 [INFO] Epoch [6/15], Training Loss: 1.1923, Accuracy: 0.5500 | Test Loss: 0.9768, Test Accuracy: 0.6882, Test AUC: 0.8944
+2025-05-01 00:43:18,604 [INFO] Epoch [7/15], Training Loss: 1.1433, Accuracy: 0.5556 | Test Loss: 0.9201, Test Accuracy: 0.6588, Test AUC: 0.9040
+2025-05-01 00:43:18,682 [INFO] Epoch [8/15], Training Loss: 1.1027, Accuracy: 0.5722 | Test Loss: 0.8773, Test Accuracy: 0.7118, Test AUC: 0.9084
+2025-05-01 00:43:18,760 [INFO] Epoch [9/15], Training Loss: 1.0744, Accuracy: 0.5815 | Test Loss: 0.8412, Test Accuracy: 0.7000, Test AUC: 0.9111
+2025-05-01 00:43:18,840 [INFO] Epoch [10/15], Training Loss: 1.0714, Accuracy: 0.5907 | Test Loss: 0.8138, Test Accuracy: 0.7059, Test AUC: 0.9101
+2025-05-01 00:43:18,918 [INFO] Epoch [11/15], Training Loss: 1.0446, Accuracy: 0.5852 | Test Loss: 0.7948, Test Accuracy: 0.7176, Test AUC: 0.9110
+2025-05-01 00:43:18,995 [INFO] Epoch [12/15], Training Loss: 1.0305, Accuracy: 0.5907 | Test Loss: 0.7769, Test Accuracy: 0.7294, Test AUC: 0.9130
+2025-05-01 00:43:19,074 [INFO] Epoch [13/15], Training Loss: 1.0309, Accuracy: 0.5907 | Test Loss: 0.7663, Test Accuracy: 0.7294, Test AUC: 0.9134
+2025-05-01 00:43:19,153 [INFO] Epoch [14/15], Training Loss: 1.0228, Accuracy: 0.5926 | Test Loss: 0.7625, Test Accuracy: 0.7235, Test AUC: 0.9120
+2025-05-01 00:43:19,230 [INFO] Epoch [15/15], Training Loss: 1.0132, Accuracy: 0.6093 | Test Loss: 0.7609, Test Accuracy: 0.7294, Test AUC: 0.9134
+2025-05-01 00:43:19,231 [INFO] Training completed in 0.02 minutes
+2025-05-01 00:43:19,232 [INFO] build_posterior_wrapper took 0.000541 seconds
+2025-05-01 00:43:19,232 [INFO] TPE using 5/5 trials with best loss -0.729412
+2025-05-01 00:43:19,233 [INFO] Trial parameters: depth=5, lr=0.003530625923985158, batch=32, epochs=15
+2025-05-01 00:43:19,233 [INFO] Running single tree experiment
+2025-05-01 00:43:19,233 [INFO] Dataset: sleep
+2025-05-01 00:43:19,233 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:19,233 [INFO] Batch size: 32, Max depth: 5
+2025-05-01 00:43:19,233 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:19,235 [INFO] Created Soft Tree Model
+2025-05-01 00:43:19,235 [INFO] Running on a: cpu
+2025-05-01 00:43:19,310 [INFO] Epoch [1/15], Training Loss: 1.3822, Accuracy: 0.3222 | Test Loss: 1.3710, Test Accuracy: 0.4059, Test AUC: 0.6718
+2025-05-01 00:43:19,388 [INFO] Epoch [2/15], Training Loss: 1.3721, Accuracy: 0.3926 | Test Loss: 1.3564, Test Accuracy: 0.4412, Test AUC: 0.6934
+2025-05-01 00:43:19,465 [INFO] Epoch [3/15], Training Loss: 1.3619, Accuracy: 0.3870 | Test Loss: 1.3385, Test Accuracy: 0.4235, Test AUC: 0.7050
+2025-05-01 00:43:19,541 [INFO] Epoch [4/15], Training Loss: 1.3506, Accuracy: 0.4074 | Test Loss: 1.3189, Test Accuracy: 0.4412, Test AUC: 0.7259
+2025-05-01 00:43:19,615 [INFO] Epoch [5/15], Training Loss: 1.3395, Accuracy: 0.4074 | Test Loss: 1.2991, Test Accuracy: 0.4588, Test AUC: 0.7414
+2025-05-01 00:43:19,688 [INFO] Epoch [6/15], Training Loss: 1.3271, Accuracy: 0.4407 | Test Loss: 1.2782, Test Accuracy: 0.4882, Test AUC: 0.7652
+2025-05-01 00:43:19,763 [INFO] Epoch [7/15], Training Loss: 1.3147, Accuracy: 0.4463 | Test Loss: 1.2561, Test Accuracy: 0.5176, Test AUC: 0.7873
+2025-05-01 00:43:19,837 [INFO] Epoch [8/15], Training Loss: 1.3015, Accuracy: 0.4667 | Test Loss: 1.2308, Test Accuracy: 0.5235, Test AUC: 0.8123
+2025-05-01 00:43:19,914 [INFO] Epoch [9/15], Training Loss: 1.2873, Accuracy: 0.4778 | Test Loss: 1.2009, Test Accuracy: 0.5588, Test AUC: 0.8392
+2025-05-01 00:43:19,992 [INFO] Epoch [10/15], Training Loss: 1.2700, Accuracy: 0.4981 | Test Loss: 1.1721, Test Accuracy: 0.5882, Test AUC: 0.8582
+2025-05-01 00:43:20,079 [INFO] Epoch [11/15], Training Loss: 1.2536, Accuracy: 0.4963 | Test Loss: 1.1430, Test Accuracy: 0.6118, Test AUC: 0.8732
+2025-05-01 00:43:20,153 [INFO] Epoch [12/15], Training Loss: 1.2367, Accuracy: 0.5148 | Test Loss: 1.1163, Test Accuracy: 0.6471, Test AUC: 0.8788
+2025-05-01 00:43:20,227 [INFO] Epoch [13/15], Training Loss: 1.2217, Accuracy: 0.5167 | Test Loss: 1.0896, Test Accuracy: 0.6647, Test AUC: 0.8840
+2025-05-01 00:43:20,300 [INFO] Epoch [14/15], Training Loss: 1.2061, Accuracy: 0.5185 | Test Loss: 1.0625, Test Accuracy: 0.6647, Test AUC: 0.8883
+2025-05-01 00:43:20,374 [INFO] Epoch [15/15], Training Loss: 1.1929, Accuracy: 0.5241 | Test Loss: 1.0381, Test Accuracy: 0.6706, Test AUC: 0.8899
+2025-05-01 00:43:20,374 [INFO] Training completed in 0.02 minutes
+2025-05-01 00:43:20,375 [INFO] build_posterior_wrapper took 0.000538 seconds
+2025-05-01 00:43:20,375 [INFO] TPE using 6/6 trials with best loss -0.729412
+2025-05-01 00:43:20,375 [INFO] Trial parameters: depth=4, lr=0.047577496124018646, batch=64, epochs=15
+2025-05-01 00:43:20,376 [INFO] Running single tree experiment
+2025-05-01 00:43:20,376 [INFO] Dataset: sleep
+2025-05-01 00:43:20,376 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:20,376 [INFO] Batch size: 64, Max depth: 4
+2025-05-01 00:43:20,376 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:20,377 [INFO] Created Soft Tree Model
+2025-05-01 00:43:20,377 [INFO] Running on a: cpu
+2025-05-01 00:43:20,400 [INFO] Epoch [1/15], Training Loss: 1.3720, Accuracy: 0.3000 | Test Loss: 1.2895, Test Accuracy: 0.3882, Test AUC: 0.7335
+2025-05-01 00:43:20,423 [INFO] Epoch [2/15], Training Loss: 1.2966, Accuracy: 0.4444 | Test Loss: 1.1712, Test Accuracy: 0.5235, Test AUC: 0.8104
+2025-05-01 00:43:20,445 [INFO] Epoch [3/15], Training Loss: 1.2260, Accuracy: 0.4667 | Test Loss: 1.0417, Test Accuracy: 0.5765, Test AUC: 0.8542
+2025-05-01 00:43:20,467 [INFO] Epoch [4/15], Training Loss: 1.1631, Accuracy: 0.5093 | Test Loss: 0.9398, Test Accuracy: 0.6353, Test AUC: 0.8830
+2025-05-01 00:43:20,490 [INFO] Epoch [5/15], Training Loss: 1.1213, Accuracy: 0.5278 | Test Loss: 0.8683, Test Accuracy: 0.6529, Test AUC: 0.8825
+2025-05-01 00:43:20,513 [INFO] Epoch [6/15], Training Loss: 1.1011, Accuracy: 0.5278 | Test Loss: 0.8426, Test Accuracy: 0.6529, Test AUC: 0.8948
+2025-05-01 00:43:20,536 [INFO] Epoch [7/15], Training Loss: 1.0950, Accuracy: 0.5574 | Test Loss: 0.7984, Test Accuracy: 0.6882, Test AUC: 0.8944
+2025-05-01 00:43:20,559 [INFO] Epoch [8/15], Training Loss: 1.0659, Accuracy: 0.5722 | Test Loss: 0.7980, Test Accuracy: 0.6765, Test AUC: 0.8960
+2025-05-01 00:43:20,581 [INFO] Epoch [9/15], Training Loss: 1.0509, Accuracy: 0.5852 | Test Loss: 0.7983, Test Accuracy: 0.6765, Test AUC: 0.8888
+2025-05-01 00:43:20,604 [INFO] Epoch [10/15], Training Loss: 1.0251, Accuracy: 0.5907 | Test Loss: 0.7779, Test Accuracy: 0.7118, Test AUC: 0.8909
+2025-05-01 00:43:20,627 [INFO] Epoch [11/15], Training Loss: 0.9979, Accuracy: 0.5852 | Test Loss: 0.7963, Test Accuracy: 0.6588, Test AUC: 0.8911
+2025-05-01 00:43:20,649 [INFO] Epoch [12/15], Training Loss: 1.0021, Accuracy: 0.5926 | Test Loss: 0.7764, Test Accuracy: 0.6647, Test AUC: 0.8907
+2025-05-01 00:43:20,672 [INFO] Epoch [13/15], Training Loss: 0.9900, Accuracy: 0.5981 | Test Loss: 0.7717, Test Accuracy: 0.6706, Test AUC: 0.8945
+2025-05-01 00:43:20,694 [INFO] Epoch [14/15], Training Loss: 0.9954, Accuracy: 0.5963 | Test Loss: 0.7577, Test Accuracy: 0.6588, Test AUC: 0.8943
+2025-05-01 00:43:20,717 [INFO] Epoch [15/15], Training Loss: 0.9803, Accuracy: 0.5981 | Test Loss: 0.7676, Test Accuracy: 0.6647, Test AUC: 0.8877
+2025-05-01 00:43:20,717 [INFO] Training completed in 0.01 minutes
+2025-05-01 00:43:20,718 [INFO] build_posterior_wrapper took 0.000545 seconds
+2025-05-01 00:43:20,718 [INFO] TPE using 7/7 trials with best loss -0.729412
+2025-05-01 00:43:20,718 [INFO] Trial parameters: depth=3, lr=0.0022385317256641392, batch=64, epochs=10
+2025-05-01 00:43:20,718 [INFO] Running single tree experiment
+2025-05-01 00:43:20,718 [INFO] Dataset: sleep
+2025-05-01 00:43:20,719 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:20,719 [INFO] Batch size: 64, Max depth: 3
+2025-05-01 00:43:20,719 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:20,719 [INFO] Created Soft Tree Model
+2025-05-01 00:43:20,719 [INFO] Running on a: cpu
+2025-05-01 00:43:20,734 [INFO] Epoch [1/10], Training Loss: 1.3890, Accuracy: 0.1722 | Test Loss: 1.3891, Test Accuracy: 0.1882, Test AUC: 0.3942
+2025-05-01 00:43:20,748 [INFO] Epoch [2/10], Training Loss: 1.3864, Accuracy: 0.2426 | Test Loss: 1.3868, Test Accuracy: 0.3118, Test AUC: 0.4977
+2025-05-01 00:43:20,763 [INFO] Epoch [3/10], Training Loss: 1.3852, Accuracy: 0.2833 | Test Loss: 1.3847, Test Accuracy: 0.2529, Test AUC: 0.5946
+2025-05-01 00:43:20,776 [INFO] Epoch [4/10], Training Loss: 1.3832, Accuracy: 0.2685 | Test Loss: 1.3826, Test Accuracy: 0.2824, Test AUC: 0.6483
+2025-05-01 00:43:20,791 [INFO] Epoch [5/10], Training Loss: 1.3817, Accuracy: 0.2704 | Test Loss: 1.3801, Test Accuracy: 0.3059, Test AUC: 0.6635
+2025-05-01 00:43:20,805 [INFO] Epoch [6/10], Training Loss: 1.3797, Accuracy: 0.2796 | Test Loss: 1.3769, Test Accuracy: 0.3059, Test AUC: 0.6728
+2025-05-01 00:43:20,828 [INFO] Epoch [7/10], Training Loss: 1.3780, Accuracy: 0.3000 | Test Loss: 1.3729, Test Accuracy: 0.3176, Test AUC: 0.6767
+2025-05-01 00:43:20,847 [INFO] Epoch [8/10], Training Loss: 1.3746, Accuracy: 0.2981 | Test Loss: 1.3682, Test Accuracy: 0.3412, Test AUC: 0.6774
+2025-05-01 00:43:20,861 [INFO] Epoch [9/10], Training Loss: 1.3689, Accuracy: 0.3056 | Test Loss: 1.3627, Test Accuracy: 0.3647, Test AUC: 0.6813
+2025-05-01 00:43:20,878 [INFO] Epoch [10/10], Training Loss: 1.3671, Accuracy: 0.3315 | Test Loss: 1.3560, Test Accuracy: 0.3588, Test AUC: 0.6810
+2025-05-01 00:43:20,879 [INFO] Training completed in 0.00 minutes
+2025-05-01 00:43:20,879 [INFO] build_posterior_wrapper took 0.000564 seconds
+2025-05-01 00:43:20,880 [INFO] TPE using 8/8 trials with best loss -0.729412
+2025-05-01 00:43:20,880 [INFO] Trial parameters: depth=5, lr=0.0065817072236508505, batch=128, epochs=10
+2025-05-01 00:43:20,880 [INFO] Running single tree experiment
+2025-05-01 00:43:20,880 [INFO] Dataset: sleep
+2025-05-01 00:43:20,880 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:20,880 [INFO] Batch size: 128, Max depth: 5
+2025-05-01 00:43:20,880 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:20,883 [INFO] Created Soft Tree Model
+2025-05-01 00:43:20,883 [INFO] Running on a: cpu
+2025-05-01 00:43:20,910 [INFO] Epoch [1/10], Training Loss: 1.3855, Accuracy: 0.2463 | Test Loss: 1.3774, Test Accuracy: 0.3235, Test AUC: 0.6817
+2025-05-01 00:43:20,937 [INFO] Epoch [2/10], Training Loss: 1.3781, Accuracy: 0.3130 | Test Loss: 1.3679, Test Accuracy: 0.3471, Test AUC: 0.6949
+2025-05-01 00:43:20,963 [INFO] Epoch [3/10], Training Loss: 1.3730, Accuracy: 0.3500 | Test Loss: 1.3578, Test Accuracy: 0.4235, Test AUC: 0.7023
+2025-05-01 00:43:20,988 [INFO] Epoch [4/10], Training Loss: 1.3651, Accuracy: 0.3907 | Test Loss: 1.3466, Test Accuracy: 0.4412, Test AUC: 0.7082
+2025-05-01 00:43:21,013 [INFO] Epoch [5/10], Training Loss: 1.3535, Accuracy: 0.4093 | Test Loss: 1.3336, Test Accuracy: 0.4588, Test AUC: 0.7173
+2025-05-01 00:43:21,038 [INFO] Epoch [6/10], Training Loss: 1.3493, Accuracy: 0.4130 | Test Loss: 1.3189, Test Accuracy: 0.4765, Test AUC: 0.7300
+2025-05-01 00:43:21,064 [INFO] Epoch [7/10], Training Loss: 1.3421, Accuracy: 0.4222 | Test Loss: 1.3033, Test Accuracy: 0.4765, Test AUC: 0.7412
+2025-05-01 00:43:21,091 [INFO] Epoch [8/10], Training Loss: 1.3316, Accuracy: 0.4352 | Test Loss: 1.2869, Test Accuracy: 0.4824, Test AUC: 0.7531
+2025-05-01 00:43:21,117 [INFO] Epoch [9/10], Training Loss: 1.3137, Accuracy: 0.4389 | Test Loss: 1.2689, Test Accuracy: 0.5059, Test AUC: 0.7682
+2025-05-01 00:43:21,142 [INFO] Epoch [10/10], Training Loss: 1.3103, Accuracy: 0.4519 | Test Loss: 1.2494, Test Accuracy: 0.5353, Test AUC: 0.7842
+2025-05-01 00:43:21,143 [INFO] Training completed in 0.00 minutes
+2025-05-01 00:43:21,144 [INFO] build_posterior_wrapper took 0.000534 seconds
+2025-05-01 00:43:21,144 [INFO] TPE using 9/9 trials with best loss -0.729412
+2025-05-01 00:43:21,144 [INFO] Trial parameters: depth=6, lr=0.0017263852933681368, batch=128, epochs=10
+2025-05-01 00:43:21,144 [INFO] Running single tree experiment
+2025-05-01 00:43:21,144 [INFO] Dataset: sleep
+2025-05-01 00:43:21,145 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:21,145 [INFO] Batch size: 128, Max depth: 6
+2025-05-01 00:43:21,145 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:21,149 [INFO] Created Soft Tree Model
+2025-05-01 00:43:21,149 [INFO] Running on a: cpu
+2025-05-01 00:43:21,241 [INFO] Epoch [1/10], Training Loss: 1.3867, Accuracy: 0.2519 | Test Loss: 1.3848, Test Accuracy: 0.3000, Test AUC: 0.5351
+2025-05-01 00:43:21,331 [INFO] Epoch [2/10], Training Loss: 1.3841, Accuracy: 0.3000 | Test Loss: 1.3822, Test Accuracy: 0.2882, Test AUC: 0.5895
+2025-05-01 00:43:21,430 [INFO] Epoch [3/10], Training Loss: 1.3832, Accuracy: 0.3037 | Test Loss: 1.3796, Test Accuracy: 0.2941, Test AUC: 0.6381
+2025-05-01 00:43:21,515 [INFO] Epoch [4/10], Training Loss: 1.3811, Accuracy: 0.3056 | Test Loss: 1.3771, Test Accuracy: 0.3059, Test AUC: 0.6758
+2025-05-01 00:43:21,582 [INFO] Epoch [5/10], Training Loss: 1.3791, Accuracy: 0.3111 | Test Loss: 1.3745, Test Accuracy: 0.3294, Test AUC: 0.6873
+2025-05-01 00:43:21,650 [INFO] Epoch [6/10], Training Loss: 1.3770, Accuracy: 0.3259 | Test Loss: 1.3717, Test Accuracy: 0.3353, Test AUC: 0.6958
+2025-05-01 00:43:21,787 [INFO] Epoch [7/10], Training Loss: 1.3765, Accuracy: 0.3370 | Test Loss: 1.3687, Test Accuracy: 0.3412, Test AUC: 0.7019
+2025-05-01 00:43:21,845 [INFO] Epoch [8/10], Training Loss: 1.3728, Accuracy: 0.3389 | Test Loss: 1.3655, Test Accuracy: 0.3529, Test AUC: 0.7076
+2025-05-01 00:43:21,896 [INFO] Epoch [9/10], Training Loss: 1.3709, Accuracy: 0.3537 | Test Loss: 1.3621, Test Accuracy: 0.3765, Test AUC: 0.7155
+2025-05-01 00:43:21,949 [INFO] Epoch [10/10], Training Loss: 1.3693, Accuracy: 0.3741 | Test Loss: 1.3582, Test Accuracy: 0.4118, Test AUC: 0.7203
+2025-05-01 00:43:21,950 [INFO] Training completed in 0.01 minutes
+2025-05-01 00:43:21,951 [INFO] build_posterior_wrapper took 0.000582 seconds
+2025-05-01 00:43:21,951 [INFO] TPE using 10/10 trials with best loss -0.729412
+2025-05-01 00:43:21,952 [INFO] Trial parameters: depth=6, lr=0.001085957743609995, batch=64, epochs=10
+2025-05-01 00:43:21,952 [INFO] Running single tree experiment
+2025-05-01 00:43:21,952 [INFO] Dataset: sleep
+2025-05-01 00:43:21,952 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:21,952 [INFO] Batch size: 64, Max depth: 6
+2025-05-01 00:43:21,952 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:21,957 [INFO] Created Soft Tree Model
+2025-05-01 00:43:21,958 [INFO] Running on a: cpu
+2025-05-01 00:43:22,051 [INFO] Epoch [1/10], Training Loss: 1.3860, Accuracy: 0.2259 | Test Loss: 1.3843, Test Accuracy: 0.3588, Test AUC: 0.6664
+2025-05-01 00:43:22,134 [INFO] Epoch [2/10], Training Loss: 1.3847, Accuracy: 0.3148 | Test Loss: 1.3825, Test Accuracy: 0.3706, Test AUC: 0.7338
+2025-05-01 00:43:22,273 [INFO] Epoch [3/10], Training Loss: 1.3835, Accuracy: 0.3648 | Test Loss: 1.3807, Test Accuracy: 0.4588, Test AUC: 0.7499
+2025-05-01 00:43:22,412 [INFO] Epoch [4/10], Training Loss: 1.3819, Accuracy: 0.3907 | Test Loss: 1.3789, Test Accuracy: 0.4412, Test AUC: 0.7584
+2025-05-01 00:43:22,513 [INFO] Epoch [5/10], Training Loss: 1.3806, Accuracy: 0.3944 | Test Loss: 1.3769, Test Accuracy: 0.4294, Test AUC: 0.7546
+2025-05-01 00:43:22,610 [INFO] Epoch [6/10], Training Loss: 1.3787, Accuracy: 0.3907 | Test Loss: 1.3748, Test Accuracy: 0.4353, Test AUC: 0.7526
+2025-05-01 00:43:22,701 [INFO] Epoch [7/10], Training Loss: 1.3773, Accuracy: 0.4000 | Test Loss: 1.3723, Test Accuracy: 0.4588, Test AUC: 0.7506
+2025-05-01 00:43:22,786 [INFO] Epoch [8/10], Training Loss: 1.3756, Accuracy: 0.4056 | Test Loss: 1.3696, Test Accuracy: 0.4647, Test AUC: 0.7494
+2025-05-01 00:43:22,868 [INFO] Epoch [9/10], Training Loss: 1.3737, Accuracy: 0.4130 | Test Loss: 1.3666, Test Accuracy: 0.4765, Test AUC: 0.7469
+2025-05-01 00:43:22,950 [INFO] Epoch [10/10], Training Loss: 1.3717, Accuracy: 0.4204 | Test Loss: 1.3633, Test Accuracy: 0.4824, Test AUC: 0.7447
+2025-05-01 00:43:22,951 [INFO] Training completed in 0.02 minutes
+2025-05-01 00:43:22,952 [INFO] build_posterior_wrapper took 0.000554 seconds
+2025-05-01 00:43:22,952 [INFO] TPE using 11/11 trials with best loss -0.729412
+2025-05-01 00:43:22,953 [INFO] Trial parameters: depth=5, lr=0.0032770639167799816, batch=64, epochs=5
+2025-05-01 00:43:22,953 [INFO] Running single tree experiment
+2025-05-01 00:43:22,953 [INFO] Dataset: sleep
+2025-05-01 00:43:22,953 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:22,953 [INFO] Batch size: 64, Max depth: 5
+2025-05-01 00:43:22,953 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:22,955 [INFO] Created Soft Tree Model
+2025-05-01 00:43:22,955 [INFO] Running on a: cpu
+2025-05-01 00:43:23,000 [INFO] Epoch [1/5], Training Loss: 1.3856, Accuracy: 0.2741 | Test Loss: 1.3810, Test Accuracy: 0.3353, Test AUC: 0.6584
+2025-05-01 00:43:23,043 [INFO] Epoch [2/5], Training Loss: 1.3799, Accuracy: 0.3667 | Test Loss: 1.3735, Test Accuracy: 0.4412, Test AUC: 0.6817
+2025-05-01 00:43:23,085 [INFO] Epoch [3/5], Training Loss: 1.3748, Accuracy: 0.4000 | Test Loss: 1.3645, Test Accuracy: 0.4706, Test AUC: 0.6946
+2025-05-01 00:43:23,128 [INFO] Epoch [4/5], Training Loss: 1.3674, Accuracy: 0.4093 | Test Loss: 1.3546, Test Accuracy: 0.4588, Test AUC: 0.7051
+2025-05-01 00:43:23,172 [INFO] Epoch [5/5], Training Loss: 1.3633, Accuracy: 0.4222 | Test Loss: 1.3432, Test Accuracy: 0.4706, Test AUC: 0.7138
+2025-05-01 00:43:23,172 [INFO] Training completed in 0.00 minutes
+2025-05-01 00:43:23,173 [INFO] build_posterior_wrapper took 0.000537 seconds
+2025-05-01 00:43:23,174 [INFO] TPE using 12/12 trials with best loss -0.729412
+2025-05-01 00:43:23,174 [INFO] Trial parameters: depth=4, lr=0.023866474047764676, batch=64, epochs=10
+2025-05-01 00:43:23,174 [INFO] Running single tree experiment
+2025-05-01 00:43:23,174 [INFO] Dataset: sleep
+2025-05-01 00:43:23,174 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:23,174 [INFO] Batch size: 64, Max depth: 4
+2025-05-01 00:43:23,174 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:23,176 [INFO] Created Soft Tree Model
+2025-05-01 00:43:23,176 [INFO] Running on a: cpu
+2025-05-01 00:43:23,200 [INFO] Epoch [1/10], Training Loss: 1.3809, Accuracy: 0.2796 | Test Loss: 1.3499, Test Accuracy: 0.4471, Test AUC: 0.6663
+2025-05-01 00:43:23,223 [INFO] Epoch [2/10], Training Loss: 1.3468, Accuracy: 0.4111 | Test Loss: 1.2896, Test Accuracy: 0.4706, Test AUC: 0.7216
+2025-05-01 00:43:23,246 [INFO] Epoch [3/10], Training Loss: 1.3070, Accuracy: 0.4537 | Test Loss: 1.2228, Test Accuracy: 0.5471, Test AUC: 0.7695
+2025-05-01 00:43:23,269 [INFO] Epoch [4/10], Training Loss: 1.2665, Accuracy: 0.4889 | Test Loss: 1.1459, Test Accuracy: 0.5941, Test AUC: 0.8352
+2025-05-01 00:43:23,295 [INFO] Epoch [5/10], Training Loss: 1.2154, Accuracy: 0.5037 | Test Loss: 1.0529, Test Accuracy: 0.6471, Test AUC: 0.8860
+2025-05-01 00:43:23,325 [INFO] Epoch [6/10], Training Loss: 1.1729, Accuracy: 0.5111 | Test Loss: 0.9695, Test Accuracy: 0.6706, Test AUC: 0.8913
+2025-05-01 00:43:23,351 [INFO] Epoch [7/10], Training Loss: 1.1289, Accuracy: 0.5426 | Test Loss: 0.9001, Test Accuracy: 0.7176, Test AUC: 0.9090
+2025-05-01 00:43:23,384 [INFO] Epoch [8/10], Training Loss: 1.0996, Accuracy: 0.5519 | Test Loss: 0.8417, Test Accuracy: 0.7176, Test AUC: 0.9118
+2025-05-01 00:43:23,411 [INFO] Epoch [9/10], Training Loss: 1.0655, Accuracy: 0.5537 | Test Loss: 0.8032, Test Accuracy: 0.7118, Test AUC: 0.9115
+2025-05-01 00:43:23,435 [INFO] Epoch [10/10], Training Loss: 1.0719, Accuracy: 0.5593 | Test Loss: 0.7755, Test Accuracy: 0.7118, Test AUC: 0.9135
+2025-05-01 00:43:23,435 [INFO] Training completed in 0.00 minutes
+2025-05-01 00:43:23,436 [INFO] build_posterior_wrapper took 0.000539 seconds
+2025-05-01 00:43:23,436 [INFO] TPE using 13/13 trials with best loss -0.729412
+2025-05-01 00:43:23,436 [INFO] Trial parameters: depth=3, lr=0.0027696439592273404, batch=256, epochs=10
+2025-05-01 00:43:23,437 [INFO] Running single tree experiment
+2025-05-01 00:43:23,437 [INFO] Dataset: sleep
+2025-05-01 00:43:23,437 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:23,437 [INFO] Batch size: 256, Max depth: 3
+2025-05-01 00:43:23,437 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:23,438 [INFO] Created Soft Tree Model
+2025-05-01 00:43:23,438 [INFO] Running on a: cpu
+2025-05-01 00:43:23,447 [INFO] Epoch [1/10], Training Loss: 1.3843, Accuracy: 0.2556 | Test Loss: 1.3848, Test Accuracy: 0.2824, Test AUC: 0.5398
+2025-05-01 00:43:23,474 [INFO] Epoch [2/10], Training Loss: 1.3839, Accuracy: 0.2648 | Test Loss: 1.3835, Test Accuracy: 0.3000, Test AUC: 0.5684
+2025-05-01 00:43:23,486 [INFO] Epoch [3/10], Training Loss: 1.3844, Accuracy: 0.2778 | Test Loss: 1.3821, Test Accuracy: 0.3118, Test AUC: 0.5871
+2025-05-01 00:43:23,514 [INFO] Epoch [4/10], Training Loss: 1.3829, Accuracy: 0.2981 | Test Loss: 1.3807, Test Accuracy: 0.3294, Test AUC: 0.6007
+2025-05-01 00:43:23,539 [INFO] Epoch [5/10], Training Loss: 1.3854, Accuracy: 0.3074 | Test Loss: 1.3792, Test Accuracy: 0.3647, Test AUC: 0.6146
+2025-05-01 00:43:23,558 [INFO] Epoch [6/10], Training Loss: 1.3820, Accuracy: 0.3222 | Test Loss: 1.3778, Test Accuracy: 0.3706, Test AUC: 0.6250
+2025-05-01 00:43:23,602 [INFO] Epoch [7/10], Training Loss: 1.3766, Accuracy: 0.3500 | Test Loss: 1.3763, Test Accuracy: 0.3824, Test AUC: 0.6359
+2025-05-01 00:43:23,616 [INFO] Epoch [8/10], Training Loss: 1.3797, Accuracy: 0.3481 | Test Loss: 1.3747, Test Accuracy: 0.3882, Test AUC: 0.6457
+2025-05-01 00:43:23,625 [INFO] Epoch [9/10], Training Loss: 1.3767, Accuracy: 0.3537 | Test Loss: 1.3730, Test Accuracy: 0.3941, Test AUC: 0.6589
+2025-05-01 00:43:23,639 [INFO] Epoch [10/10], Training Loss: 1.3745, Accuracy: 0.3593 | Test Loss: 1.3711, Test Accuracy: 0.3941, Test AUC: 0.6692
+2025-05-01 00:43:23,639 [INFO] Training completed in 0.00 minutes
+2025-05-01 00:43:23,640 [INFO] build_posterior_wrapper took 0.000592 seconds
+2025-05-01 00:43:23,640 [INFO] TPE using 14/14 trials with best loss -0.729412
+2025-05-01 00:43:23,641 [INFO] Trial parameters: depth=6, lr=0.015033513480186476, batch=64, epochs=20
+2025-05-01 00:43:23,641 [INFO] Running single tree experiment
+2025-05-01 00:43:23,641 [INFO] Dataset: sleep
+2025-05-01 00:43:23,641 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:23,641 [INFO] Batch size: 64, Max depth: 6
+2025-05-01 00:43:23,641 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:23,647 [INFO] Created Soft Tree Model
+2025-05-01 00:43:23,648 [INFO] Running on a: cpu
+2025-05-01 00:43:23,776 [INFO] Epoch [1/20], Training Loss: 1.3847, Accuracy: 0.2852 | Test Loss: 1.3624, Test Accuracy: 0.4118, Test AUC: 0.7043
+2025-05-01 00:43:23,884 [INFO] Epoch [2/20], Training Loss: 1.3594, Accuracy: 0.4037 | Test Loss: 1.3267, Test Accuracy: 0.5000, Test AUC: 0.7211
+2025-05-01 00:43:23,975 [INFO] Epoch [3/20], Training Loss: 1.3418, Accuracy: 0.4463 | Test Loss: 1.2812, Test Accuracy: 0.5118, Test AUC: 0.7442
+2025-05-01 00:43:24,062 [INFO] Epoch [4/20], Training Loss: 1.3073, Accuracy: 0.4648 | Test Loss: 1.2262, Test Accuracy: 0.5529, Test AUC: 0.7904
+2025-05-01 00:43:24,147 [INFO] Epoch [5/20], Training Loss: 1.2720, Accuracy: 0.4852 | Test Loss: 1.1633, Test Accuracy: 0.6176, Test AUC: 0.8549
+2025-05-01 00:43:24,242 [INFO] Epoch [6/20], Training Loss: 1.2336, Accuracy: 0.5259 | Test Loss: 1.0897, Test Accuracy: 0.6529, Test AUC: 0.8781
+2025-05-01 00:43:24,323 [INFO] Epoch [7/20], Training Loss: 1.1942, Accuracy: 0.5389 | Test Loss: 1.0242, Test Accuracy: 0.6588, Test AUC: 0.8877
+2025-05-01 00:43:24,402 [INFO] Epoch [8/20], Training Loss: 1.1545, Accuracy: 0.5481 | Test Loss: 0.9702, Test Accuracy: 0.6706, Test AUC: 0.9001
+2025-05-01 00:43:24,480 [INFO] Epoch [9/20], Training Loss: 1.1349, Accuracy: 0.5685 | Test Loss: 0.9147, Test Accuracy: 0.7059, Test AUC: 0.9045
+2025-05-01 00:43:24,558 [INFO] Epoch [10/20], Training Loss: 1.1026, Accuracy: 0.5759 | Test Loss: 0.8708, Test Accuracy: 0.6941, Test AUC: 0.9072
+2025-05-01 00:43:24,650 [INFO] Epoch [11/20], Training Loss: 1.0885, Accuracy: 0.5778 | Test Loss: 0.8433, Test Accuracy: 0.7059, Test AUC: 0.9083
+2025-05-01 00:43:24,748 [INFO] Epoch [12/20], Training Loss: 1.0574, Accuracy: 0.5926 | Test Loss: 0.8192, Test Accuracy: 0.7059, Test AUC: 0.9098
+2025-05-01 00:43:24,830 [INFO] Epoch [13/20], Training Loss: 1.0377, Accuracy: 0.6037 | Test Loss: 0.7975, Test Accuracy: 0.7118, Test AUC: 0.9119
+2025-05-01 00:43:24,910 [INFO] Epoch [14/20], Training Loss: 1.0304, Accuracy: 0.6019 | Test Loss: 0.7825, Test Accuracy: 0.7059, Test AUC: 0.9126
+2025-05-01 00:43:24,989 [INFO] Epoch [15/20], Training Loss: 1.0153, Accuracy: 0.6074 | Test Loss: 0.7719, Test Accuracy: 0.7059, Test AUC: 0.9127
+2025-05-01 00:43:25,069 [INFO] Epoch [16/20], Training Loss: 1.0154, Accuracy: 0.6148 | Test Loss: 0.7616, Test Accuracy: 0.7176, Test AUC: 0.9127
+2025-05-01 00:43:25,162 [INFO] Epoch [17/20], Training Loss: 0.9891, Accuracy: 0.6185 | Test Loss: 0.7541, Test Accuracy: 0.7235, Test AUC: 0.9126
+2025-05-01 00:43:25,257 [INFO] Epoch [18/20], Training Loss: 0.9915, Accuracy: 0.6296 | Test Loss: 0.7515, Test Accuracy: 0.7176, Test AUC: 0.9121
+2025-05-01 00:43:25,345 [INFO] Epoch [19/20], Training Loss: 0.9685, Accuracy: 0.6296 | Test Loss: 0.7429, Test Accuracy: 0.7235, Test AUC: 0.9119
+2025-05-01 00:43:25,496 [INFO] Epoch [20/20], Training Loss: 0.9642, Accuracy: 0.6296 | Test Loss: 0.7462, Test Accuracy: 0.7059, Test AUC: 0.9102
+2025-05-01 00:43:25,497 [INFO] Training completed in 0.03 minutes
+2025-05-01 00:43:25,498 [INFO] build_posterior_wrapper took 0.000707 seconds
+2025-05-01 00:43:25,498 [INFO] TPE using 15/15 trials with best loss -0.729412
+2025-05-01 00:43:25,499 [INFO] Trial parameters: depth=6, lr=0.0013786757539349774, batch=256, epochs=10
+2025-05-01 00:43:25,499 [INFO] Running single tree experiment
+2025-05-01 00:43:25,499 [INFO] Dataset: sleep
+2025-05-01 00:43:25,499 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:25,499 [INFO] Batch size: 256, Max depth: 6
+2025-05-01 00:43:25,500 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:25,506 [INFO] Created Soft Tree Model
+2025-05-01 00:43:25,506 [INFO] Running on a: cpu
+2025-05-01 00:43:25,549 [INFO] Epoch [1/10], Training Loss: 1.3851, Accuracy: 0.2796 | Test Loss: 1.3813, Test Accuracy: 0.3941, Test AUC: 0.6632
+2025-05-01 00:43:25,586 [INFO] Epoch [2/10], Training Loss: 1.3835, Accuracy: 0.3167 | Test Loss: 1.3803, Test Accuracy: 0.3882, Test AUC: 0.6973
+2025-05-01 00:43:25,633 [INFO] Epoch [3/10], Training Loss: 1.3823, Accuracy: 0.3296 | Test Loss: 1.3792, Test Accuracy: 0.3941, Test AUC: 0.7269
+2025-05-01 00:43:25,674 [INFO] Epoch [4/10], Training Loss: 1.3833, Accuracy: 0.3593 | Test Loss: 1.3780, Test Accuracy: 0.3941, Test AUC: 0.7415
+2025-05-01 00:43:25,709 [INFO] Epoch [5/10], Training Loss: 1.3815, Accuracy: 0.3574 | Test Loss: 1.3769, Test Accuracy: 0.3941, Test AUC: 0.7530
+2025-05-01 00:43:25,744 [INFO] Epoch [6/10], Training Loss: 1.3806, Accuracy: 0.3685 | Test Loss: 1.3757, Test Accuracy: 0.3941, Test AUC: 0.7564
+2025-05-01 00:43:25,777 [INFO] Epoch [7/10], Training Loss: 1.3821, Accuracy: 0.3648 | Test Loss: 1.3745, Test Accuracy: 0.3824, Test AUC: 0.7599
+2025-05-01 00:43:25,811 [INFO] Epoch [8/10], Training Loss: 1.3792, Accuracy: 0.3704 | Test Loss: 1.3734, Test Accuracy: 0.3882, Test AUC: 0.7576
+2025-05-01 00:43:25,850 [INFO] Epoch [9/10], Training Loss: 1.3788, Accuracy: 0.3926 | Test Loss: 1.3722, Test Accuracy: 0.4000, Test AUC: 0.7517
+2025-05-01 00:43:25,887 [INFO] Epoch [10/10], Training Loss: 1.3750, Accuracy: 0.3963 | Test Loss: 1.3711, Test Accuracy: 0.3941, Test AUC: 0.7458
+2025-05-01 00:43:25,887 [INFO] Training completed in 0.01 minutes
+2025-05-01 00:43:25,888 [INFO] build_posterior_wrapper took 0.000553 seconds
+2025-05-01 00:43:25,889 [INFO] TPE using 16/16 trials with best loss -0.729412
+2025-05-01 00:43:25,889 [INFO] Trial parameters: depth=7, lr=0.029962072751986077, batch=128, epochs=15
+2025-05-01 00:43:25,889 [INFO] Running single tree experiment
+2025-05-01 00:43:25,889 [INFO] Dataset: sleep
+2025-05-01 00:43:25,889 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:25,889 [INFO] Batch size: 128, Max depth: 7
+2025-05-01 00:43:25,889 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:25,899 [INFO] Created Soft Tree Model
+2025-05-01 00:43:25,899 [INFO] Running on a: cpu
+2025-05-01 00:43:26,005 [INFO] Epoch [1/15], Training Loss: 1.3692, Accuracy: 0.2926 | Test Loss: 1.3288, Test Accuracy: 0.4647, Test AUC: 0.7114
+2025-05-01 00:43:26,102 [INFO] Epoch [2/15], Training Loss: 1.3433, Accuracy: 0.4204 | Test Loss: 1.2707, Test Accuracy: 0.4706, Test AUC: 0.7301
+2025-05-01 00:43:26,196 [INFO] Epoch [3/15], Training Loss: 1.3077, Accuracy: 0.4593 | Test Loss: 1.2166, Test Accuracy: 0.5412, Test AUC: 0.7749
+2025-05-01 00:43:26,288 [INFO] Epoch [4/15], Training Loss: 1.2781, Accuracy: 0.4667 | Test Loss: 1.1581, Test Accuracy: 0.5412, Test AUC: 0.8052
+2025-05-01 00:43:26,379 [INFO] Epoch [5/15], Training Loss: 1.2290, Accuracy: 0.4852 | Test Loss: 1.0955, Test Accuracy: 0.5882, Test AUC: 0.8350
+2025-05-01 00:43:26,471 [INFO] Epoch [6/15], Training Loss: 1.2011, Accuracy: 0.5222 | Test Loss: 1.0374, Test Accuracy: 0.6118, Test AUC: 0.8760
+2025-05-01 00:43:26,568 [INFO] Epoch [7/15], Training Loss: 1.1624, Accuracy: 0.5352 | Test Loss: 0.9750, Test Accuracy: 0.6529, Test AUC: 0.8904
+2025-05-01 00:43:26,659 [INFO] Epoch [8/15], Training Loss: 1.1165, Accuracy: 0.5481 | Test Loss: 0.9188, Test Accuracy: 0.6529, Test AUC: 0.8992
+2025-05-01 00:43:26,749 [INFO] Epoch [9/15], Training Loss: 1.1340, Accuracy: 0.5500 | Test Loss: 0.8671, Test Accuracy: 0.6706, Test AUC: 0.9039
+2025-05-01 00:43:26,838 [INFO] Epoch [10/15], Training Loss: 1.0918, Accuracy: 0.5630 | Test Loss: 0.8311, Test Accuracy: 0.7059, Test AUC: 0.9057
+2025-05-01 00:43:26,927 [INFO] Epoch [11/15], Training Loss: 1.0621, Accuracy: 0.5796 | Test Loss: 0.8016, Test Accuracy: 0.7647, Test AUC: 0.9083
+2025-05-01 00:43:27,015 [INFO] Epoch [12/15], Training Loss: 1.0516, Accuracy: 0.5907 | Test Loss: 0.7896, Test Accuracy: 0.7118, Test AUC: 0.9087
+2025-05-01 00:43:27,104 [INFO] Epoch [13/15], Training Loss: 1.0533, Accuracy: 0.6037 | Test Loss: 0.7629, Test Accuracy: 0.7176, Test AUC: 0.9095
+2025-05-01 00:43:27,193 [INFO] Epoch [14/15], Training Loss: 1.0097, Accuracy: 0.6019 | Test Loss: 0.7532, Test Accuracy: 0.7235, Test AUC: 0.9086
+2025-05-01 00:43:27,281 [INFO] Epoch [15/15], Training Loss: 1.0025, Accuracy: 0.6148 | Test Loss: 0.7583, Test Accuracy: 0.7118, Test AUC: 0.9074
+2025-05-01 00:43:27,282 [INFO] Training completed in 0.02 minutes
+2025-05-01 00:43:27,284 [INFO] build_posterior_wrapper took 0.000535 seconds
+2025-05-01 00:43:27,284 [INFO] TPE using 17/17 trials with best loss -0.729412
+2025-05-01 00:43:27,284 [INFO] Trial parameters: depth=4, lr=0.005651484558682872, batch=32, epochs=10
+2025-05-01 00:43:27,284 [INFO] Running single tree experiment
+2025-05-01 00:43:27,285 [INFO] Dataset: sleep
+2025-05-01 00:43:27,285 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:27,285 [INFO] Batch size: 32, Max depth: 4
+2025-05-01 00:43:27,285 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:27,286 [INFO] Created Soft Tree Model
+2025-05-01 00:43:27,286 [INFO] Running on a: cpu
+2025-05-01 00:43:27,326 [INFO] Epoch [1/10], Training Loss: 1.3824, Accuracy: 0.2426 | Test Loss: 1.3686, Test Accuracy: 0.3059, Test AUC: 0.6705
+2025-05-01 00:43:27,366 [INFO] Epoch [2/10], Training Loss: 1.3692, Accuracy: 0.3500 | Test Loss: 1.3493, Test Accuracy: 0.4000, Test AUC: 0.6886
+2025-05-01 00:43:27,406 [INFO] Epoch [3/10], Training Loss: 1.3535, Accuracy: 0.3870 | Test Loss: 1.3220, Test Accuracy: 0.5000, Test AUC: 0.7126
+2025-05-01 00:43:27,445 [INFO] Epoch [4/10], Training Loss: 1.3361, Accuracy: 0.4130 | Test Loss: 1.2937, Test Accuracy: 0.4765, Test AUC: 0.7463
+2025-05-01 00:43:27,485 [INFO] Epoch [5/10], Training Loss: 1.3194, Accuracy: 0.4370 | Test Loss: 1.2619, Test Accuracy: 0.5059, Test AUC: 0.7774
+2025-05-01 00:43:27,525 [INFO] Epoch [6/10], Training Loss: 1.2990, Accuracy: 0.4463 | Test Loss: 1.2250, Test Accuracy: 0.5588, Test AUC: 0.8006
+2025-05-01 00:43:27,565 [INFO] Epoch [7/10], Training Loss: 1.2767, Accuracy: 0.4630 | Test Loss: 1.1902, Test Accuracy: 0.5765, Test AUC: 0.8248
+2025-05-01 00:43:27,604 [INFO] Epoch [8/10], Training Loss: 1.2550, Accuracy: 0.4741 | Test Loss: 1.1547, Test Accuracy: 0.5882, Test AUC: 0.8460
+2025-05-01 00:43:27,644 [INFO] Epoch [9/10], Training Loss: 1.2353, Accuracy: 0.4833 | Test Loss: 1.1170, Test Accuracy: 0.5941, Test AUC: 0.8554
+2025-05-01 00:43:27,685 [INFO] Epoch [10/10], Training Loss: 1.2142, Accuracy: 0.4944 | Test Loss: 1.0839, Test Accuracy: 0.6353, Test AUC: 0.8683
+2025-05-01 00:43:27,685 [INFO] Training completed in 0.01 minutes
+2025-05-01 00:43:27,686 [INFO] build_posterior_wrapper took 0.000545 seconds
+2025-05-01 00:43:27,686 [INFO] TPE using 18/18 trials with best loss -0.729412
+2025-05-01 00:43:27,686 [INFO] Trial parameters: depth=7, lr=0.01986132502216696, batch=32, epochs=5
+2025-05-01 00:43:27,686 [INFO] Running single tree experiment
+2025-05-01 00:43:27,687 [INFO] Dataset: sleep
+2025-05-01 00:43:27,687 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:27,687 [INFO] Batch size: 32, Max depth: 7
+2025-05-01 00:43:27,687 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:27,695 [INFO] Created Soft Tree Model
+2025-05-01 00:43:27,695 [INFO] Running on a: cpu
+2025-05-01 00:43:27,982 [INFO] Epoch [1/5], Training Loss: 1.3703, Accuracy: 0.2963 | Test Loss: 1.3012, Test Accuracy: 0.4941, Test AUC: 0.7714
+2025-05-01 00:43:28,270 [INFO] Epoch [2/5], Training Loss: 1.3034, Accuracy: 0.4426 | Test Loss: 1.1777, Test Accuracy: 0.5471, Test AUC: 0.8374
+2025-05-01 00:43:28,557 [INFO] Epoch [3/5], Training Loss: 1.2221, Accuracy: 0.5148 | Test Loss: 1.0358, Test Accuracy: 0.6471, Test AUC: 0.8929
+2025-05-01 00:43:28,909 [INFO] Epoch [4/5], Training Loss: 1.1552, Accuracy: 0.5500 | Test Loss: 0.9145, Test Accuracy: 0.6824, Test AUC: 0.9084
+2025-05-01 00:43:29,194 [INFO] Epoch [5/5], Training Loss: 1.1021, Accuracy: 0.5611 | Test Loss: 0.8380, Test Accuracy: 0.7000, Test AUC: 0.9129
+2025-05-01 00:43:29,195 [INFO] Training completed in 0.02 minutes
+2025-05-01 00:43:29,196 [INFO] build_posterior_wrapper took 0.000539 seconds
+2025-05-01 00:43:29,196 [INFO] TPE using 19/19 trials with best loss -0.729412
+2025-05-01 00:43:29,197 [INFO] Trial parameters: depth=4, lr=0.030855142481820915, batch=128, epochs=5
+2025-05-01 00:43:29,197 [INFO] Running single tree experiment
+2025-05-01 00:43:29,197 [INFO] Dataset: sleep
+2025-05-01 00:43:29,197 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:29,197 [INFO] Batch size: 128, Max depth: 4
+2025-05-01 00:43:29,197 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:29,198 [INFO] Created Soft Tree Model
+2025-05-01 00:43:29,198 [INFO] Running on a: cpu
+2025-05-01 00:43:29,214 [INFO] Epoch [1/5], Training Loss: 1.3719, Accuracy: 0.2815 | Test Loss: 1.3362, Test Accuracy: 0.3588, Test AUC: 0.7106
+2025-05-01 00:43:29,229 [INFO] Epoch [2/5], Training Loss: 1.3357, Accuracy: 0.3741 | Test Loss: 1.2724, Test Accuracy: 0.4765, Test AUC: 0.7639
+2025-05-01 00:43:29,243 [INFO] Epoch [3/5], Training Loss: 1.3124, Accuracy: 0.4352 | Test Loss: 1.2074, Test Accuracy: 0.5647, Test AUC: 0.8007
+2025-05-01 00:43:29,258 [INFO] Epoch [4/5], Training Loss: 1.2673, Accuracy: 0.4926 | Test Loss: 1.1413, Test Accuracy: 0.5941, Test AUC: 0.8433
+2025-05-01 00:43:29,272 [INFO] Epoch [5/5], Training Loss: 1.2399, Accuracy: 0.4926 | Test Loss: 1.0808, Test Accuracy: 0.6176, Test AUC: 0.8615
+2025-05-01 00:43:29,273 [INFO] Training completed in 0.00 minutes
+2025-05-01 00:43:29,273 [INFO] build_posterior_wrapper took 0.000538 seconds
+2025-05-01 00:43:29,273 [INFO] TPE using 20/20 trials with best loss -0.729412
+2025-05-01 00:43:29,275 [INFO] Trial parameters: depth=8, lr=0.01049058079642524, batch=256, epochs=20
+2025-05-01 00:43:29,276 [INFO] Running single tree experiment
+2025-05-01 00:43:29,276 [INFO] Dataset: sleep
+2025-05-01 00:43:29,276 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:29,276 [INFO] Batch size: 256, Max depth: 8
+2025-05-01 00:43:29,276 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:29,293 [INFO] Created Soft Tree Model
+2025-05-01 00:43:29,293 [INFO] Running on a: cpu
+2025-05-01 00:43:29,410 [INFO] Epoch [1/20], Training Loss: 1.3851, Accuracy: 0.2648 | Test Loss: 1.3756, Test Accuracy: 0.5000, Test AUC: 0.7292
+2025-05-01 00:43:29,526 [INFO] Epoch [2/20], Training Loss: 1.3777, Accuracy: 0.3944 | Test Loss: 1.3649, Test Accuracy: 0.4471, Test AUC: 0.7228
+2025-05-01 00:43:29,639 [INFO] Epoch [3/20], Training Loss: 1.3702, Accuracy: 0.4000 | Test Loss: 1.3532, Test Accuracy: 0.4353, Test AUC: 0.7339
+2025-05-01 00:43:29,749 [INFO] Epoch [4/20], Training Loss: 1.3623, Accuracy: 0.3907 | Test Loss: 1.3412, Test Accuracy: 0.3882, Test AUC: 0.7407
+2025-05-01 00:43:29,862 [INFO] Epoch [5/20], Training Loss: 1.3472, Accuracy: 0.3833 | Test Loss: 1.3276, Test Accuracy: 0.4176, Test AUC: 0.7494
+2025-05-01 00:43:29,971 [INFO] Epoch [6/20], Training Loss: 1.3469, Accuracy: 0.4019 | Test Loss: 1.3128, Test Accuracy: 0.4706, Test AUC: 0.7557
+2025-05-01 00:43:30,082 [INFO] Epoch [7/20], Training Loss: 1.3352, Accuracy: 0.4111 | Test Loss: 1.2968, Test Accuracy: 0.5059, Test AUC: 0.7723
+2025-05-01 00:43:30,197 [INFO] Epoch [8/20], Training Loss: 1.3216, Accuracy: 0.4333 | Test Loss: 1.2796, Test Accuracy: 0.5529, Test AUC: 0.7955
+2025-05-01 00:43:30,310 [INFO] Epoch [9/20], Training Loss: 1.3172, Accuracy: 0.4593 | Test Loss: 1.2620, Test Accuracy: 0.5765, Test AUC: 0.8137
+2025-05-01 00:43:30,417 [INFO] Epoch [10/20], Training Loss: 1.2944, Accuracy: 0.4667 | Test Loss: 1.2436, Test Accuracy: 0.5941, Test AUC: 0.8246
+2025-05-01 00:43:30,528 [INFO] Epoch [11/20], Training Loss: 1.2839, Accuracy: 0.4815 | Test Loss: 1.2252, Test Accuracy: 0.6294, Test AUC: 0.8310
+2025-05-01 00:43:30,641 [INFO] Epoch [12/20], Training Loss: 1.2695, Accuracy: 0.5093 | Test Loss: 1.2068, Test Accuracy: 0.6294, Test AUC: 0.8387
+2025-05-01 00:43:30,754 [INFO] Epoch [13/20], Training Loss: 1.2662, Accuracy: 0.5278 | Test Loss: 1.1883, Test Accuracy: 0.6235, Test AUC: 0.8470
+2025-05-01 00:43:30,863 [INFO] Epoch [14/20], Training Loss: 1.2401, Accuracy: 0.5333 | Test Loss: 1.1692, Test Accuracy: 0.6059, Test AUC: 0.8532
+2025-05-01 00:43:31,035 [INFO] Epoch [15/20], Training Loss: 1.2531, Accuracy: 0.5444 | Test Loss: 1.1507, Test Accuracy: 0.6235, Test AUC: 0.8577
+2025-05-01 00:43:31,149 [INFO] Epoch [16/20], Training Loss: 1.2467, Accuracy: 0.5574 | Test Loss: 1.1337, Test Accuracy: 0.6412, Test AUC: 0.8633
+2025-05-01 00:43:31,257 [INFO] Epoch [17/20], Training Loss: 1.2049, Accuracy: 0.5593 | Test Loss: 1.1169, Test Accuracy: 0.6471, Test AUC: 0.8678
+2025-05-01 00:43:31,366 [INFO] Epoch [18/20], Training Loss: 1.2392, Accuracy: 0.5630 | Test Loss: 1.0993, Test Accuracy: 0.6647, Test AUC: 0.8701
+2025-05-01 00:43:31,476 [INFO] Epoch [19/20], Training Loss: 1.2153, Accuracy: 0.5648 | Test Loss: 1.0822, Test Accuracy: 0.6706, Test AUC: 0.8734
+2025-05-01 00:43:31,586 [INFO] Epoch [20/20], Training Loss: 1.1806, Accuracy: 0.5685 | Test Loss: 1.0638, Test Accuracy: 0.6824, Test AUC: 0.8791
+2025-05-01 00:43:31,588 [INFO] Training completed in 0.04 minutes
+2025-05-01 00:43:31,589 [INFO] build_posterior_wrapper took 0.000537 seconds
+2025-05-01 00:43:31,590 [INFO] TPE using 21/21 trials with best loss -0.729412
+2025-05-01 00:43:31,592 [INFO] Trial parameters: depth=7, lr=0.04162824382477524, batch=128, epochs=15
+2025-05-01 00:43:31,592 [INFO] Running single tree experiment
+2025-05-01 00:43:31,592 [INFO] Dataset: sleep
+2025-05-01 00:43:31,592 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:31,592 [INFO] Batch size: 128, Max depth: 7
+2025-05-01 00:43:31,592 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:31,601 [INFO] Created Soft Tree Model
+2025-05-01 00:43:31,601 [INFO] Running on a: cpu
+2025-05-01 00:43:31,692 [INFO] Epoch [1/15], Training Loss: 1.3701, Accuracy: 0.3389 | Test Loss: 1.3063, Test Accuracy: 0.4706, Test AUC: 0.7669
+2025-05-01 00:43:31,781 [INFO] Epoch [2/15], Training Loss: 1.3256, Accuracy: 0.4370 | Test Loss: 1.2140, Test Accuracy: 0.5529, Test AUC: 0.8095
+2025-05-01 00:43:31,870 [INFO] Epoch [3/15], Training Loss: 1.2854, Accuracy: 0.4593 | Test Loss: 1.1102, Test Accuracy: 0.5824, Test AUC: 0.8639
+2025-05-01 00:43:31,961 [INFO] Epoch [4/15], Training Loss: 1.2169, Accuracy: 0.5037 | Test Loss: 1.0137, Test Accuracy: 0.6353, Test AUC: 0.8906
+2025-05-01 00:43:32,050 [INFO] Epoch [5/15], Training Loss: 1.1571, Accuracy: 0.5259 | Test Loss: 0.9159, Test Accuracy: 0.6941, Test AUC: 0.9009
+2025-05-01 00:43:32,139 [INFO] Epoch [6/15], Training Loss: 1.1372, Accuracy: 0.5519 | Test Loss: 0.8490, Test Accuracy: 0.7059, Test AUC: 0.9077
+2025-05-01 00:43:32,228 [INFO] Epoch [7/15], Training Loss: 1.0846, Accuracy: 0.5815 | Test Loss: 0.8231, Test Accuracy: 0.6882, Test AUC: 0.9009
+2025-05-01 00:43:32,317 [INFO] Epoch [8/15], Training Loss: 1.0750, Accuracy: 0.5852 | Test Loss: 0.7762, Test Accuracy: 0.7118, Test AUC: 0.9065
+2025-05-01 00:43:32,405 [INFO] Epoch [9/15], Training Loss: 1.0268, Accuracy: 0.5907 | Test Loss: 0.7538, Test Accuracy: 0.7235, Test AUC: 0.9176
+2025-05-01 00:43:32,494 [INFO] Epoch [10/15], Training Loss: 0.9992, Accuracy: 0.5944 | Test Loss: 0.7427, Test Accuracy: 0.7353, Test AUC: 0.9096
+2025-05-01 00:43:32,582 [INFO] Epoch [11/15], Training Loss: 1.0135, Accuracy: 0.6074 | Test Loss: 0.7276, Test Accuracy: 0.7235, Test AUC: 0.9107
+2025-05-01 00:43:32,671 [INFO] Epoch [12/15], Training Loss: 0.9878, Accuracy: 0.6093 | Test Loss: 0.7504, Test Accuracy: 0.7235, Test AUC: 0.9135
+2025-05-01 00:43:32,762 [INFO] Epoch [13/15], Training Loss: 0.9488, Accuracy: 0.6130 | Test Loss: 0.7250, Test Accuracy: 0.7235, Test AUC: 0.9156
+2025-05-01 00:43:32,852 [INFO] Epoch [14/15], Training Loss: 0.9484, Accuracy: 0.6259 | Test Loss: 0.6995, Test Accuracy: 0.7294, Test AUC: 0.9061
+2025-05-01 00:43:32,941 [INFO] Epoch [15/15], Training Loss: 0.9564, Accuracy: 0.6389 | Test Loss: 0.7045, Test Accuracy: 0.7235, Test AUC: 0.9065
+2025-05-01 00:43:32,942 [INFO] Training completed in 0.02 minutes
+2025-05-01 00:43:32,943 [INFO] build_posterior_wrapper took 0.000517 seconds
+2025-05-01 00:43:32,943 [INFO] TPE using 22/22 trials with best loss -0.729412
+2025-05-01 00:43:32,945 [INFO] Trial parameters: depth=7, lr=0.051812483182026074, batch=128, epochs=20
+2025-05-01 00:43:32,945 [INFO] Running single tree experiment
+2025-05-01 00:43:32,945 [INFO] Dataset: sleep
+2025-05-01 00:43:32,945 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:32,945 [INFO] Batch size: 128, Max depth: 7
+2025-05-01 00:43:32,945 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:32,954 [INFO] Created Soft Tree Model
+2025-05-01 00:43:32,954 [INFO] Running on a: cpu
+2025-05-01 00:43:33,046 [INFO] Epoch [1/20], Training Loss: 1.3671, Accuracy: 0.2870 | Test Loss: 1.2944, Test Accuracy: 0.4824, Test AUC: 0.7578
+2025-05-01 00:43:33,136 [INFO] Epoch [2/20], Training Loss: 1.3008, Accuracy: 0.4889 | Test Loss: 1.1726, Test Accuracy: 0.6118, Test AUC: 0.8425
+2025-05-01 00:43:33,226 [INFO] Epoch [3/20], Training Loss: 1.2369, Accuracy: 0.5000 | Test Loss: 1.0469, Test Accuracy: 0.6647, Test AUC: 0.8797
+2025-05-01 00:43:33,315 [INFO] Epoch [4/20], Training Loss: 1.1854, Accuracy: 0.5148 | Test Loss: 0.9527, Test Accuracy: 0.6706, Test AUC: 0.8920
+2025-05-01 00:43:33,406 [INFO] Epoch [5/20], Training Loss: 1.1401, Accuracy: 0.5407 | Test Loss: 0.8700, Test Accuracy: 0.6882, Test AUC: 0.8992
+2025-05-01 00:43:33,495 [INFO] Epoch [6/20], Training Loss: 1.0650, Accuracy: 0.5611 | Test Loss: 0.8164, Test Accuracy: 0.6706, Test AUC: 0.9051
+2025-05-01 00:43:33,584 [INFO] Epoch [7/20], Training Loss: 1.0247, Accuracy: 0.5556 | Test Loss: 0.7810, Test Accuracy: 0.6941, Test AUC: 0.9070
+2025-05-01 00:43:33,672 [INFO] Epoch [8/20], Training Loss: 1.0075, Accuracy: 0.5796 | Test Loss: 0.7422, Test Accuracy: 0.7235, Test AUC: 0.9102
+2025-05-01 00:43:33,761 [INFO] Epoch [9/20], Training Loss: 1.0314, Accuracy: 0.6037 | Test Loss: 0.7233, Test Accuracy: 0.7118, Test AUC: 0.9074
+2025-05-01 00:43:33,850 [INFO] Epoch [10/20], Training Loss: 1.0207, Accuracy: 0.6093 | Test Loss: 0.7484, Test Accuracy: 0.7176, Test AUC: 0.9002
+2025-05-01 00:43:33,939 [INFO] Epoch [11/20], Training Loss: 0.9632, Accuracy: 0.6296 | Test Loss: 0.7891, Test Accuracy: 0.7235, Test AUC: 0.8877
+2025-05-01 00:43:34,029 [INFO] Epoch [12/20], Training Loss: 1.0020, Accuracy: 0.6278 | Test Loss: 0.7521, Test Accuracy: 0.6824, Test AUC: 0.8915
+2025-05-01 00:43:34,118 [INFO] Epoch [13/20], Training Loss: 0.9148, Accuracy: 0.6296 | Test Loss: 0.7713, Test Accuracy: 0.6824, Test AUC: 0.8873
+2025-05-01 00:43:34,207 [INFO] Epoch [14/20], Training Loss: 0.8642, Accuracy: 0.6481 | Test Loss: 0.8250, Test Accuracy: 0.6941, Test AUC: 0.8683
+2025-05-01 00:43:34,296 [INFO] Epoch [15/20], Training Loss: 0.8984, Accuracy: 0.6278 | Test Loss: 0.8022, Test Accuracy: 0.7000, Test AUC: 0.8732
+2025-05-01 00:43:34,385 [INFO] Epoch [16/20], Training Loss: 0.8715, Accuracy: 0.6519 | Test Loss: 0.7902, Test Accuracy: 0.6765, Test AUC: 0.8718
+2025-05-01 00:43:34,475 [INFO] Epoch [17/20], Training Loss: 0.8813, Accuracy: 0.6574 | Test Loss: 0.7899, Test Accuracy: 0.6706, Test AUC: 0.8718
+2025-05-01 00:43:34,567 [INFO] Epoch [18/20], Training Loss: 0.8341, Accuracy: 0.6593 | Test Loss: 0.7916, Test Accuracy: 0.6765, Test AUC: 0.8688
+2025-05-01 00:43:34,659 [INFO] Epoch [19/20], Training Loss: 0.8076, Accuracy: 0.6722 | Test Loss: 0.8162, Test Accuracy: 0.6471, Test AUC: 0.8629
+2025-05-01 00:43:34,762 [INFO] Epoch [20/20], Training Loss: 0.7724, Accuracy: 0.7037 | Test Loss: 0.8080, Test Accuracy: 0.6706, Test AUC: 0.8674
+2025-05-01 00:43:34,763 [INFO] Training completed in 0.03 minutes
+2025-05-01 00:43:34,764 [INFO] build_posterior_wrapper took 0.000553 seconds
+2025-05-01 00:43:34,765 [INFO] TPE using 23/23 trials with best loss -0.729412
+2025-05-01 00:43:34,767 [INFO] Trial parameters: depth=7, lr=0.05496501666218617, batch=64, epochs=15
+2025-05-01 00:43:34,767 [INFO] Running single tree experiment
+2025-05-01 00:43:34,767 [INFO] Dataset: sleep
+2025-05-01 00:43:34,767 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:34,767 [INFO] Batch size: 64, Max depth: 7
+2025-05-01 00:43:34,767 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:34,776 [INFO] Created Soft Tree Model
+2025-05-01 00:43:34,776 [INFO] Running on a: cpu
+2025-05-01 00:43:34,935 [INFO] Epoch [1/15], Training Loss: 1.3589, Accuracy: 0.3296 | Test Loss: 1.2223, Test Accuracy: 0.5235, Test AUC: 0.7960
+2025-05-01 00:43:35,087 [INFO] Epoch [2/15], Training Loss: 1.2450, Accuracy: 0.4685 | Test Loss: 1.0290, Test Accuracy: 0.6588, Test AUC: 0.8781
+2025-05-01 00:43:35,240 [INFO] Epoch [3/15], Training Loss: 1.1620, Accuracy: 0.5519 | Test Loss: 0.8798, Test Accuracy: 0.6765, Test AUC: 0.8914
+2025-05-01 00:43:35,392 [INFO] Epoch [4/15], Training Loss: 1.0988, Accuracy: 0.5426 | Test Loss: 0.7936, Test Accuracy: 0.7118, Test AUC: 0.9047
+2025-05-01 00:43:35,551 [INFO] Epoch [5/15], Training Loss: 1.0693, Accuracy: 0.5667 | Test Loss: 0.7627, Test Accuracy: 0.7294, Test AUC: 0.9105
+2025-05-01 00:43:35,711 [INFO] Epoch [6/15], Training Loss: 1.0253, Accuracy: 0.5815 | Test Loss: 0.7749, Test Accuracy: 0.6706, Test AUC: 0.8988
+2025-05-01 00:43:35,867 [INFO] Epoch [7/15], Training Loss: 1.0126, Accuracy: 0.6000 | Test Loss: 0.7368, Test Accuracy: 0.7059, Test AUC: 0.9075
+2025-05-01 00:43:36,025 [INFO] Epoch [8/15], Training Loss: 0.9677, Accuracy: 0.6093 | Test Loss: 0.7481, Test Accuracy: 0.7294, Test AUC: 0.9024
+2025-05-01 00:43:36,183 [INFO] Epoch [9/15], Training Loss: 0.9323, Accuracy: 0.6389 | Test Loss: 0.7693, Test Accuracy: 0.7118, Test AUC: 0.8892
+2025-05-01 00:43:36,336 [INFO] Epoch [10/15], Training Loss: 0.9084, Accuracy: 0.6556 | Test Loss: 0.7617, Test Accuracy: 0.7235, Test AUC: 0.8895
+2025-05-01 00:43:36,489 [INFO] Epoch [11/15], Training Loss: 0.8740, Accuracy: 0.6648 | Test Loss: 0.7649, Test Accuracy: 0.7647, Test AUC: 0.8887
+2025-05-01 00:43:36,641 [INFO] Epoch [12/15], Training Loss: 0.8450, Accuracy: 0.6796 | Test Loss: 0.7266, Test Accuracy: 0.7412, Test AUC: 0.8981
+2025-05-01 00:43:36,793 [INFO] Epoch [13/15], Training Loss: 0.8190, Accuracy: 0.6833 | Test Loss: 0.7391, Test Accuracy: 0.7529, Test AUC: 0.8937
+2025-05-01 00:43:36,996 [INFO] Epoch [14/15], Training Loss: 0.7895, Accuracy: 0.7056 | Test Loss: 0.7770, Test Accuracy: 0.7000, Test AUC: 0.8789
+2025-05-01 00:43:37,159 [INFO] Epoch [15/15], Training Loss: 0.7673, Accuracy: 0.7000 | Test Loss: 0.7684, Test Accuracy: 0.7294, Test AUC: 0.8804
+2025-05-01 00:43:37,160 [INFO] Training completed in 0.04 minutes
+2025-05-01 00:43:37,161 [INFO] build_posterior_wrapper took 0.000538 seconds
+2025-05-01 00:43:37,161 [INFO] TPE using 24/24 trials with best loss -0.729412
+2025-05-01 00:43:37,163 [INFO] Trial parameters: depth=8, lr=0.011398700384158042, batch=64, epochs=15
+2025-05-01 00:43:37,163 [INFO] Running single tree experiment
+2025-05-01 00:43:37,163 [INFO] Dataset: sleep
+2025-05-01 00:43:37,163 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:37,163 [INFO] Batch size: 64, Max depth: 8
+2025-05-01 00:43:37,164 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:37,180 [INFO] Created Soft Tree Model
+2025-05-01 00:43:37,180 [INFO] Running on a: cpu
+2025-05-01 00:43:37,489 [INFO] Epoch [1/15], Training Loss: 1.3785, Accuracy: 0.3000 | Test Loss: 1.3563, Test Accuracy: 0.4529, Test AUC: 0.7300
+2025-05-01 00:43:37,848 [INFO] Epoch [2/15], Training Loss: 1.3551, Accuracy: 0.4167 | Test Loss: 1.3174, Test Accuracy: 0.4765, Test AUC: 0.7484
+2025-05-01 00:43:38,160 [INFO] Epoch [3/15], Training Loss: 1.3325, Accuracy: 0.4111 | Test Loss: 1.2728, Test Accuracy: 0.5353, Test AUC: 0.7814
+2025-05-01 00:43:38,468 [INFO] Epoch [4/15], Training Loss: 1.3041, Accuracy: 0.4593 | Test Loss: 1.2224, Test Accuracy: 0.5294, Test AUC: 0.8193
+2025-05-01 00:43:38,779 [INFO] Epoch [5/15], Training Loss: 1.2676, Accuracy: 0.4889 | Test Loss: 1.1577, Test Accuracy: 0.6118, Test AUC: 0.8620
+2025-05-01 00:43:39,102 [INFO] Epoch [6/15], Training Loss: 1.2244, Accuracy: 0.5222 | Test Loss: 1.0965, Test Accuracy: 0.6294, Test AUC: 0.8770
+2025-05-01 00:43:39,435 [INFO] Epoch [7/15], Training Loss: 1.1943, Accuracy: 0.5481 | Test Loss: 1.0413, Test Accuracy: 0.6529, Test AUC: 0.8876
+2025-05-01 00:43:39,746 [INFO] Epoch [8/15], Training Loss: 1.1701, Accuracy: 0.5500 | Test Loss: 0.9899, Test Accuracy: 0.6765, Test AUC: 0.8969
+2025-05-01 00:43:40,065 [INFO] Epoch [9/15], Training Loss: 1.1361, Accuracy: 0.5574 | Test Loss: 0.9459, Test Accuracy: 0.6941, Test AUC: 0.9046
+2025-05-01 00:43:40,386 [INFO] Epoch [10/15], Training Loss: 1.1277, Accuracy: 0.5630 | Test Loss: 0.9065, Test Accuracy: 0.6882, Test AUC: 0.9056
+2025-05-01 00:43:40,700 [INFO] Epoch [11/15], Training Loss: 1.0935, Accuracy: 0.5537 | Test Loss: 0.8819, Test Accuracy: 0.7235, Test AUC: 0.9085
+2025-05-01 00:43:41,002 [INFO] Epoch [12/15], Training Loss: 1.0798, Accuracy: 0.5648 | Test Loss: 0.8538, Test Accuracy: 0.7176, Test AUC: 0.9100
+2025-05-01 00:43:41,318 [INFO] Epoch [13/15], Training Loss: 1.0626, Accuracy: 0.5722 | Test Loss: 0.8326, Test Accuracy: 0.6882, Test AUC: 0.9108
+2025-05-01 00:43:41,623 [INFO] Epoch [14/15], Training Loss: 1.0321, Accuracy: 0.5852 | Test Loss: 0.8251, Test Accuracy: 0.7118, Test AUC: 0.9113
+2025-05-01 00:43:41,934 [INFO] Epoch [15/15], Training Loss: 1.0302, Accuracy: 0.5926 | Test Loss: 0.8028, Test Accuracy: 0.7118, Test AUC: 0.9118
+2025-05-01 00:43:41,937 [INFO] Training completed in 0.08 minutes
+2025-05-01 00:43:41,938 [INFO] build_posterior_wrapper took 0.000552 seconds
+2025-05-01 00:43:41,939 [INFO] TPE using 25/25 trials with best loss -0.729412
+2025-05-01 00:43:41,941 [INFO] Trial parameters: depth=7, lr=0.06224031576905028, batch=64, epochs=20
+2025-05-01 00:43:41,941 [INFO] Running single tree experiment
+2025-05-01 00:43:41,941 [INFO] Dataset: sleep
+2025-05-01 00:43:41,941 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:41,941 [INFO] Batch size: 64, Max depth: 7
+2025-05-01 00:43:41,942 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:41,950 [INFO] Created Soft Tree Model
+2025-05-01 00:43:41,951 [INFO] Running on a: cpu
+2025-05-01 00:43:42,181 [INFO] Epoch [1/20], Training Loss: 1.3443, Accuracy: 0.3537 | Test Loss: 1.2107, Test Accuracy: 0.4941, Test AUC: 0.7798
+2025-05-01 00:43:42,348 [INFO] Epoch [2/20], Training Loss: 1.2430, Accuracy: 0.4722 | Test Loss: 0.9929, Test Accuracy: 0.6647, Test AUC: 0.8926
+2025-05-01 00:43:42,509 [INFO] Epoch [3/20], Training Loss: 1.1238, Accuracy: 0.5407 | Test Loss: 0.8309, Test Accuracy: 0.7000, Test AUC: 0.9136
+2025-05-01 00:43:42,666 [INFO] Epoch [4/20], Training Loss: 1.0903, Accuracy: 0.5296 | Test Loss: 0.7400, Test Accuracy: 0.7059, Test AUC: 0.9207
+2025-05-01 00:43:42,824 [INFO] Epoch [5/20], Training Loss: 1.0615, Accuracy: 0.5593 | Test Loss: 0.7104, Test Accuracy: 0.7353, Test AUC: 0.9184
+2025-05-01 00:43:42,987 [INFO] Epoch [6/20], Training Loss: 1.0021, Accuracy: 0.5926 | Test Loss: 0.7169, Test Accuracy: 0.7176, Test AUC: 0.9136
+2025-05-01 00:43:43,142 [INFO] Epoch [7/20], Training Loss: 0.9926, Accuracy: 0.5981 | Test Loss: 0.7115, Test Accuracy: 0.7235, Test AUC: 0.9183
+2025-05-01 00:43:43,294 [INFO] Epoch [8/20], Training Loss: 0.9592, Accuracy: 0.6148 | Test Loss: 0.7055, Test Accuracy: 0.7294, Test AUC: 0.9126
+2025-05-01 00:43:43,445 [INFO] Epoch [9/20], Training Loss: 0.9250, Accuracy: 0.6241 | Test Loss: 0.7394, Test Accuracy: 0.7000, Test AUC: 0.9084
+2025-05-01 00:43:43,600 [INFO] Epoch [10/20], Training Loss: 0.9033, Accuracy: 0.6407 | Test Loss: 0.7310, Test Accuracy: 0.7176, Test AUC: 0.9050
+2025-05-01 00:43:43,755 [INFO] Epoch [11/20], Training Loss: 0.8694, Accuracy: 0.6759 | Test Loss: 0.7226, Test Accuracy: 0.7412, Test AUC: 0.9009
+2025-05-01 00:43:43,909 [INFO] Epoch [12/20], Training Loss: 0.8440, Accuracy: 0.6722 | Test Loss: 0.7389, Test Accuracy: 0.7118, Test AUC: 0.8970
+2025-05-01 00:43:44,062 [INFO] Epoch [13/20], Training Loss: 0.8092, Accuracy: 0.6889 | Test Loss: 0.7383, Test Accuracy: 0.7412, Test AUC: 0.8920
+2025-05-01 00:43:44,218 [INFO] Epoch [14/20], Training Loss: 0.7777, Accuracy: 0.7093 | Test Loss: 0.7511, Test Accuracy: 0.6941, Test AUC: 0.8910
+2025-05-01 00:43:44,425 [INFO] Epoch [15/20], Training Loss: 0.7653, Accuracy: 0.7259 | Test Loss: 0.7751, Test Accuracy: 0.7176, Test AUC: 0.8813
+2025-05-01 00:43:44,577 [INFO] Epoch [16/20], Training Loss: 0.7577, Accuracy: 0.7259 | Test Loss: 0.7785, Test Accuracy: 0.6882, Test AUC: 0.8829
+2025-05-01 00:43:44,731 [INFO] Epoch [17/20], Training Loss: 0.7152, Accuracy: 0.7278 | Test Loss: 0.7832, Test Accuracy: 0.6824, Test AUC: 0.8762
+2025-05-01 00:43:44,888 [INFO] Epoch [18/20], Training Loss: 0.6991, Accuracy: 0.7407 | Test Loss: 0.8184, Test Accuracy: 0.6529, Test AUC: 0.8658
+2025-05-01 00:43:45,043 [INFO] Epoch [19/20], Training Loss: 0.6708, Accuracy: 0.7463 | Test Loss: 0.7512, Test Accuracy: 0.6765, Test AUC: 0.8838
+2025-05-01 00:43:45,196 [INFO] Epoch [20/20], Training Loss: 0.7013, Accuracy: 0.7574 | Test Loss: 0.7663, Test Accuracy: 0.6824, Test AUC: 0.8738
+2025-05-01 00:43:45,196 [INFO] Training completed in 0.05 minutes
+2025-05-01 00:43:45,198 [INFO] build_posterior_wrapper took 0.000547 seconds
+2025-05-01 00:43:45,198 [INFO] TPE using 26/26 trials with best loss -0.729412
+2025-05-01 00:43:45,200 [INFO] Trial parameters: depth=8, lr=0.019293739489381446, batch=64, epochs=15
+2025-05-01 00:43:45,200 [INFO] Running single tree experiment
+2025-05-01 00:43:45,200 [INFO] Dataset: sleep
+2025-05-01 00:43:45,200 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:45,200 [INFO] Batch size: 64, Max depth: 8
+2025-05-01 00:43:45,200 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:45,217 [INFO] Created Soft Tree Model
+2025-05-01 00:43:45,217 [INFO] Running on a: cpu
+2025-05-01 00:43:45,524 [INFO] Epoch [1/15], Training Loss: 1.3730, Accuracy: 0.3259 | Test Loss: 1.3320, Test Accuracy: 0.4824, Test AUC: 0.7409
+2025-05-01 00:43:45,836 [INFO] Epoch [2/15], Training Loss: 1.3292, Accuracy: 0.4278 | Test Loss: 1.2681, Test Accuracy: 0.4941, Test AUC: 0.7809
+2025-05-01 00:43:46,148 [INFO] Epoch [3/15], Training Loss: 1.2873, Accuracy: 0.4444 | Test Loss: 1.1819, Test Accuracy: 0.5529, Test AUC: 0.8338
+2025-05-01 00:43:46,458 [INFO] Epoch [4/15], Training Loss: 1.2380, Accuracy: 0.5111 | Test Loss: 1.0894, Test Accuracy: 0.6353, Test AUC: 0.8771
+2025-05-01 00:43:46,770 [INFO] Epoch [5/15], Training Loss: 1.1916, Accuracy: 0.5407 | Test Loss: 1.0033, Test Accuracy: 0.6647, Test AUC: 0.8932
+2025-05-01 00:43:47,095 [INFO] Epoch [6/15], Training Loss: 1.1319, Accuracy: 0.5537 | Test Loss: 0.9278, Test Accuracy: 0.6941, Test AUC: 0.9008
+2025-05-01 00:43:47,413 [INFO] Epoch [7/15], Training Loss: 1.1077, Accuracy: 0.5611 | Test Loss: 0.8680, Test Accuracy: 0.6941, Test AUC: 0.9052
+2025-05-01 00:43:47,728 [INFO] Epoch [8/15], Training Loss: 1.0819, Accuracy: 0.5667 | Test Loss: 0.8281, Test Accuracy: 0.7176, Test AUC: 0.9085
+2025-05-01 00:43:48,035 [INFO] Epoch [9/15], Training Loss: 1.0637, Accuracy: 0.5685 | Test Loss: 0.8004, Test Accuracy: 0.7118, Test AUC: 0.9122
+2025-05-01 00:43:48,354 [INFO] Epoch [10/15], Training Loss: 1.0501, Accuracy: 0.5704 | Test Loss: 0.7777, Test Accuracy: 0.7294, Test AUC: 0.9128
+2025-05-01 00:43:48,661 [INFO] Epoch [11/15], Training Loss: 1.0191, Accuracy: 0.5870 | Test Loss: 0.7687, Test Accuracy: 0.7000, Test AUC: 0.9118
+2025-05-01 00:43:48,975 [INFO] Epoch [12/15], Training Loss: 1.0059, Accuracy: 0.5926 | Test Loss: 0.7605, Test Accuracy: 0.7118, Test AUC: 0.9114
+2025-05-01 00:43:49,284 [INFO] Epoch [13/15], Training Loss: 0.9944, Accuracy: 0.6111 | Test Loss: 0.7514, Test Accuracy: 0.7353, Test AUC: 0.9141
+2025-05-01 00:43:49,589 [INFO] Epoch [14/15], Training Loss: 0.9866, Accuracy: 0.6056 | Test Loss: 0.7474, Test Accuracy: 0.7118, Test AUC: 0.9126
+2025-05-01 00:43:49,906 [INFO] Epoch [15/15], Training Loss: 0.9587, Accuracy: 0.6185 | Test Loss: 0.7565, Test Accuracy: 0.7118, Test AUC: 0.9088
+2025-05-01 00:43:49,908 [INFO] Training completed in 0.08 minutes
+2025-05-01 00:43:49,910 [INFO] build_posterior_wrapper took 0.000534 seconds
+2025-05-01 00:43:49,910 [INFO] TPE using 27/27 trials with best loss -0.729412
+2025-05-01 00:43:49,912 [INFO] Trial parameters: depth=7, lr=0.06541993380804871, batch=64, epochs=20
+2025-05-01 00:43:49,912 [INFO] Running single tree experiment
+2025-05-01 00:43:49,912 [INFO] Dataset: sleep
+2025-05-01 00:43:49,912 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:49,913 [INFO] Batch size: 64, Max depth: 7
+2025-05-01 00:43:49,913 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:49,921 [INFO] Created Soft Tree Model
+2025-05-01 00:43:49,921 [INFO] Running on a: cpu
+2025-05-01 00:43:50,080 [INFO] Epoch [1/20], Training Loss: 1.3400, Accuracy: 0.3741 | Test Loss: 1.1874, Test Accuracy: 0.5176, Test AUC: 0.7916
+2025-05-01 00:43:50,238 [INFO] Epoch [2/20], Training Loss: 1.2265, Accuracy: 0.5056 | Test Loss: 0.9774, Test Accuracy: 0.6588, Test AUC: 0.8806
+2025-05-01 00:43:50,389 [INFO] Epoch [3/20], Training Loss: 1.1287, Accuracy: 0.5148 | Test Loss: 0.8276, Test Accuracy: 0.6824, Test AUC: 0.9024
+2025-05-01 00:43:50,547 [INFO] Epoch [4/20], Training Loss: 1.0920, Accuracy: 0.5556 | Test Loss: 0.7729, Test Accuracy: 0.6882, Test AUC: 0.8981
+2025-05-01 00:43:50,702 [INFO] Epoch [5/20], Training Loss: 1.0421, Accuracy: 0.5778 | Test Loss: 0.7401, Test Accuracy: 0.6824, Test AUC: 0.9047
+2025-05-01 00:43:50,862 [INFO] Epoch [6/20], Training Loss: 1.0026, Accuracy: 0.5963 | Test Loss: 0.7482, Test Accuracy: 0.6765, Test AUC: 0.8990
+2025-05-01 00:43:51,022 [INFO] Epoch [7/20], Training Loss: 0.9715, Accuracy: 0.5852 | Test Loss: 0.7704, Test Accuracy: 0.6882, Test AUC: 0.8883
+2025-05-01 00:43:51,202 [INFO] Epoch [8/20], Training Loss: 0.9396, Accuracy: 0.6296 | Test Loss: 0.7502, Test Accuracy: 0.6824, Test AUC: 0.8889
+2025-05-01 00:43:51,390 [INFO] Epoch [9/20], Training Loss: 0.9277, Accuracy: 0.6389 | Test Loss: 0.7962, Test Accuracy: 0.6412, Test AUC: 0.8693
+2025-05-01 00:43:51,621 [INFO] Epoch [10/20], Training Loss: 0.8875, Accuracy: 0.6407 | Test Loss: 0.7932, Test Accuracy: 0.6824, Test AUC: 0.8788
+2025-05-01 00:43:51,797 [INFO] Epoch [11/20], Training Loss: 0.8635, Accuracy: 0.6611 | Test Loss: 0.8064, Test Accuracy: 0.6647, Test AUC: 0.8704
+2025-05-01 00:43:51,962 [INFO] Epoch [12/20], Training Loss: 0.8322, Accuracy: 0.6759 | Test Loss: 0.8117, Test Accuracy: 0.6824, Test AUC: 0.8654
+2025-05-01 00:43:52,113 [INFO] Epoch [13/20], Training Loss: 0.8302, Accuracy: 0.6907 | Test Loss: 0.8330, Test Accuracy: 0.6588, Test AUC: 0.8558
+2025-05-01 00:43:52,267 [INFO] Epoch [14/20], Training Loss: 0.8168, Accuracy: 0.6907 | Test Loss: 0.8670, Test Accuracy: 0.6118, Test AUC: 0.8440
+2025-05-01 00:43:52,422 [INFO] Epoch [15/20], Training Loss: 0.7634, Accuracy: 0.6926 | Test Loss: 0.9106, Test Accuracy: 0.6471, Test AUC: 0.8307
+2025-05-01 00:43:52,574 [INFO] Epoch [16/20], Training Loss: 0.7369, Accuracy: 0.7130 | Test Loss: 0.9352, Test Accuracy: 0.6176, Test AUC: 0.8293
+2025-05-01 00:43:52,731 [INFO] Epoch [17/20], Training Loss: 0.7244, Accuracy: 0.7315 | Test Loss: 0.9761, Test Accuracy: 0.5941, Test AUC: 0.8166
+2025-05-01 00:43:52,886 [INFO] Epoch [18/20], Training Loss: 0.7094, Accuracy: 0.7222 | Test Loss: 1.0251, Test Accuracy: 0.6000, Test AUC: 0.8094
+2025-05-01 00:43:53,037 [INFO] Epoch [19/20], Training Loss: 0.7049, Accuracy: 0.7370 | Test Loss: 1.0073, Test Accuracy: 0.6294, Test AUC: 0.8133
+2025-05-01 00:43:53,189 [INFO] Epoch [20/20], Training Loss: 0.6879, Accuracy: 0.7352 | Test Loss: 1.0258, Test Accuracy: 0.6412, Test AUC: 0.8176
+2025-05-01 00:43:53,190 [INFO] Training completed in 0.05 minutes
+2025-05-01 00:43:53,192 [INFO] build_posterior_wrapper took 0.000551 seconds
+2025-05-01 00:43:53,192 [INFO] TPE using 28/28 trials with best loss -0.729412
+2025-05-01 00:43:53,194 [INFO] Trial parameters: depth=6, lr=0.00675682933403962, batch=64, epochs=15
+2025-05-01 00:43:53,194 [INFO] Running single tree experiment
+2025-05-01 00:43:53,194 [INFO] Dataset: sleep
+2025-05-01 00:43:53,194 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:53,194 [INFO] Batch size: 64, Max depth: 6
+2025-05-01 00:43:53,195 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:53,199 [INFO] Created Soft Tree Model
+2025-05-01 00:43:53,199 [INFO] Running on a: cpu
+2025-05-01 00:43:53,278 [INFO] Epoch [1/15], Training Loss: 1.3832, Accuracy: 0.3167 | Test Loss: 1.3718, Test Accuracy: 0.3824, Test AUC: 0.7051
+2025-05-01 00:43:53,356 [INFO] Epoch [2/15], Training Loss: 1.3709, Accuracy: 0.3741 | Test Loss: 1.3547, Test Accuracy: 0.4353, Test AUC: 0.7118
+2025-05-01 00:43:53,433 [INFO] Epoch [3/15], Training Loss: 1.3571, Accuracy: 0.4222 | Test Loss: 1.3347, Test Accuracy: 0.4706, Test AUC: 0.7302
+2025-05-01 00:43:53,511 [INFO] Epoch [4/15], Training Loss: 1.3408, Accuracy: 0.4407 | Test Loss: 1.3123, Test Accuracy: 0.4471, Test AUC: 0.7551
+2025-05-01 00:43:53,588 [INFO] Epoch [5/15], Training Loss: 1.3304, Accuracy: 0.4426 | Test Loss: 1.2874, Test Accuracy: 0.4765, Test AUC: 0.7682
+2025-05-01 00:43:53,665 [INFO] Epoch [6/15], Training Loss: 1.3151, Accuracy: 0.4426 | Test Loss: 1.2571, Test Accuracy: 0.5000, Test AUC: 0.7884
+2025-05-01 00:43:53,743 [INFO] Epoch [7/15], Training Loss: 1.2890, Accuracy: 0.4759 | Test Loss: 1.2232, Test Accuracy: 0.5235, Test AUC: 0.8234
+2025-05-01 00:43:53,821 [INFO] Epoch [8/15], Training Loss: 1.2742, Accuracy: 0.4981 | Test Loss: 1.1878, Test Accuracy: 0.5588, Test AUC: 0.8498
+2025-05-01 00:43:53,900 [INFO] Epoch [9/15], Training Loss: 1.2542, Accuracy: 0.5093 | Test Loss: 1.1513, Test Accuracy: 0.5941, Test AUC: 0.8658
+2025-05-01 00:43:53,983 [INFO] Epoch [10/15], Training Loss: 1.2316, Accuracy: 0.5333 | Test Loss: 1.1143, Test Accuracy: 0.6294, Test AUC: 0.8756
+2025-05-01 00:43:54,061 [INFO] Epoch [11/15], Training Loss: 1.2112, Accuracy: 0.5463 | Test Loss: 1.0788, Test Accuracy: 0.6412, Test AUC: 0.8833
+2025-05-01 00:43:54,140 [INFO] Epoch [12/15], Training Loss: 1.1979, Accuracy: 0.5537 | Test Loss: 1.0417, Test Accuracy: 0.6647, Test AUC: 0.8897
+2025-05-01 00:43:54,217 [INFO] Epoch [13/15], Training Loss: 1.1843, Accuracy: 0.5574 | Test Loss: 1.0090, Test Accuracy: 0.6765, Test AUC: 0.8941
+2025-05-01 00:43:54,296 [INFO] Epoch [14/15], Training Loss: 1.1558, Accuracy: 0.5556 | Test Loss: 0.9836, Test Accuracy: 0.6824, Test AUC: 0.8973
+2025-05-01 00:43:54,377 [INFO] Epoch [15/15], Training Loss: 1.1463, Accuracy: 0.5630 | Test Loss: 0.9604, Test Accuracy: 0.6882, Test AUC: 0.8991
+2025-05-01 00:43:54,377 [INFO] Training completed in 0.02 minutes
+2025-05-01 00:43:54,378 [INFO] build_posterior_wrapper took 0.000538 seconds
+2025-05-01 00:43:54,379 [INFO] TPE using 29/29 trials with best loss -0.729412
+2025-05-01 00:43:54,381 [INFO] Trial parameters: depth=7, lr=0.014187239054126678, batch=64, epochs=15
+2025-05-01 00:43:54,381 [INFO] Running single tree experiment
+2025-05-01 00:43:54,381 [INFO] Dataset: sleep
+2025-05-01 00:43:54,381 [INFO] Input dimensions: 18, Number of classes: 4
+2025-05-01 00:43:54,381 [INFO] Batch size: 64, Max depth: 7
+2025-05-01 00:43:54,381 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:54,390 [INFO] Created Soft Tree Model
+2025-05-01 00:43:54,390 [INFO] Running on a: cpu
+2025-05-01 00:43:54,545 [INFO] Epoch [1/15], Training Loss: 1.3764, Accuracy: 0.3333 | Test Loss: 1.3451, Test Accuracy: 0.4882, Test AUC: 0.7259
+2025-05-01 00:43:54,697 [INFO] Epoch [2/15], Training Loss: 1.3449, Accuracy: 0.4000 | Test Loss: 1.2982, Test Accuracy: 0.5176, Test AUC: 0.7457
+2025-05-01 00:43:54,853 [INFO] Epoch [3/15], Training Loss: 1.3156, Accuracy: 0.4259 | Test Loss: 1.2508, Test Accuracy: 0.5059, Test AUC: 0.7779
+2025-05-01 00:43:55,006 [INFO] Epoch [4/15], Training Loss: 1.2824, Accuracy: 0.4574 | Test Loss: 1.1926, Test Accuracy: 0.5647, Test AUC: 0.8201
+2025-05-01 00:43:55,167 [INFO] Epoch [5/15], Training Loss: 1.2438, Accuracy: 0.5019 | Test Loss: 1.1145, Test Accuracy: 0.6294, Test AUC: 0.8770
+2025-05-01 00:43:55,321 [INFO] Epoch [6/15], Training Loss: 1.1971, Accuracy: 0.5333 | Test Loss: 1.0425, Test Accuracy: 0.6647, Test AUC: 0.8875
+2025-05-01 00:43:55,530 [INFO] Epoch [7/15], Training Loss: 1.1648, Accuracy: 0.5333 | Test Loss: 0.9795, Test Accuracy: 0.6882, Test AUC: 0.8929
+2025-05-01 00:43:55,687 [INFO] Epoch [8/15], Training Loss: 1.1369, Accuracy: 0.5593 | Test Loss: 0.9228, Test Accuracy: 0.7353, Test AUC: 0.8996
+2025-05-01 00:43:55,844 [INFO] Epoch [9/15], Training Loss: 1.1009, Accuracy: 0.5593 | Test Loss: 0.8815, Test Accuracy: 0.7059, Test AUC: 0.9027
+2025-05-01 00:43:56,002 [INFO] Epoch [10/15], Training Loss: 1.0904, Accuracy: 0.5741 | Test Loss: 0.8508, Test Accuracy: 0.7176, Test AUC: 0.9051
+2025-05-01 00:43:56,157 [INFO] Epoch [11/15], Training Loss: 1.0702, Accuracy: 0.5667 | Test Loss: 0.8319, Test Accuracy: 0.7353, Test AUC: 0.9068
+2025-05-01 00:43:56,313 [INFO] Epoch [12/15], Training Loss: 1.0615, Accuracy: 0.5778 | Test Loss: 0.8169, Test Accuracy: 0.7118, Test AUC: 0.9093
+2025-05-01 00:43:56,474 [INFO] Epoch [13/15], Training Loss: 1.0452, Accuracy: 0.5759 | Test Loss: 0.7988, Test Accuracy: 0.7235, Test AUC: 0.9115
+2025-05-01 00:43:56,630 [INFO] Epoch [14/15], Training Loss: 1.0347, Accuracy: 0.5796 | Test Loss: 0.7864, Test Accuracy: 0.7235, Test AUC: 0.9125
+2025-05-01 00:43:56,783 [INFO] Epoch [15/15], Training Loss: 1.0161, Accuracy: 0.5907 | Test Loss: 0.7832, Test Accuracy: 0.7353, Test AUC: 0.9104
+2025-05-01 00:43:56,784 [INFO] Training completed in 0.04 minutes
+2025-05-01 00:43:56,785 [INFO] ==================================================
+2025-05-01 00:43:56,785 [INFO] Hyperparameter optimization complete
+2025-05-01 00:43:56,785 [INFO] Best parameters: {'batch_size': 64, 'epochs': 15.0, 'learning_rate': 0.014187239054126678, 'max_depth': 7.0}
+2025-05-01 00:43:56,785 [INFO] Best validation accuracy: 0.7353
+2025-05-01 00:43:56,785 [INFO] Best validation loss: 0.7832
+2025-05-01 00:43:56,785 [INFO] Best validation AUC: 0.9104
+2025-05-01 00:43:56,785 [INFO] ==================================================
+2025-05-01 00:43:56,786 [INFO] All results saved to outputs/pipeline/sleep/base/run_20250501_004311/single_tree/sleep_20250501_004311
+2025-05-01 00:43:56,786 [INFO] Best single tree parameters: {'batch_size': 64, 'epochs': 15.0, 'learning_rate': 0.014187239054126678, 'max_depth': 7.0}
+2025-05-01 00:43:56,786 [INFO] 
+Step 2: Running multi-tree hyperparameter optimization...
+2025-05-01 00:43:56,786 [INFO] Created results directory: outputs/pipeline/sleep/base/run_20250501_004311/multi_tree/sleep_20250501_004356
+2025-05-01 00:43:56,786 [INFO] Starting hyperparameter optimization with 10 trials
+2025-05-01 00:43:56,787 [INFO] build_posterior_wrapper took 0.000262 seconds
+2025-05-01 00:43:56,787 [INFO] TPE using 0 trials
+2025-05-01 00:43:56,788 [INFO] Trial params: num_trees=20, max_depth=7, lr=0.014187, batch_size=64, epochs=15, bootstrap=False, subset_selection=False
+2025-05-01 00:43:58,272 [INFO] Corrupted 20334/67780 labels (30.0%)
+2025-05-01 00:43:58,288 [INFO] Running ensemble experiment with 20 trees
+2025-05-01 00:43:58,289 [INFO] Dataset: sleep
+2025-05-01 00:43:58,289 [INFO] Input dimensions: 231, Number of classes: 5
+2025-05-01 00:43:58,289 [INFO] Batch size: 64, Max depth: 7
+2025-05-01 00:43:58,289 [INFO] Subset selection: False, Subset share: None
+2025-05-01 00:43:58,289 [INFO] Training tree 1/20
+2025-05-01 00:43:58,299 [INFO] Running on a: cpu
+2025-05-01 00:44:19,210 [INFO] Epoch [1/15], Training Loss: 1.3274, Accuracy: 0.5079 | Test Loss: 0.9666, Test Accuracy: 0.7105, Test AUC: 0.8678
+2025-05-01 00:44:40,189 [INFO] Epoch [2/15], Training Loss: 1.3011, Accuracy: 0.5238 | Test Loss: 0.9609, Test Accuracy: 0.7063, Test AUC: 0.8713
+2025-05-01 00:45:00,684 [INFO] Epoch [3/15], Training Loss: 1.2915, Accuracy: 0.5297 | Test Loss: 0.9418, Test Accuracy: 0.7079, Test AUC: 0.8690
+2025-05-01 00:45:21,743 [INFO] Epoch [4/15], Training Loss: 1.2853, Accuracy: 0.5338 | Test Loss: 0.9470, Test Accuracy: 0.7079, Test AUC: 0.8632
+2025-05-01 00:45:41,766 [INFO] Epoch [5/15], Training Loss: 1.2783, Accuracy: 0.5372 | Test Loss: 0.9555, Test Accuracy: 0.7014, Test AUC: 0.8638
+2025-05-01 00:46:01,057 [INFO] Epoch [6/15], Training Loss: 1.2728, Accuracy: 0.5420 | Test Loss: 0.9595, Test Accuracy: 0.6967, Test AUC: 0.8586
+2025-05-01 00:46:20,691 [INFO] Epoch [7/15], Training Loss: 1.2617, Accuracy: 0.5456 | Test Loss: 0.9639, Test Accuracy: 0.6982, Test AUC: 0.8550
+2025-05-01 00:46:41,036 [INFO] Epoch [8/15], Training Loss: 1.2552, Accuracy: 0.5494 | Test Loss: 0.9689, Test Accuracy: 0.6939, Test AUC: 0.8565
+2025-05-01 00:47:00,461 [INFO] Epoch [9/15], Training Loss: 1.2482, Accuracy: 0.5538 | Test Loss: 0.9669, Test Accuracy: 0.6932, Test AUC: 0.8541
+2025-05-01 00:47:20,582 [INFO] Epoch [10/15], Training Loss: 1.2439, Accuracy: 0.5566 | Test Loss: 0.9782, Test Accuracy: 0.6885, Test AUC: 0.8492
+2025-05-01 00:47:41,211 [INFO] Epoch [11/15], Training Loss: 1.2378, Accuracy: 0.5594 | Test Loss: 0.9799, Test Accuracy: 0.6886, Test AUC: 0.8444
+2025-05-01 00:48:00,655 [INFO] Epoch [12/15], Training Loss: 1.2317, Accuracy: 0.5612 | Test Loss: 1.0048, Test Accuracy: 0.6862, Test AUC: 0.8391
+2025-05-01 00:48:20,522 [INFO] Epoch [13/15], Training Loss: 1.2272, Accuracy: 0.5646 | Test Loss: 0.9961, Test Accuracy: 0.6804, Test AUC: 0.8379
+2025-05-01 00:48:40,383 [INFO] Epoch [14/15], Training Loss: 1.2230, Accuracy: 0.5653 | Test Loss: 1.0050, Test Accuracy: 0.6833, Test AUC: 0.8350
+2025-05-01 00:49:00,031 [INFO] Epoch [15/15], Training Loss: 1.2175, Accuracy: 0.5693 | Test Loss: 0.9981, Test Accuracy: 0.6797, Test AUC: 0.8344
+2025-05-01 00:49:01,275 [INFO] Training tree 2/20
+2025-05-01 00:49:01,284 [INFO] Running on a: cpu
+2025-05-01 00:49:21,618 [INFO] Epoch [1/15], Training Loss: 1.3330, Accuracy: 0.5047 | Test Loss: 0.9674, Test Accuracy: 0.7069, Test AUC: 0.8639
+2025-05-01 00:49:41,495 [INFO] Epoch [2/15], Training Loss: 1.3028, Accuracy: 0.5245 | Test Loss: 0.9662, Test Accuracy: 0.7112, Test AUC: 0.8611
+2025-05-01 00:50:01,047 [INFO] Epoch [3/15], Training Loss: 1.2928, Accuracy: 0.5285 | Test Loss: 0.9599, Test Accuracy: 0.7023, Test AUC: 0.8628
+2025-05-01 00:50:20,061 [INFO] Epoch [4/15], Training Loss: 1.2849, Accuracy: 0.5330 | Test Loss: 0.9621, Test Accuracy: 0.7014, Test AUC: 0.8588
+2025-05-01 00:50:39,149 [INFO] Epoch [5/15], Training Loss: 1.2768, Accuracy: 0.5358 | Test Loss: 0.9682, Test Accuracy: 0.7005, Test AUC: 0.8542
+2025-05-01 00:50:58,479 [INFO] Epoch [6/15], Training Loss: 1.2693, Accuracy: 0.5388 | Test Loss: 0.9667, Test Accuracy: 0.6916, Test AUC: 0.8547
+2025-05-01 00:51:18,206 [INFO] Epoch [7/15], Training Loss: 1.2605, Accuracy: 0.5451 | Test Loss: 0.9720, Test Accuracy: 0.6833, Test AUC: 0.8473
+2025-05-01 00:51:37,330 [INFO] Epoch [8/15], Training Loss: 1.2544, Accuracy: 0.5486 | Test Loss: 0.9879, Test Accuracy: 0.6868, Test AUC: 0.8445
+2025-05-01 00:51:56,713 [INFO] Epoch [9/15], Training Loss: 1.2471, Accuracy: 0.5509 | Test Loss: 0.9861, Test Accuracy: 0.6821, Test AUC: 0.8408
+2025-05-01 00:52:15,793 [INFO] Epoch [10/15], Training Loss: 1.2405, Accuracy: 0.5537 | Test Loss: 0.9851, Test Accuracy: 0.6838, Test AUC: 0.8370
+2025-05-01 00:52:35,298 [INFO] Epoch [11/15], Training Loss: 1.2332, Accuracy: 0.5579 | Test Loss: 0.9918, Test Accuracy: 0.6813, Test AUC: 0.8355

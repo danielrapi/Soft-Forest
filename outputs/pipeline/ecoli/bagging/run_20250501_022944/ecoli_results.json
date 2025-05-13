@@ -1,0 +1,26 @@
+{
+    "dataset": "ecoli",
+    "noise_level": 0.3,
+    "bagging": true,
+    "subset_selection": false,
+    "single_tree_params": {
+        "batch_size": 128,
+        "epochs": 15.0,
+        "learning_rate": 0.050101378424653724,
+        "max_depth": 4.0
+    },
+    "multi_tree_params": {
+        "batch_size": 128,
+        "epochs": 15.0,
+        "learning_rate": 0.050101378424653724,
+        "max_depth": 4.0,
+        "num_trees": 30.0
+    },
+    "final_results": {
+        "loss": 0.21212121212121215,
+        "accuracy": 0.7878787878787878,
+        "auc": 0.9746690617020315,
+        "baseline": 0.4393939393939394,
+        "execution_time": 0.05923628409703573
+    }
+}

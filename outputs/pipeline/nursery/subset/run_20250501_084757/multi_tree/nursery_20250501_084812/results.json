@@ -1,0 +1,15 @@
+{
+  "params": {
+    "batch_size": 32,
+    "epochs": 5.0,
+    "learning_rate": 0.059150838115156756,
+    "max_depth": 5.0,
+    "num_trees": 25.0,
+    "subset_share": 0.8803364656168418
+  },
+  "accuracy": 0.9753086419753086,
+  "auc": 0.9987060574392363,
+  "baseline": 0.3333333333333333,
+  "results_dir": "outputs/pipeline/nursery/subset/run_20250501_084757/multi_tree/nursery_20250501_084812",
+  "noise_level": 0.3
+}

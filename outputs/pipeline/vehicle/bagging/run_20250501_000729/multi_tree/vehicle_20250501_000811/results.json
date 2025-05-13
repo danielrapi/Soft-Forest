@@ -1,0 +1,14 @@
+{
+  "params": {
+    "batch_size": 128,
+    "epochs": 20.0,
+    "learning_rate": 0.016287504083030504,
+    "max_depth": 8.0,
+    "num_trees": 40.0
+  },
+  "accuracy": 0.7705882352941177,
+  "auc": 0.9235609442640691,
+  "baseline": 0.25882352941176473,
+  "results_dir": "outputs/pipeline/vehicle/bagging/run_20250501_000729/multi_tree/vehicle_20250501_000811",
+  "noise_level": 0.3
+}

@@ -1,0 +1,14 @@
+{
+  "params": {
+    "batch_size": 256,
+    "epochs": 15.0,
+    "learning_rate": 0.07414782864594498,
+    "max_depth": 3.0,
+    "num_trees": 35.0
+  },
+  "accuracy": 0.8988439306358381,
+  "auc": 0.982041881659828,
+  "baseline": 0.6994219653179191,
+  "results_dir": "outputs/pipeline/car_evaluation/base/run_20250501_013025/multi_tree/car_evaluation_20250501_013044",
+  "noise_level": 0.3
+}

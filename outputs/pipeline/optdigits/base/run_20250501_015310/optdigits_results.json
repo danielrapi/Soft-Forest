@@ -1,0 +1,26 @@
+{
+    "dataset": "optdigits",
+    "noise_level": 0.3,
+    "bagging": false,
+    "subset_selection": false,
+    "single_tree_params": {
+        "batch_size": 256,
+        "epochs": 20.0,
+        "learning_rate": 0.04118627043814042,
+        "max_depth": 6.0
+    },
+    "multi_tree_params": {
+        "batch_size": 256,
+        "epochs": 20.0,
+        "learning_rate": 0.04118627043814042,
+        "max_depth": 6.0,
+        "num_trees": 40.0
+    },
+    "final_results": {
+        "loss": 0.02935943060498225,
+        "accuracy": 0.9706405693950177,
+        "auc": 0.9992816058185825,
+        "baseline": 0.10142348754448399,
+        "execution_time": 2.1002413829167685
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "params": {
+    "batch_size": 32,
+    "epochs": 5.0,
+    "learning_rate": 0.06862388860085235,
+    "max_depth": 6.0,
+    "num_trees": 45.0,
+    "subset_share": 0.19783884475815006
+  },
+  "accuracy": 0.9847222222222223,
+  "auc": 0.9978961939106511,
+  "baseline": 0.9256944444444445,
+  "results_dir": "outputs/pipeline/ann_thyroid/subset/run_20250501_025011/multi_tree/ann_thyroid_20250501_025037",
+  "noise_level": 0.3
+}

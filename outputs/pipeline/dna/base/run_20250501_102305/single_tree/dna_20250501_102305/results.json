@@ -1,0 +1,13 @@
+{
+  "params": {
+    "batch_size": 32,
+    "epochs": 15.0,
+    "learning_rate": 0.015395611608504842,
+    "max_depth": 5.0
+  },
+  "accuracy": 0.9714285714285714,
+  "loss": 0.3714288711547852,
+  "auc": 0.9553894927536233,
+  "results_dir": "outputs/pipeline/dna/base/run_20250501_102305/single_tree/dna_20250501_102305",
+  "noise_level": 0.3
+}

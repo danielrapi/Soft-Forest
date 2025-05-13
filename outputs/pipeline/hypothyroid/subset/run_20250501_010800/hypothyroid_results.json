@@ -1,0 +1,27 @@
+{
+    "dataset": "hypothyroid",
+    "noise_level": 0.3,
+    "bagging": false,
+    "subset_selection": true,
+    "single_tree_params": {
+        "batch_size": 32,
+        "epochs": 20.0,
+        "learning_rate": 0.012588577179296756,
+        "max_depth": 4.0
+    },
+    "multi_tree_params": {
+        "batch_size": 32,
+        "epochs": 20.0,
+        "learning_rate": 0.012588577179296756,
+        "max_depth": 4.0,
+        "num_trees": 30.0,
+        "subset_share": 0.4265845424819163
+    },
+    "final_results": {
+        "loss": 0.06477093206951023,
+        "accuracy": 0.9352290679304898,
+        "auc": 0.7786622443338861,
+        "baseline": 0.95260663507109,
+        "execution_time": 1.508243461449941
+    }
+}

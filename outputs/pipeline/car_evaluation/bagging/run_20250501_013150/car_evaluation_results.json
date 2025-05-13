@@ -1,0 +1,26 @@
+{
+    "dataset": "car_evaluation",
+    "noise_level": 0.3,
+    "bagging": true,
+    "subset_selection": false,
+    "single_tree_params": {
+        "batch_size": 128,
+        "epochs": 20.0,
+        "learning_rate": 0.02060619341759161,
+        "max_depth": 6.0
+    },
+    "multi_tree_params": {
+        "batch_size": 128,
+        "epochs": 20.0,
+        "learning_rate": 0.02060619341759161,
+        "max_depth": 6.0,
+        "num_trees": 20.0
+    },
+    "final_results": {
+        "loss": 0.07514450867052025,
+        "accuracy": 0.9248554913294798,
+        "auc": 0.9904230930660279,
+        "baseline": 0.6994219653179191,
+        "execution_time": 0.6194529016812642
+    }
+}
