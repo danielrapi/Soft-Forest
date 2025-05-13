@@ -32,4 +32,12 @@ src/engine/__pycache__/*
 src/softensemble/__pycache__/*
 src/utils/__pycache__/*
 
+# These directories might not be ignored if they were previously tracked by git
+# To ensure they're properly ignored:
+# 1. Use both directory name and wildcard patterns
+# 2. Make sure there are no leading slashes (which would make paths relative to repository root)
+# 3. If still tracked, you may need to run: git rm -r --cached _OG_FASTEL _Archive
 _OG_FASTEL/
+_Archive/
+_OG_FASTEL/*
+_Archive/*
